@@ -18,9 +18,13 @@ namespace Wyw.Cda2Fhir.Core.Tests
             bundle.Entry[0].Resource.ResourceType.Should().Be(ResourceType.Composition);
 
             var composition = (Composition) bundle.Entry[0].Resource;
+
             composition.Identifier.Should().NotBeNull();
             composition.Identifier.Value.Should().NotBeNullOrEmpty();
             composition.Identifier.System.Should().NotBeNullOrEmpty();
+
+            composition.Type.Should().NotBeNull();
+            composition.Type.Coding.Count.Should().Be(1);
 
         }
     }

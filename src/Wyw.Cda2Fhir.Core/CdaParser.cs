@@ -4,6 +4,7 @@ using System.Text;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Wyw.Cda2Fhir.Core.Model;
+using Wyw.Cda2Fhir.Core.Model.DataType;
 using Wyw.Cda2Fhir.Core.Serialization;
 
 namespace Wyw.Cda2Fhir.Core
@@ -32,6 +33,9 @@ namespace Wyw.Cda2Fhir.Core
                 {
                     case "id":
                         header.Identifier = new Identifier().FromXml(child);
+                        break;
+                    case "code":
+                        header.Type = new CodeableConcept().FromXml(child);
                         break;
                 }
             }
