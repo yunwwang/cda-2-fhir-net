@@ -18,11 +18,18 @@ namespace Wyw.Cda2Fhir.Core
             if (rootElement == null)
                 throw new ArgumentNullException(nameof(xml));
 
-            var bundle = new Bundle();
+            // Not a CDA xml
+            if (rootElement.Name.LocalName != "ClinicalDocument")
+                return null;
+
+            var bundle = new Bundle()
+            {
+                Id = Guid.NewGuid().ToString()
+            };
 
             var header = new Composition
             {
-                Id = new Guid().ToString()
+                Id = Guid.NewGuid().ToString()
             };
 
             bundle.Entry.Add(new Bundle.EntryComponent(){Resource = header});
@@ -32,10 +39,16 @@ namespace Wyw.Cda2Fhir.Core
                 switch (child.Name.LocalName)
                 {
                     case "id":
-                        header.Identifier = new Identifier().FromXml(child);
+                        bundle.Identifier = new Identifier().FromXml(child);
                         break;
                     case "code":
                         header.Type = new CodeableConcept().FromXml(child);
+                        break;
+                    case "title":
+                        header.Title = child.Value;
+                        break;
+                    case "effectiveTime":
+                        header.DateElement = new FhirDateTime().FromXml(child);
                         break;
                 }
             }
