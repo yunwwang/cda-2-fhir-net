@@ -1,4 +1,5 @@
 using System.IO;
+using System.Linq;
 using System.Xml.Linq;
 using FluentAssertions;
 using Hl7.Fhir.Model;
@@ -26,13 +27,14 @@ namespace Wyw.Cda2Fhir.Core.Tests
             bundle.Entry[0].Resource.ResourceType.Should().Be(ResourceType.Composition);
 
             var composition = (Composition) bundle.Entry[0].Resource;
-            
+
+            composition.Meta.Profile.Count().Should().BeGreaterThan(0);
             composition.Type.Should().NotBeNull();
             composition.Type.Coding.Count.Should().Be(1);
-
             composition.Title.Should().NotBeNullOrEmpty();
-
             composition.Date.Should().NotBeNullOrEmpty();
+            composition.Confidentiality.Should().NotBeNull();
+            composition.Language.Should().NotBeNullOrEmpty();
 
             using (var writer = new StreamWriter("output.json"))
             using (var jWriter = new JsonTextWriter(writer))

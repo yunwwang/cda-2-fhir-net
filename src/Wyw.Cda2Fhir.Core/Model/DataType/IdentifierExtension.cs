@@ -9,7 +9,7 @@ namespace Wyw.Cda2Fhir.Core.Model.DataType
 {
     public static class IdentifierExtension
     {
-        public static Identifier FromXml(this Identifier id, XElement element)
+        public static Identifier FromXml(this Identifier id, XElement element, bool rootOnly = false)
         {
             if (element == null)
                 return null;
@@ -17,7 +17,7 @@ namespace Wyw.Cda2Fhir.Core.Model.DataType
             var system = element.Attribute("root")?.Value;
             var value = element.Attribute("extension")?.Value;
 
-            if (string.IsNullOrEmpty(system) || string.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(system) || (string.IsNullOrEmpty(value) && !rootOnly))
                 return null;
 
             //if (!system.StartsWith("http") && !system.StartsWith("urn:oid:"))
