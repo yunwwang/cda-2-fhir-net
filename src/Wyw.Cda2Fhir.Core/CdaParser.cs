@@ -5,9 +5,10 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
+using Wyw.Cda2Fhir.Core.Extension;
 using Wyw.Cda2Fhir.Core.Model;
-using Wyw.Cda2Fhir.Core.Model.DataType;
 using Wyw.Cda2Fhir.Core.Serialization;
+using Wyw.Cda2Fhir.Core.Serialization.DataType;
 
 namespace Wyw.Cda2Fhir.Core
 {
@@ -41,7 +42,7 @@ namespace Wyw.Cda2Fhir.Core
                 switch (child.Name.LocalName)
                 {
                     case "templateId":
-                        var templateId = new Identifier().FromXml(child, true)?.System;
+                        var templateId = new IdentifierParser().FromXml(child)?.System;
                         if (!string.IsNullOrEmpty(templateId))
                         {
                             if (header.Meta == null)
@@ -53,19 +54,19 @@ namespace Wyw.Cda2Fhir.Core
                         break;
 
                     case "id":
-                        bundle.Identifier = new Identifier().FromXml(child);
+                        bundle.Identifier = new IdentifierParser().FromXml(child);
                         break;
                     case "code":
-                        header.Type = new CodeableConcept().FromXml(child);
+                        header.Type = new CodeableConceptParser().FromXml(child);
                         break;
                     case "title":
                         header.Title = child.Value;
                         break;
                     case "effectiveTime":
-                        header.DateElement = new FhirDateTime().FromXml(child);
+                        header.DateElement = new FhirDateTimeParser().FromXml(child);
                         break;
                     case "confidentialityCode":
-                        var confidentialityCode = new Code().FromXml(child)?.Value;
+                        var confidentialityCode = new CodeParser().FromXml(child)?.Value;
                         if (!string.IsNullOrEmpty(confidentialityCode) && Enum.TryParse(confidentialityCode, true,
                             out Composition.ConfidentialityClassification confidentialityClassification))
                         {
@@ -73,10 +74,16 @@ namespace Wyw.Cda2Fhir.Core
                         }
                         break;
                     case "languageCode":
-                        header.Language = new Code().FromXml(child)?.Value;
+                        header.Language = new CodeParser().FromXml(child)?.Value;
                         break;
                     case "setId":
-                        header.Identifier = new Identifier().FromXml(child);
+                        header.Identifier = new IdentifierParser().FromXml(child);
+                        break;
+                    case "recordTarget":
+                        var patientRole = child.CdaElement("patientRole");
+                        var patient = new PatientParser().FromXml(patientRole);
+                        if (patient != null)
+                            header.Subject = new ResourceReference("Patient/" + patient.Id );
                         break;
                 }
             }

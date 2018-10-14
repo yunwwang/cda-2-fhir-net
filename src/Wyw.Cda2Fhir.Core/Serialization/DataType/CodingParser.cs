@@ -1,12 +1,13 @@
 ﻿using System.Linq;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
+using Wyw.Cda2Fhir.Core.Model;
 
-namespace Wyw.Cda2Fhir.Core.Model.DataType
+namespace Wyw.Cda2Fhir.Core.Serialization.DataType
 {
-    public static class CodingExtension
+    public class CodingParser
     {
-        public static Coding FromXml(this Coding coding, XElement element)
+        public Coding FromXml(XElement element)
         {
             if (element == null)
                 return null;
@@ -23,11 +24,7 @@ namespace Wyw.Cda2Fhir.Core.Model.DataType
             if (string.IsNullOrEmpty(systemUri))
                 systemUri = "urn:oid:" + system;
 
-            coding.Code = code;
-            coding.System = systemUri;
-            coding.Display = display;
-
-            return coding;
+            return new Coding(systemUri, code, display); ;
         }
     }
 }

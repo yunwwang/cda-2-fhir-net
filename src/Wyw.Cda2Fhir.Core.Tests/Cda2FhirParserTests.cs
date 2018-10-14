@@ -15,26 +15,24 @@ namespace Wyw.Cda2Fhir.Core.Tests
         [TestMethod]
         public void CompositionShallHaveId()
         {
-            var xml = XDocument.Load("Resource/C-CDA_R2-1_CCD.xml");
+            var xml = XDocument.Load("C-CDA_R2-1_CCD.xml");
             var bundle = new CdaParser().Convert(xml);
 
             bundle.Should().NotBeNull();
-
             bundle.Identifier.Should().NotBeNull();
-            bundle.Identifier.Value.Should().NotBeNullOrEmpty();
-            bundle.Identifier.System.Should().NotBeNullOrEmpty();
-
             bundle.Entry[0].Resource.ResourceType.Should().Be(ResourceType.Composition);
 
             var composition = (Composition) bundle.Entry[0].Resource;
 
             composition.Meta.Profile.Count().Should().BeGreaterThan(0);
             composition.Type.Should().NotBeNull();
-            composition.Type.Coding.Count.Should().Be(1);
             composition.Title.Should().NotBeNullOrEmpty();
             composition.Date.Should().NotBeNullOrEmpty();
             composition.Confidentiality.Should().NotBeNull();
             composition.Language.Should().NotBeNullOrEmpty();
+            composition.Identifier.Should().NotBeNull();
+            composition.Subject.Should().NotBeNull();
+            
 
             using (var writer = new StreamWriter("output.json"))
             using (var jWriter = new JsonTextWriter(writer))

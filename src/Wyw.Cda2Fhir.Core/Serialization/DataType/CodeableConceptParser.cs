@@ -1,23 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Wyw.Cda2Fhir.Core.Extension;
 
-namespace Wyw.Cda2Fhir.Core.Model.DataType
+namespace Wyw.Cda2Fhir.Core.Serialization.DataType
 {
-    public static class CodeableConceptExtension
+    public class CodeableConceptParser
     {
-        public static CodeableConcept FromXml(this CodeableConcept codeableConcept, XElement element)
+        public CodeableConcept FromXml(XElement element)
         {
             if (element == null)
                 return null;
             
-            var coding = new Coding().FromXml(element);
+            var coding = new CodingParser().FromXml(element);
 
             if (coding == null)
                 return null;
+
+            var codeableConcept = new CodeableConcept();
 
             codeableConcept.Coding.Add(coding);
 
@@ -25,7 +24,7 @@ namespace Wyw.Cda2Fhir.Core.Model.DataType
 
             foreach (var transElement in transElements)
             {
-                coding = new Coding().FromXml(transElement);
+                coding = new CodingParser().FromXml(transElement);
 
                 if (coding == null)
                     continue;
