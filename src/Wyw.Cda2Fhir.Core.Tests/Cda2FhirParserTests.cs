@@ -19,11 +19,13 @@ namespace Wyw.Cda2Fhir.Core.Tests
             var bundle = new CdaParser().Convert(xml);
 
             bundle.Should().NotBeNull();
+            bundle.Id.Should().NotBeNullOrEmpty();
             bundle.Identifier.Should().NotBeNull();
             bundle.Entry[0].Resource.ResourceType.Should().Be(ResourceType.Composition);
 
             var composition = (Composition) bundle.Entry[0].Resource;
 
+            composition.Id.Should().NotBeNullOrEmpty();
             composition.Meta.Profile.Count().Should().BeGreaterThan(0);
             composition.Type.Should().NotBeNull();
             composition.Title.Should().NotBeNullOrEmpty();
