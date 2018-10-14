@@ -10,39 +10,18 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
     {
         public Address FromXml(XElement element)
         {
-            var use = element?.Attribute("use")?.Value;
-
-            if (string.IsNullOrEmpty(use))
+            if (element == null)
                 return null;
 
-            var addr = new Address();
+            var addreeUse = new AddressUseParser().FromXml(element?.Attribute("use"));
 
-            switch (use)
+            if (addreeUse == null)
+                return null;
+
+            var addr = new Address
             {
-                case "H":
-                case "HP":
-                case "HV":
-                    addr.Use = Address.AddressUse.Home;
-                    break;
-
-                case "WP":
-                case "DIR":
-                case "PUB":
-                    addr.Use = Address.AddressUse.Work;
-                    break;
-
-                case "TMP":
-                    addr.Use = Address.AddressUse.Temp;
-                    break;
-
-                case "OLD":
-                    addr.Use = Address.AddressUse.Old;
-                    break;
-
-                default:
-                    return null;
-
-            }
+                Use = addreeUse
+            };
 
             foreach (var child in element.Elements())
             {
