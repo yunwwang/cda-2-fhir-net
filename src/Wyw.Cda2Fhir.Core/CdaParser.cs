@@ -83,7 +83,11 @@ namespace Wyw.Cda2Fhir.Core
                         var patientRole = child.CdaElement("patientRole");
                         var patient = new PatientParser().FromXml(patientRole);
                         if (patient != null)
-                            header.Subject = new ResourceReference("Patient/" + patient.Id );
+                        {
+                            header.Subject = new ResourceReference("Patient/" + patient.Id);
+                            bundle.Entry.Add(new Bundle.EntryComponent(){Resource = patient});
+                        }
+
                         break;
                 }
             }
