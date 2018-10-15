@@ -24,7 +24,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
             if (string.IsNullOrEmpty(systemUri))
                 systemUri = "urn:oid:" + system;
 
-            return new Coding(systemUri, code, display); ;
+            return new Coding(systemUri, code, display);
         }
     }
 }

@@ -1,8 +1,7 @@
-﻿using System.Linq;
+﻿using System.Xml.Linq;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Xml.Linq;
 using Hl7.Fhir.Model;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Wyw.Cda2Fhir.Core.Serialization.DataType;
 
 namespace Wyw.Cda2Fhir.Core.Tests.DataType
@@ -47,7 +46,6 @@ namespace Wyw.Cda2Fhir.Core.Tests.DataType
             element = XElement.Parse(xml);
             result = new ContactPointUseParser().FromXml(element.Attribute("use"));
             result.Should().Be(ContactPoint.ContactPointUse.Home);
-
         }
 
         [TestMethod]
@@ -93,6 +91,5 @@ namespace Wyw.Cda2Fhir.Core.Tests.DataType
             result.Should().NotBeNull();
             result.Should().Be(ContactPoint.ContactPointUse.Mobile);
         }
-
     }
 }

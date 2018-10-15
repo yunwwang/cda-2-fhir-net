@@ -1,8 +1,7 @@
-﻿using System.Linq;
+﻿using System.Xml.Linq;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Xml.Linq;
 using Hl7.Fhir.Model;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Wyw.Cda2Fhir.Core.Serialization.DataType;
 
 namespace Wyw.Cda2Fhir.Core.Tests.DataType
