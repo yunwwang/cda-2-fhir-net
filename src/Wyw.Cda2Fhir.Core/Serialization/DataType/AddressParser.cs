@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
 using Hl7.Fhir.Model;
 
 namespace Wyw.Cda2Fhir.Core.Serialization.DataType
@@ -13,7 +10,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
             if (element == null)
                 return null;
 
-            var addreeUse = new AddressUseParser().FromXml(element?.Attribute("use"));
+            var addreeUse = new AddressUseParser().FromXml(element.Attribute("use"));
 
             if (addreeUse == null)
                 return null;
@@ -24,7 +21,6 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
             };
 
             foreach (var child in element.Elements())
-            {
                 switch (child.Name.LocalName)
                 {
                     case "country":
@@ -47,7 +43,6 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
                         addr.LineElement.Add(new FhirString(child.Value));
                         break;
                 }
-            }
 
             return addr;
         }

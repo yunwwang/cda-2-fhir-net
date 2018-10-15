@@ -31,6 +31,11 @@ namespace Wyw.Cda2Fhir.Core.Serialization
                         if (addr != null)
                             patient.Address.Add(addr);
                         break;
+                    case "telecom":
+                        var contactPoint = new ContactPointParser().FromXml(child);
+                        if (contactPoint != null)
+                            patient.Telecom.Add(contactPoint);
+                        break;
                 }
             }
 
