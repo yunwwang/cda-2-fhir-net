@@ -28,6 +28,7 @@ namespace Wyw.Cda2Fhir.Core.Tests.Resource
             result.Identifier.Count.Should().BeGreaterThan(0);
             result.Address.Count.Should().BeGreaterThan(0);
             result.Telecom.Count.Should().BeGreaterThan(0);
+            result.Name.Count.Should().BeGreaterThan(0);
         }
     }
 }
