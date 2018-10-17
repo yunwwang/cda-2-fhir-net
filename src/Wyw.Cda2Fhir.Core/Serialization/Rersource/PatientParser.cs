@@ -36,10 +36,26 @@ namespace Wyw.Cda2Fhir.Core.Serialization
                         if (contactPoint != null)
                             patient.Telecom.Add(contactPoint);
                         break;
+                    case "patient":
+                        ParsePatient(patient, child);
+                        break;
                 }
             }
 
             return patient;
+        }
+
+        private void ParsePatient(Patient patient, XElement element)
+        {
+            foreach(var child in element.Elements())
+            switch (child.Name.LocalName)
+            {
+                    case "name":
+                        var name = new HumanNameParser().FromXml(child);
+                        if (name != null)
+                            patient.Name.Add(name);
+                        break;
+            }
         }
     }
 }
