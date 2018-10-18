@@ -3,7 +3,7 @@ using Hl7.Fhir.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Wyw.Cda2Fhir.Core.Serialization.ValueSet;
 
-namespace Wyw.Cda2Fhir.Core.Tests.DataType
+namespace Wyw.Cda2Fhir.Core.Tests.ValueSet
 {
     [TestClass]
     public class NameUseParserTests

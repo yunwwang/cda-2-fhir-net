@@ -60,6 +60,10 @@ namespace Wyw.Cda2Fhir.Core.Serialization
                     case "administrativeGenderCode":
                         patient.Gender = new AdministrativeGenderParser().FromCda(child.Attribute("code")?.Value);
                         break;
+
+                    case "birthTime":
+                        patient.BirthDateElement = new DateParser().FromXml(child);
+                        break;
             }
         }
     }
