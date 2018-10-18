@@ -8,9 +8,4 @@
     <PackageReference Include="Hl7.Fhir.STU3" Version="0.96.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Model\DataType\" />
-    <Folder Include="Model\Resource\" />
-  </ItemGroup>
-
 </Project>
