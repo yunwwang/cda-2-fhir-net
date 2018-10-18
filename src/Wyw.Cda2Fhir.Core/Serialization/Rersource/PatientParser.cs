@@ -2,6 +2,7 @@
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Wyw.Cda2Fhir.Core.Serialization.DataType;
+using Wyw.Cda2Fhir.Core.Serialization.ValueSet;
 
 namespace Wyw.Cda2Fhir.Core.Serialization
 {
@@ -54,6 +55,10 @@ namespace Wyw.Cda2Fhir.Core.Serialization
                         var name = new HumanNameParser().FromXml(child);
                         if (name != null)
                             patient.Name.Add(name);
+                        break;
+
+                    case "administrativeGenderCode":
+                        patient.Gender = new AdministrativeGenderParser().FromCda(child.Attribute("code")?.Value);
                         break;
             }
         }

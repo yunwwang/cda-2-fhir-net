@@ -1,5 +1,6 @@
 ﻿using System.Xml.Linq;
 using Hl7.Fhir.Model;
+using Wyw.Cda2Fhir.Core.Serialization.ValueSet;
 
 namespace Wyw.Cda2Fhir.Core.Serialization.DataType
 {
@@ -12,7 +13,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
 
             var name = new HumanName
             {
-                Use = new NameUseParser().FromXml(element.Attribute("use"))
+                Use = new NameUseParser().FromCda(element.Attribute("use")?.Value)
             };
 
             foreach (var child in element.Elements())
@@ -39,30 +40,6 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
                 }
 
             return name;
-        }
-    }
-
-    public class NameUseParser
-    {
-        public HumanName.NameUse? FromXml(XAttribute attribute)
-        {
-            if (string.IsNullOrEmpty(attribute?.Value))
-                return null;
-
-            switch (attribute.Value)
-            {
-                case "C":
-                    return HumanName.NameUse.Official;
-                case "L":
-                    return HumanName.NameUse.Usual;
-                case "A":
-                case "I":
-                case "P":
-                case "R":
-                    return HumanName.NameUse.Nickname;
-                default:
-                    return null;
-            }
         }
     }
 }

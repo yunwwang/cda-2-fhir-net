@@ -1,5 +1,6 @@
 ﻿using System.Xml.Linq;
 using Hl7.Fhir.Model;
+using Wyw.Cda2Fhir.Core.Serialization.ValueSet;
 
 namespace Wyw.Cda2Fhir.Core.Serialization.DataType
 {
@@ -12,7 +13,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
 
             var addr = new Address
             {
-                Use = new AddressUseParser().FromXml(element.Attribute("use"))
+                Use = new AddressUseParser().FromCda(element.Attribute("use")?.Value)
             };
 
             foreach (var child in element.Elements())
@@ -42,36 +43,4 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
             return addr;
         }
     }
-
-    public class AddressUseParser
-    {
-        public Address.AddressUse? FromXml(XAttribute attribute)
-        {
-            if (string.IsNullOrEmpty(attribute?.Value))
-                return null;
-
-            switch (attribute.Value)
-            {
-                case "H":
-                case "HP":
-                case "HV":
-                    return Address.AddressUse.Home;
-
-                case "WP":
-                case "DIR":
-                case "PUB":
-                    return Address.AddressUse.Work;
-
-                case "TMP":
-                    return Address.AddressUse.Temp;
-
-                case "OLD":
-                    return Address.AddressUse.Old;
-
-                default:
-                    return null;
-            }
-        }
-    }
-
 }

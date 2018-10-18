@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Folder Include="Model\DataType\" />
+    <Folder Include="Model\Resource\" />
   </ItemGroup>
 
 </Project>
