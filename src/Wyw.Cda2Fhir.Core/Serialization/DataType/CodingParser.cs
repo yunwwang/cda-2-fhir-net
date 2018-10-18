@@ -1,7 +1,6 @@
-﻿using System.Linq;
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
 using Hl7.Fhir.Model;
-using Wyw.Cda2Fhir.Core.Model;
+using Wyw.Cda2Fhir.Core.Serialization.ValueSet;
 
 namespace Wyw.Cda2Fhir.Core.Serialization.DataType
 {
@@ -19,10 +18,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
             if (string.IsNullOrWhiteSpace(code) || string.IsNullOrWhiteSpace(system))
                 return null;
 
-            var systemUri = Constant.KnownCodeSystemList.FirstOrDefault(c => c.Oid == system)?.Uri;
-
-            if (string.IsNullOrEmpty(systemUri))
-                systemUri = "urn:oid:" + system;
+            var systemUri = new CodeSystemParser().FromCda(system);
 
             return new Coding(systemUri, code, display);
         }

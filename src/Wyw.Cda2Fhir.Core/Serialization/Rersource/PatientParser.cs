@@ -64,6 +64,10 @@ namespace Wyw.Cda2Fhir.Core.Serialization
                     case "birthTime":
                         patient.BirthDateElement = new DateParser().FromXml(child);
                         break;
+
+                    case "maritalStatusCode":
+                        patient.MaritalStatus = new CodeableConceptParser().FromXml(child);
+                        break;
             }
         }
     }
