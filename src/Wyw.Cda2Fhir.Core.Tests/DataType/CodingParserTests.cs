@@ -19,7 +19,7 @@ namespace Wyw.Cda2Fhir.Core.Tests.DataType
         public void ElementWithoutCodeSystemAttributeShallRenturnNull()
         {
             var xml =
-                @"<code code=""34133 - 9"" displayName=""Summarization of Episode Note"" codeSystemName=""LOINC"" />";
+                @"<code code=""34133-9"" displayName=""Summarization of Episode Note"" codeSystemName=""LOINC"" />";
 
             var element = XElement.Parse(xml);
             var result = new CodingParser().FromXml(element);
@@ -35,6 +35,19 @@ namespace Wyw.Cda2Fhir.Core.Tests.DataType
             var element = XElement.Parse(xml);
             var result = new CodingParser().FromXml(element);
             result.Should().BeNull();
+        }
+
+        [TestMethod]
+        public void ShallRenturnNullFlavor()
+        {
+            var xml =
+                @"<code nullFlavor=""NI""/>";
+
+            var element = XElement.Parse(xml);
+            var result = new CodingParser().FromXml(element);
+            result.Should().NotBeNull();
+            result.Code.Should().Be("NI");
+            result.System.Should().Be("http://hl7.org/fhir/v3/NullFlavor");
         }
 
         [TestMethod]
