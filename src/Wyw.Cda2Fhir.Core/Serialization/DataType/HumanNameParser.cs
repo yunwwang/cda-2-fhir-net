@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using System.Linq;
+using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Wyw.Cda2Fhir.Core.Serialization.ValueSet;
 
@@ -38,6 +39,10 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
                             name.SuffixElement.Add(new FhirString(suffix));
                         break;
                 }
+
+            // Name shall have Family and Given
+            if (string.IsNullOrEmpty(name.Family) || !name.Given.Any())
+                return null;
 
             return name;
         }

@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using System.Linq;
+using System.Xml.Linq;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Wyw.Cda2Fhir.Core.Extension;
@@ -29,7 +30,8 @@ namespace Wyw.Cda2Fhir.Core.Tests.Resource
             result.Address.Count.Should().BeGreaterThan(0);
             result.Telecom.Count.Should().BeGreaterThan(0);
             result.Name.Count.Should().BeGreaterThan(0);
-            result.Gender.Should().NotBeNull();
+            result.Name.All(n => !string.IsNullOrEmpty(n.Family) && n.Given.Any()).Should().BeTrue();
+            result.Gender.Should().NotBeNull();            
             result.BirthDate.Should().NotBeNullOrEmpty();
         }
     }

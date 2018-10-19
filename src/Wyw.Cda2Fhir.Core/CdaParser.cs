@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Wyw.Cda2Fhir.Core.Extension;
-using Wyw.Cda2Fhir.Core.Model;
 using Wyw.Cda2Fhir.Core.Serialization;
 using Wyw.Cda2Fhir.Core.Serialization.DataType;
 
@@ -25,7 +21,7 @@ namespace Wyw.Cda2Fhir.Core
             if (rootElement.Name.LocalName != "ClinicalDocument")
                 return null;
 
-            var bundle = new Bundle()
+            var bundle = new Bundle
             {
                 Id = Guid.NewGuid().ToString()
             };
@@ -35,10 +31,9 @@ namespace Wyw.Cda2Fhir.Core
                 Id = Guid.NewGuid().ToString()
             };
 
-            bundle.Entry.Add(new Bundle.EntryComponent(){Resource = header});
+            bundle.Entry.Add(new Bundle.EntryComponent {Resource = header});
 
             foreach (var child in rootElement.Elements())
-            {
                 switch (child.Name.LocalName)
                 {
                     case "templateId":
@@ -51,6 +46,7 @@ namespace Wyw.Cda2Fhir.Core
                             if (header.Meta.ProfileElement.All(p => p.Value != templateId))
                                 header.Meta.ProfileElement.Add(new FhirUri(templateId));
                         }
+
                         break;
 
                     case "id":
@@ -68,10 +64,8 @@ namespace Wyw.Cda2Fhir.Core
                     case "confidentialityCode":
                         var confidentialityCode = new CodeParser().FromXml(child)?.Value;
                         if (!string.IsNullOrEmpty(confidentialityCode) && Enum.TryParse(confidentialityCode, true,
-                            out Composition.ConfidentialityClassification confidentialityClassification))
-                        {
+                                out Composition.ConfidentialityClassification confidentialityClassification))
                             header.Confidentiality = confidentialityClassification;
-                        }
                         break;
                     case "languageCode":
                         header.Language = new CodeParser().FromXml(child)?.Value;
@@ -85,12 +79,11 @@ namespace Wyw.Cda2Fhir.Core
                         if (patient != null)
                         {
                             header.Subject = new ResourceReference("Patient/" + patient.Id);
-                            bundle.Entry.Add(new Bundle.EntryComponent(){Resource = patient});
+                            bundle.Entry.Add(new Bundle.EntryComponent {Resource = patient});
                         }
 
                         break;
                 }
-            }
 
 
             return bundle;
