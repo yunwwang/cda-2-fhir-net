@@ -88,6 +88,41 @@ namespace Wyw.Cda2Fhir.Core.Serialization
                                 Value = religion
                             });
                         break;
+
+                    case "raceCode":
+                        var race = new CodingParser().FromXml(child);
+
+                        if (race != null)
+                        {
+                            switch (race.Code)
+                            {
+                                case "1002-5":
+                                case "2028-9":
+                                case "2054-5":
+                                case "2076-8":
+                                case "2106-3":
+                                case "UNK":
+                                case "ASKU":
+                                    raceExtension.Extension.Add(new Hl7.Fhir.Model.Extension
+                                    {
+                                        Url = "ombCategory",
+                                        Value = race
+                                    });
+                                    break;
+
+                                default:
+                                    raceExtension.Extension.Add(new Hl7.Fhir.Model.Extension
+                                    {
+                                        Url = "detailed",
+                                        Value = race
+                                    });
+                                    break;
+                            }
+
+                            patient.Extension.Add(raceExtension);
+                        }
+
+                        break;
             }
         }
     }

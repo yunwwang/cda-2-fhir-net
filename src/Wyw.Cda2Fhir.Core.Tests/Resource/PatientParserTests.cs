@@ -25,14 +25,21 @@ namespace Wyw.Cda2Fhir.Core.Tests.Resource
 
             var result = new PatientParser().FromXml(element);
             result.Should().NotBeNull();
+            // Shall have id
             result.Id.Should().NotBeNullOrEmpty();
+            // US-Core Shall have identifier
             result.Identifier.Count.Should().BeGreaterThan(0);
-            result.Address.Count.Should().BeGreaterThan(0);
-            result.Telecom.Count.Should().BeGreaterThan(0);
+            result.Identifier.All(i => !string.IsNullOrEmpty(i.System) && !string.IsNullOrEmpty(i.Value)).Should().BeTrue();
+            // US-Core Shall have name
             result.Name.Count.Should().BeGreaterThan(0);
             result.Name.All(n => !string.IsNullOrEmpty(n.Family) && n.Given.Any()).Should().BeTrue();
-            result.Gender.Should().NotBeNull();            
+            // US-Core Shall have gender
+            result.Gender.Should().NotBeNull();
+
+            result.Address.Count.Should().BeGreaterThan(0);
+            result.Telecom.Count.Should().BeGreaterThan(0);
             result.BirthDate.Should().NotBeNullOrEmpty();
+            result.Extension.Any(e => e.Url == "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race").Should().BeTrue();
         }
     }
 }
