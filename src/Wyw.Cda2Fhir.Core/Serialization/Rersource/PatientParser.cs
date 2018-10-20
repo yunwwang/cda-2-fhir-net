@@ -3,6 +3,7 @@ using System.Linq;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Wyw.Cda2Fhir.Core.Extension;
+using Wyw.Cda2Fhir.Core.Model;
 using Wyw.Cda2Fhir.Core.Serialization.DataType;
 using Wyw.Cda2Fhir.Core.Serialization.Rersource;
 using Wyw.Cda2Fhir.Core.Serialization.ValueSet;
@@ -32,19 +33,35 @@ namespace Wyw.Cda2Fhir.Core.Serialization
                 Id = Guid.NewGuid().ToString()
             };
 
+            ParseResult result = null;
+
             foreach (var child in element.Elements())
                 switch (child.Name.LocalName)
                 {
                     case "id":
-                        var id = new IdentifierParser().FromXml(child);
-                        if (id != null)
-                            patient.Identifier.Add(id);
+                        result = new IdentifierParser().FromXml(child);
+
+                        if (result == null) continue;
+
+                        if (result.Resource != null)
+                            patient.Identifier.Add((Identifier) result.Resource);
+                        else
+                            ParseErrors.AddRange(result.Errors);
+
                         break;
+
                     case "addr":
-                        var addr = new AddressParser().FromXml(child);
-                        if (addr != null)
-                            patient.Address.Add(addr);
+                        result = new AddressParser().FromXml(child);
+
+                        if (result == null) continue;
+
+                        if (result.Resource != null)
+                            patient.Address.Add((Address)result.Resource);
+
+                        ParseErrors.AddRange(result.Errors);
+
                         break;
+
                     case "telecom":
                         var contactPoint = new ContactPointParser().FromXml(child);
                         if (contactPoint != null)
@@ -60,16 +77,6 @@ namespace Wyw.Cda2Fhir.Core.Serialization
 
         private void ParsePatient(Patient patient, XElement element)
         {
-            var raceExtension = new Hl7.Fhir.Model.Extension
-            {
-                Url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
-            };
-
-            var ethnicityExtension = new Hl7.Fhir.Model.Extension
-            {
-                Url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
-            };
-
             foreach (var child in element.Elements())
                 switch (child.Name.LocalName)
                 {

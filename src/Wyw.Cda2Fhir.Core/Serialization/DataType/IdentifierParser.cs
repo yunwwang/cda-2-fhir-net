@@ -1,11 +1,14 @@
-﻿using System.Xml.Linq;
+﻿using System.Xml;
+using System.Xml.Linq;
 using Hl7.Fhir.Model;
+using Sprache;
+using Wyw.Cda2Fhir.Core.Model;
 
 namespace Wyw.Cda2Fhir.Core.Serialization.DataType
 {
-    public class IdentifierParser
+    public class IdentifierParser : BaseParser
     {
-        public Identifier FromXml(XElement element)
+        public ParseResult FromXml(XElement element)
         {
             if (element == null)
                 return null;
@@ -13,13 +16,13 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
             var system = element.Attribute("root")?.Value;
             var value = element.Attribute("extension")?.Value;
 
-            if (string.IsNullOrEmpty(system))
-                return null;
+            if (!string.IsNullOrEmpty(system))
+            {
+                system = "urn:oid:" + system;
+            }
 
-            //if (!system.StartsWith("http") && !system.StartsWith("urn:oid:"))
-            system = "urn:oid:" + system;
-
-            return new Identifier(system, value);
+            Result.Resource = new Identifier(system, value);
+            return Result;
         }
     }
 }

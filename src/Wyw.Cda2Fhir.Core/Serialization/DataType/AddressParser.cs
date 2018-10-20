@@ -1,12 +1,15 @@
-﻿using System.Xml.Linq;
+﻿using System.Linq;
+using System.Xml;
+using System.Xml.Linq;
 using Hl7.Fhir.Model;
+using Wyw.Cda2Fhir.Core.Model;
 using Wyw.Cda2Fhir.Core.Serialization.ValueSet;
 
 namespace Wyw.Cda2Fhir.Core.Serialization.DataType
 {
-    public class AddressParser
+    public class AddressParser : BaseParser
     {
-        public Address FromXml(XElement element)
+        public ParseResult FromXml(XElement element)
         {
             if (element == null)
                 return null;
@@ -40,7 +43,9 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
                         break;
                 }
 
-            return addr;
+            Result.Resource = addr;
+
+            return Result;
         }
     }
 }

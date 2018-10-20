@@ -3,6 +3,7 @@ using System.Linq;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Wyw.Cda2Fhir.Core.Extension;
+using Wyw.Cda2Fhir.Core.Model;
 using Wyw.Cda2Fhir.Core.Serialization;
 using Wyw.Cda2Fhir.Core.Serialization.DataType;
 
@@ -10,16 +11,25 @@ namespace Wyw.Cda2Fhir.Core
 {
     public class CdaParser : BaseParser
     {
-        public Bundle Convert(XDocument xml)
+        public ParseResult Convert(XDocument xml)
         {
+            var result = new ParseResult();
+
             var rootElement = xml?.Root;
 
             if (rootElement == null)
-                throw new ArgumentNullException(nameof(xml));
+            {
+                result.Errors.Add(new ParseError("XML Document doesn't have a root", ParseErrorLevel.Error));
+                return result;
+            }
 
             // Not a CDA xml
             if (rootElement.Name.LocalName != "ClinicalDocument")
-                return null;
+            {
+                result.Errors.Add(new ParseError("XML Document's root is not ClinicalDocument", ParseErrorLevel.Error));
+                return result;
+            }
+
 
             var bundle = new Bundle
             {
