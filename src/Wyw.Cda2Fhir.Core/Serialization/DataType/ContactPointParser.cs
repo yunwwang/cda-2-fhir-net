@@ -4,9 +4,9 @@ using Wyw.Cda2Fhir.Core.Serialization.ValueSet;
 
 namespace Wyw.Cda2Fhir.Core.Serialization.DataType
 {
-    public class ContactPointParser
+    public class ContactPointParser :BaseParser<ContactPoint>
     {
-        public ContactPoint FromXml(XElement element)
+        public override ContactPoint FromXml(XElement element)
         {
             if (element == null)
                 return null;

@@ -4,9 +4,9 @@ using Wyw.Cda2Fhir.Core.Extension;
 
 namespace Wyw.Cda2Fhir.Core.Serialization.DataType
 {
-    public class CodeableConceptParser : BaseParser
+    public class CodeableConceptParser : BaseParser<CodeableConcept>
     {
-        public CodeableConcept FromXml(XElement element)
+        public override CodeableConcept FromXml(XElement element)
         {
             if (element == null)
                 return null;

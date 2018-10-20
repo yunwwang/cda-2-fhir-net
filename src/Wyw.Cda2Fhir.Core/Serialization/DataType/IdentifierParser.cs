@@ -6,9 +6,9 @@ using Wyw.Cda2Fhir.Core.Model;
 
 namespace Wyw.Cda2Fhir.Core.Serialization.DataType
 {
-    public class IdentifierParser : BaseParser
+    public class IdentifierParser : BaseParser<Identifier>
     {
-        public ParseResult FromXml(XElement element)
+        public override Identifier FromXml(XElement element)
         {
             if (element == null)
                 return null;
@@ -17,12 +17,11 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
             var value = element.Attribute("extension")?.Value;
 
             if (!string.IsNullOrEmpty(system))
-            {
                 system = "urn:oid:" + system;
-            }
+            else
+                Errors.Add(ParseError.CreateParseError(element, "does NOT have root attribute", ParseErrorLevel.Warning));
 
-            Result.Resource = new Identifier(system, value);
-            return Result;
+            return new Identifier(system, value);
         }
     }
 }

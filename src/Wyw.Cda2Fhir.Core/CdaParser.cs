@@ -9,25 +9,26 @@ using Wyw.Cda2Fhir.Core.Serialization.DataType;
 
 namespace Wyw.Cda2Fhir.Core
 {
-    public class CdaParser : BaseParser
+    public class CdaParser : BaseParser<Bundle>
     {
-        public ParseResult Convert(XDocument xml)
+        public Bundle Convert(XDocument xml)
         {
-            var result = new ParseResult();
+            return FromXml(xml?.Root);
+        }
 
-            var rootElement = xml?.Root;
-
+        public override Bundle FromXml(XElement rootElement)
+        {
             if (rootElement == null)
             {
-                result.Errors.Add(new ParseError("XML Document doesn't have a root", ParseErrorLevel.Error));
-                return result;
+                Errors.Add(new ParseError("XML Document doesn't have a root", ParseErrorLevel.Error));
+                return null;
             }
 
             // Not a CDA xml
             if (rootElement.Name.LocalName != "ClinicalDocument")
             {
-                result.Errors.Add(new ParseError("XML Document's root is not ClinicalDocument", ParseErrorLevel.Error));
-                return result;
+                Errors.Add(new ParseError("XML Document's root is not ClinicalDocument", ParseErrorLevel.Error));
+                return null;
             }
 
 

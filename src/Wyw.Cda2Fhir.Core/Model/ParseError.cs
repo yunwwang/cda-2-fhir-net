@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Linq;
+using System.Xml;
 
 namespace Wyw.Cda2Fhir.Core.Model
 {
@@ -19,6 +21,14 @@ namespace Wyw.Cda2Fhir.Core.Model
             ErrorLevel = level;
         }
 
+        public static ParseError CreateParseError(XElement element, string message, ParseErrorLevel level)
+        {
+            var lineNuber = ((IXmlLineInfo)element).LineNumber;
+
+            message = $"Line {lineNuber}: <{element.Name.LocalName}> {message}";
+
+            return new ParseError(message, level);
+        }
     }
 
     public enum ParseErrorLevel

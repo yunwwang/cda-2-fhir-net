@@ -10,7 +10,7 @@ using Wyw.Cda2Fhir.Core.Serialization.ValueSet;
 
 namespace Wyw.Cda2Fhir.Core.Serialization
 {
-    public class PatientParser : BaseParser
+    public class PatientParser : BaseParser<Patient>
     {
         public PatientParser()
         {
@@ -23,7 +23,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization
 
         private Bundle Bundle { get; }
 
-        public Patient FromXml(XElement element)
+        public override Patient FromXml(XElement element)
         {
             if (element == null)
                 return null;
@@ -33,43 +33,41 @@ namespace Wyw.Cda2Fhir.Core.Serialization
                 Id = Guid.NewGuid().ToString()
             };
 
-            ParseResult result = null;
-
             foreach (var child in element.Elements())
-                switch (child.Name.LocalName)
+                if (child.Name.LocalName == "id")
                 {
-                    case "id":
-                        result = new IdentifierParser().FromXml(child);
+                    var parser = new IdentifierParser();
+                    var id = parser.FromXml(child);
 
-                        if (result == null) continue;
+                    if (id == null) continue;
 
-                        if (result.Resource != null)
-                            patient.Identifier.Add((Identifier) result.Resource);
-                        else
-                            ParseErrors.AddRange(result.Errors);
+                    patient.Identifier.Add(id);
+                    Errors.AddRange(parser.Errors);
+                }
+                else if (child.Name.LocalName == "addr")
+                {
+                    var parser = new AddressParser();
+                    var addr = parser.FromXml(child);
 
-                        break;
+                    if (addr == null) continue;
 
-                    case "addr":
-                        result = new AddressParser().FromXml(child);
+                    patient.Address.Add(addr);
+                    Errors.AddRange(parser.Errors);
+                }
+                else if (child.Name.LocalName == "telecom")
+                {
+                    var parser = new ContactPointParser();
+                    var contactPoint = parser.FromXml(child);
 
-                        if (result == null) continue;
+                    if (contactPoint == null)
+                        continue;
 
-                        if (result.Resource != null)
-                            patient.Address.Add((Address)result.Resource);
-
-                        ParseErrors.AddRange(result.Errors);
-
-                        break;
-
-                    case "telecom":
-                        var contactPoint = new ContactPointParser().FromXml(child);
-                        if (contactPoint != null)
-                            patient.Telecom.Add(contactPoint);
-                        break;
-                    case "patient":
-                        ParsePatient(patient, child);
-                        break;
+                    patient.Telecom.Add(contactPoint);
+                    Errors.AddRange(parser.Errors);
+                }
+                else if (child.Name.LocalName == "patient")
+                {
+                    ParsePatient(patient, child);
                 }
 
             return patient;

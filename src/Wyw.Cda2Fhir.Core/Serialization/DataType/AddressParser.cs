@@ -7,9 +7,9 @@ using Wyw.Cda2Fhir.Core.Serialization.ValueSet;
 
 namespace Wyw.Cda2Fhir.Core.Serialization.DataType
 {
-    public class AddressParser : BaseParser
+    public class AddressParser : BaseParser<Address>
     {
-        public ParseResult FromXml(XElement element)
+        public override Address FromXml(XElement element)
         {
             if (element == null)
                 return null;
@@ -43,9 +43,13 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
                         break;
                 }
 
-            Result.Resource = addr;
+            if (string.IsNullOrEmpty(addr.City))
+                Errors.Add(ParseError.CreateParseError(element, "does NOT have <city> element", ParseErrorLevel.Warning));
 
-            return Result;
+            if(!addr.Line.Any())
+                Errors.Add(ParseError.CreateParseError(element, "does NOT have <streetAddressLine> element", ParseErrorLevel.Warning));
+
+            return addr;
         }
     }
 }

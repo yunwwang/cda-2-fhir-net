@@ -7,12 +7,16 @@ using Wyw.Cda2Fhir.Core.Model;
 
 namespace Wyw.Cda2Fhir.Core.Serialization
 {
-    public abstract class BaseParser
+    public interface IParser<T> where T: Base
     {
-        
-        public ParseResult Result { get; set; } = new ParseResult();
-        public List<ParseError> ParseErrors { get; set; } = new List<ParseError>();
+        List<ParseError> Errors { get; set; }
+        T FromXml(XElement element);
+    }
 
+    public abstract class BaseParser<T> :IParser<T>  where T: Base
+    {
+        public List<ParseError> Errors { get; set; } = new List<ParseError>();
 
+        public abstract T FromXml(XElement element);
     }
 }
