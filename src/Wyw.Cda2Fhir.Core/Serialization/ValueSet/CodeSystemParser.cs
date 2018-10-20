@@ -12,6 +12,9 @@
                 case "2.16.840.1.113883.5.2":
                     return "http://hl7.org/fhir/v3/MaritalStatus";
 
+                case "2.16.840.1.113883.5.111":
+                    return "http://hl7.org/fhir/v3/RoleCode";
+                
                 case "2.16.840.1.113883.6.1":
                     return "http://loinc.org";
 

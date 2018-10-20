@@ -75,7 +75,7 @@ namespace Wyw.Cda2Fhir.Core
                         break;
                     case "recordTarget":
                         var patientRole = child.CdaElement("patientRole");
-                        var patient = new PatientParser().FromXml(patientRole);
+                        var patient = new PatientParser(bundle).FromXml(patientRole);
                         if (patient != null)
                         {
                             header.Subject = new ResourceReference("Patient/" + patient.Id);
