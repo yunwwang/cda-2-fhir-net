@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Wyw.Cda2Fhir.Core.Serialization.DataType;
@@ -13,13 +14,12 @@ namespace Wyw.Cda2Fhir.Core.Serialization
             if (element == null)
                 return null;
 
-            var patient = new Patient()
+            var patient = new Patient
             {
                 Id = Guid.NewGuid().ToString()
             };
 
             foreach (var child in element.Elements())
-            {
                 switch (child.Name.LocalName)
                 {
                     case "id":
@@ -41,7 +41,6 @@ namespace Wyw.Cda2Fhir.Core.Serialization
                         ParsePatient(patient, child);
                         break;
                 }
-            }
 
             return patient;
         }
@@ -58,9 +57,9 @@ namespace Wyw.Cda2Fhir.Core.Serialization
                 Url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
             };
 
-            foreach(var child in element.Elements())
-            switch (child.Name.LocalName)
-            {
+            foreach (var child in element.Elements())
+                switch (child.Name.LocalName)
+                {
                     case "name":
                         var name = new HumanNameParser().FromXml(child);
                         if (name != null)
@@ -103,27 +102,44 @@ namespace Wyw.Cda2Fhir.Core.Serialization
                                 case "2106-3":
                                 case "UNK":
                                 case "ASKU":
-                                    raceExtension.Extension.Add(new Hl7.Fhir.Model.Extension
-                                    {
-                                        Url = "ombCategory",
-                                        Value = race
-                                    });
+                                    raceExtension.Extension.Add(new Hl7.Fhir.Model.Extension("ombCategory", race));
                                     break;
 
                                 default:
-                                    raceExtension.Extension.Add(new Hl7.Fhir.Model.Extension
-                                    {
-                                        Url = "detailed",
-                                        Value = race
-                                    });
+                                    raceExtension.Extension.Add(new Hl7.Fhir.Model.Extension("detailed", race));
                                     break;
                             }
 
-                            patient.Extension.Add(raceExtension);
+                            if (patient.Extension.All(e => e.Url != raceExtension.Url))
+                                patient.Extension.Add(raceExtension);
                         }
 
                         break;
-            }
+
+                    case "ethnicGroupCode":
+                        var ethnicity = new CodingParser().FromXml(child);
+
+                        if (ethnicity != null)
+                        {
+                            switch (ethnicity.Code)
+                            {
+                                case "2135-2":
+                                case "2186-5":
+                                    ethnicityExtension.Extension.Add(
+                                        new Hl7.Fhir.Model.Extension("ombCategory", ethnicity));
+                                    break;
+
+                                default:
+                                    ethnicityExtension.Extension.Add(new Hl7.Fhir.Model.Extension("detail", ethnicity));
+                                    break;
+                            }
+
+                            if (patient.Extension.All(e => e.Url != ethnicityExtension.Url))
+                                patient.Extension.Add(ethnicityExtension);
+                        }
+
+                        break;
+                }
         }
     }
 }

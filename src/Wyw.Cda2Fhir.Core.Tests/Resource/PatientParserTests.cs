@@ -29,7 +29,8 @@ namespace Wyw.Cda2Fhir.Core.Tests.Resource
             result.Id.Should().NotBeNullOrEmpty();
             // US-Core Shall have identifier
             result.Identifier.Count.Should().BeGreaterThan(0);
-            result.Identifier.All(i => !string.IsNullOrEmpty(i.System) && !string.IsNullOrEmpty(i.Value)).Should().BeTrue();
+            result.Identifier.All(i => !string.IsNullOrEmpty(i.System) && !string.IsNullOrEmpty(i.Value)).Should()
+                .BeTrue();
             // US-Core Shall have name
             result.Name.Count.Should().BeGreaterThan(0);
             result.Name.All(n => !string.IsNullOrEmpty(n.Family) && n.Given.Any()).Should().BeTrue();
@@ -39,7 +40,10 @@ namespace Wyw.Cda2Fhir.Core.Tests.Resource
             result.Address.Count.Should().BeGreaterThan(0);
             result.Telecom.Count.Should().BeGreaterThan(0);
             result.BirthDate.Should().NotBeNullOrEmpty();
-            result.Extension.Any(e => e.Url == "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race").Should().BeTrue();
+            result.Extension.Count(e => e.Url == "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race").Should()
+                .Be(1);
+            result.Extension.Count(e => e.Url == "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity")
+                .Should().Be(1);
         }
     }
 }
