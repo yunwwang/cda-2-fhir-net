@@ -32,7 +32,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
                 return null;
             }
 
-            var systemUri = new CodeSystemParser().FromCda(system);
+            var systemUri = new OidParser().FromCda(system);
 
             return new Coding(systemUri, code, display);
         }

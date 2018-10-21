@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
@@ -29,7 +30,14 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Rersource
 
             var patient = new Patient
             {
-                Id = Guid.NewGuid().ToString()
+                Id = Guid.NewGuid().ToString(),
+                Meta = new Meta()
+                {
+                    Profile = new List<string>()
+                    {
+                        "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+                    }
+                }
             };
 
             foreach (var child in element.Elements())

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
@@ -40,31 +41,20 @@ namespace Wyw.Cda2Fhir.Core
 
             var header = new Composition
             {
-                Id = Guid.NewGuid().ToString()
+                Id = Guid.NewGuid().ToString(),
+                Meta = new Meta()
             };
 
             bundle.Entry.Add(new Bundle.EntryComponent {Resource = header});
 
             foreach (var child in rootElement.Elements())
-                if (child.Name.LocalName == "templateId")
-                {
-                    var templateId = new IdentifierParser().FromXml(child)?.System;
-                    if (!string.IsNullOrEmpty(templateId))
-                    {
-                        if (header.Meta == null)
-                            header.Meta = new Meta();
-
-                        if (header.Meta.ProfileElement.All(p => p.Value != templateId))
-                            header.Meta.ProfileElement.Add(new FhirUri(templateId));
-                    }
-                }
-                else if (child.Name.LocalName == "id")
+                if (child.Name.LocalName == "id")
                 {
                     bundle.Identifier = new IdentifierParser().FromXml(child, Errors);
                 }
                 else if (child.Name.LocalName == "code")
                 {
-                    header.Type = new CodeableConceptParser().FromXml(child, Errors);
+                    AddCode(header, child);
                 }
                 else if (child.Name.LocalName == "title")
                 {
@@ -102,6 +92,30 @@ namespace Wyw.Cda2Fhir.Core
 
 
             return bundle;
+        }
+
+        private void AddCode(Composition header, XElement element)
+        {
+            header.Type = new CodeableConceptParser().FromXml(element, Errors);
+
+            var type = header.Type?.Coding.FirstOrDefault()?.Code;
+
+            if (string.IsNullOrEmpty(type))
+                return;
+
+            if (type == "34133-9")
+            {
+                header.Meta.ProfileElement.Add(new FhirUri(
+                    "http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Continuity-of-Care-Document"));
+            }
+            else
+            {
+                var templateIdElement = element.Parent.CdaElement("templateId");
+                var templateId = new IdentifierParser().FromXml(templateIdElement)?.System;
+
+                if (!string.IsNullOrEmpty(templateId) && header.Meta.ProfileElement.All(p => p.Value != templateId))
+                    header.Meta.ProfileElement.Add(new FhirUri(templateId));
+            }
         }
     }
 }

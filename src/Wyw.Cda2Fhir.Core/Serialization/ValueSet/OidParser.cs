@@ -1,6 +1,6 @@
 ﻿namespace Wyw.Cda2Fhir.Core.Serialization.ValueSet
 {
-    public class CodeSystemParser
+    public class OidParser
     {
         public string FromCda(string value)
         {

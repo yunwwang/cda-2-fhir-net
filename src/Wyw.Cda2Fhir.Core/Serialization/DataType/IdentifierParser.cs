@@ -22,12 +22,6 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
                 return null;
             }
 
-            if (string.IsNullOrEmpty(value))
-            {
-                Errors.Add(ParserError.CreateParseError(element, "does NOT have extension attribute", ParseErrorLevel.Warning));
-                return null;
-            }
-
             system = "urn:oid:" + system;
 
             return new Identifier(system, value);
