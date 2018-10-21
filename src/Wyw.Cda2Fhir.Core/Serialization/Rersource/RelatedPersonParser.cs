@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Linq;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Wyw.Cda2Fhir.Core.Extension;
+using Wyw.Cda2Fhir.Core.Model;
 using Wyw.Cda2Fhir.Core.Serialization.DataType;
 
 namespace Wyw.Cda2Fhir.Core.Serialization.Rersource
 {
-    public class RelatedPersonParser
+    public class RelatedPersonParser : BaseParser<RelatedPerson>
     {
-        public RelatedPerson FromXml(XElement element)
+        public override RelatedPerson FromXml(XElement element)
         {
             if (element == null)
                 return null;
@@ -43,6 +45,9 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Rersource
                             relatedPerson.Name.Add(name);
                         break;
                 }
+
+            if (!relatedPerson.Name.Any())
+                Errors.Add(ParserError.CreateParseError(element, "does NOT have name element", ParseErrorLevel.Warning));
 
             return relatedPerson;
         }

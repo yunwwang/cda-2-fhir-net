@@ -1,16 +1,14 @@
 ﻿using Hl7.Fhir.Model;
 using System.Xml.Linq;
+using Wyw.Cda2Fhir.Core.Model;
 
 namespace Wyw.Cda2Fhir.Core.Serialization.DataType
 {
-    public class CodeParser
+    public class CodeParser : BaseParser<Code>
     {
-        public Code FromXml(XElement element)
+        public override Code FromXml(XElement element)
         {
-            if (element == null)
-                return null;
-
-            var value = element.Attribute("code")?.Value;
+            var value = element?.Attribute("code")?.Value;
 
             return string.IsNullOrWhiteSpace(value) ? null : new Code(value);
         }

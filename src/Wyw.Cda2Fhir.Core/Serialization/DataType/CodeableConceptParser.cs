@@ -13,7 +13,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
 
             var codeableConcept = new CodeableConcept();
 
-            var coding = new CodingParser().FromXml(element);
+            var coding = new CodingParser().FromXml(element, Errors);
 
             if (coding != null)
                 codeableConcept.Coding.Add(coding);
@@ -22,7 +22,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
 
             foreach (var transElement in transElements)
             {
-                coding = new CodingParser().FromXml(transElement);
+                coding = new CodingParser().FromXml(transElement, Errors);
 
                 if (coding == null)
                     continue;

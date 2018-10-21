@@ -5,10 +5,9 @@ using Hl7.Fhir.Model;
 using Wyw.Cda2Fhir.Core.Extension;
 using Wyw.Cda2Fhir.Core.Model;
 using Wyw.Cda2Fhir.Core.Serialization.DataType;
-using Wyw.Cda2Fhir.Core.Serialization.Rersource;
 using Wyw.Cda2Fhir.Core.Serialization.ValueSet;
 
-namespace Wyw.Cda2Fhir.Core.Serialization
+namespace Wyw.Cda2Fhir.Core.Serialization.Rersource
 {
     public class PatientParser : BaseParser<Patient>
     {
@@ -36,39 +35,49 @@ namespace Wyw.Cda2Fhir.Core.Serialization
             foreach (var child in element.Elements())
                 if (child.Name.LocalName == "id")
                 {
-                    var parser = new IdentifierParser();
-                    var id = parser.FromXml(child);
+                    var id = new IdentifierParser().FromXml(child, Errors);
 
-                    if (id == null) continue;
-
-                    patient.Identifier.Add(id);
-                    Errors.AddRange(parser.Errors);
+                    if (id != null)
+                        patient.Identifier.Add(id);
                 }
                 else if (child.Name.LocalName == "addr")
                 {
-                    var parser = new AddressParser();
-                    var addr = parser.FromXml(child);
+                    var addr = new AddressParser().FromXml(child, Errors);
 
-                    if (addr == null) continue;
-
-                    patient.Address.Add(addr);
-                    Errors.AddRange(parser.Errors);
+                    if (addr != null)
+                        patient.Address.Add(addr);
                 }
                 else if (child.Name.LocalName == "telecom")
                 {
                     var parser = new ContactPointParser();
-                    var contactPoint = parser.FromXml(child);
+                    var contactPoint = parser.FromXml(child, Errors);
 
-                    if (contactPoint == null)
-                        continue;
-
-                    patient.Telecom.Add(contactPoint);
-                    Errors.AddRange(parser.Errors);
+                    if (contactPoint != null)
+                        patient.Telecom.Add(contactPoint);
                 }
                 else if (child.Name.LocalName == "patient")
                 {
                     ParsePatient(patient, child);
                 }
+                else if (child.Name.LocalName == "providerOrganization")
+                {
+                    var org = new OrganizationParser().FromXml(child, Errors);
+                    if (org != null && Bundle != null)
+                    {
+                        patient.ManagingOrganization = new ResourceReference($"{org.TypeName}/{org.Id}");
+                        Bundle.Entry.Add(new Bundle.EntryComponent{Resource = org});
+                    }
+                }
+
+            if (!patient.Identifier.Any())
+                Errors.Add(ParserError.CreateParseError(element, "does NOT have id element", ParseErrorLevel.Error));
+
+            if (!patient.Name.Any())
+                Errors.Add(ParserError.CreateParseError(element, "does NOT have name element", ParseErrorLevel.Error));
+
+            if (patient.Gender == null)
+                Errors.Add(ParserError.CreateParseError(element, "does NOT have administrativeGenderCode element",
+                    ParseErrorLevel.Error));
 
             return patient;
         }
@@ -76,65 +85,62 @@ namespace Wyw.Cda2Fhir.Core.Serialization
         private void ParsePatient(Patient patient, XElement element)
         {
             foreach (var child in element.Elements())
-                switch (child.Name.LocalName)
+                if (child.Name.LocalName == "name")
                 {
-                    case "name":
-                        var name = new HumanNameParser().FromXml(child);
-                        if (name != null)
-                            patient.Name.Add(name);
-                        break;
-
-                    case "administrativeGenderCode":
-                        patient.Gender = new AdministrativeGenderParser().FromCda(child.Attribute("code")?.Value);
-                        break;
-
-                    case "birthTime":
-                        patient.BirthDateElement = new DateParser().FromXml(child);
-                        break;
-
-                    case "maritalStatusCode":
-                        patient.MaritalStatus = new CodeableConceptParser().FromXml(child);
-                        break;
-
-                    case "religiousAffiliationCode":
-                        var religion = new CodeableConceptParser().FromXml(child);
-                        if (religion != null)
-                            patient.Extension.Add(new Hl7.Fhir.Model.Extension
-                            {
-                                Url = "http://hl7.org/fhir/StructureDefinition/patient-religion",
-                                Value = religion
-                            });
-                        break;
-
-                    case "raceCode":
-                        AddRaceCode(patient, child);
-                        break;
-
-                    case "ethnicGroupCode":
-                        AddEthnicGroupCode(patient, child);
-                        break;
-
-                    case "guardian":
-                        var relatedPerson = new RelatedPersonParser().FromXml(child);
-                        if (relatedPerson != null && Bundle != null)
+                    var name = new HumanNameParser().FromXml(child, Errors);
+                    if (name != null)
+                        patient.Name.Add(name);
+                }
+                else if (child.Name.LocalName == "administrativeGenderCode")
+                {
+                    patient.Gender = new AdministrativeGenderParser().FromCda(child.Attribute("code")?.Value);
+                }
+                else if (child.Name.LocalName == "birthTime")
+                {
+                    patient.BirthDateElement = new DateParser().FromXml(child, Errors);
+                }
+                else if (child.Name.LocalName == "maritalStatusCode")
+                {
+                    patient.MaritalStatus = new CodeableConceptParser().FromXml(child, Errors);
+                }
+                else if (child.Name.LocalName == "religiousAffiliationCode")
+                {
+                    var religion = new CodeableConceptParser().FromXml(child, Errors);
+                    if (religion != null)
+                        patient.Extension.Add(new Hl7.Fhir.Model.Extension
                         {
-                            relatedPerson.Patient = new ResourceReference("Patient/" + patient.Id);
-                            Bundle.Entry.Add(new Bundle.EntryComponent {Resource = relatedPerson});
-                        }
-
-                        break;
-
-                    case "birthplace":
-                        var address = new AddressParser().FromXml(child.CdaElement("place")?.CdaElement("addr"));
-                        if (address != null)
-                            patient.Extension.Add(
-                                new Hl7.Fhir.Model.Extension("http://hl7.org/fhir/StructureDefinition/birthPlace",
-                                    address));
-                        break;
-
-                    case "languageCommunication":
-                        AddLanguageCommunication(patient, child);
-                        break;
+                            Url = "http://hl7.org/fhir/StructureDefinition/patient-religion",
+                            Value = religion
+                        });
+                }
+                else if (child.Name.LocalName == "raceCode")
+                {
+                    AddRaceCode(patient, child);
+                }
+                else if (child.Name.LocalName == "ethnicGroupCode")
+                {
+                    AddEthnicGroupCode(patient, child);
+                }
+                else if (child.Name.LocalName == "guardian")
+                {
+                    var relatedPerson = new RelatedPersonParser().FromXml(child, Errors);
+                    if (relatedPerson != null && Bundle != null)
+                    {
+                        relatedPerson.Patient = new ResourceReference($"{patient.TypeName}/{patient.Id}");
+                        Bundle.Entry.Add(new Bundle.EntryComponent {Resource = relatedPerson});
+                    }
+                }
+                else if (child.Name.LocalName == "birthplace")
+                {
+                    var address = new AddressParser().FromXml(child.CdaElement("place")?.CdaElement("addr"), Errors);
+                    if (address != null)
+                        patient.Extension.Add(
+                            new Hl7.Fhir.Model.Extension("http://hl7.org/fhir/StructureDefinition/birthPlace",
+                                address));
+                }
+                else if (child.Name.LocalName == "languageCommunication")
+                {
+                    AddLanguageCommunication(patient, child);
                 }
         }
 
@@ -142,34 +148,33 @@ namespace Wyw.Cda2Fhir.Core.Serialization
         {
             const string url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race";
 
-            var race = new CodingParser().FromXml(element);
+            var race = new CodingParser().FromXml(element, Errors);
 
             var raceExtension = patient.Extension.FirstOrDefault(e => e.Url == url);
 
-            if (race != null)
+            if (race == null) return;
+
+            if (raceExtension == null)
             {
-                if (raceExtension == null)
-                {
-                    raceExtension = new Hl7.Fhir.Model.Extension {Url = url};
-                    patient.Extension.Add(raceExtension);
-                }
+                raceExtension = new Hl7.Fhir.Model.Extension {Url = url};
+                patient.Extension.Add(raceExtension);
+            }
 
-                switch (race.Code)
-                {
-                    case "1002-5":
-                    case "2028-9":
-                    case "2054-5":
-                    case "2076-8":
-                    case "2106-3":
-                    case "UNK":
-                    case "ASKU":
-                        raceExtension.Extension.Add(new Hl7.Fhir.Model.Extension("ombCategory", race));
-                        break;
+            switch (race.Code)
+            {
+                case "1002-5":
+                case "2028-9":
+                case "2054-5":
+                case "2076-8":
+                case "2106-3":
+                case "UNK":
+                case "ASKU":
+                    raceExtension.Extension.Add(new Hl7.Fhir.Model.Extension("ombCategory", race));
+                    break;
 
-                    default:
-                        raceExtension.Extension.Add(new Hl7.Fhir.Model.Extension("detailed", race));
-                        break;
-                }
+                default:
+                    raceExtension.Extension.Add(new Hl7.Fhir.Model.Extension("detailed", race));
+                    break;
             }
         }
 
@@ -177,31 +182,29 @@ namespace Wyw.Cda2Fhir.Core.Serialization
         {
             const string url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity";
 
-            var ethnicity = new CodingParser().FromXml(element);
+            var ethnicity = new CodingParser().FromXml(element, Errors);
 
             var ethnicityExtension = patient.Extension.FirstOrDefault(e => e.Url == url);
 
+            if (ethnicity == null) return;
 
-            if (ethnicity != null)
+            if (ethnicityExtension == null)
             {
-                if (ethnicityExtension == null)
-                {
-                    ethnicityExtension = new Hl7.Fhir.Model.Extension {Url = url};
-                    patient.Extension.Add(ethnicityExtension);
-                }
+                ethnicityExtension = new Hl7.Fhir.Model.Extension {Url = url};
+                patient.Extension.Add(ethnicityExtension);
+            }
 
-                switch (ethnicity.Code)
-                {
-                    case "2135-2":
-                    case "2186-5":
-                        ethnicityExtension.Extension.Add(
-                            new Hl7.Fhir.Model.Extension("ombCategory", ethnicity));
-                        break;
+            switch (ethnicity.Code)
+            {
+                case "2135-2":
+                case "2186-5":
+                    ethnicityExtension.Extension.Add(
+                        new Hl7.Fhir.Model.Extension("ombCategory", ethnicity));
+                    break;
 
-                    default:
-                        ethnicityExtension.Extension.Add(new Hl7.Fhir.Model.Extension("detail", ethnicity));
-                        break;
-                }
+                default:
+                    ethnicityExtension.Extension.Add(new Hl7.Fhir.Model.Extension("detail", ethnicity));
+                    break;
             }
         }
 
@@ -210,20 +213,18 @@ namespace Wyw.Cda2Fhir.Core.Serialization
             var communication = new Patient.CommunicationComponent();
 
             foreach (var child in element.Elements())
-            {
                 switch (child.Name.LocalName)
                 {
                     case "languageCode":
-                        var code = new CodeParser().FromXml(child);
+                        var code = new CodeParser().FromXml(child, Errors);
                         if (code != null)
                             communication.Language = new CodeableConcept("urn:ietf:bcp:47", code.Value);
                         break;
 
                     case "preferenceInd":
-                        communication.PreferredElement = new FhirBooleanParser().FromXml(child);
+                        communication.PreferredElement = new FhirBooleanParser().FromXml(child, Errors);
                         break;
                 }
-            }
 
             if (communication.Language != null)
                 patient.Communication.Add(communication);

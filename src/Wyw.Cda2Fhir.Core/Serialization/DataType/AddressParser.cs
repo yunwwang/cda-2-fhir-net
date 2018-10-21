@@ -44,10 +44,10 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
                 }
 
             if (string.IsNullOrEmpty(addr.City))
-                Errors.Add(ParseError.CreateParseError(element, "does NOT have <city> element", ParseErrorLevel.Warning));
+                Errors.Add(ParserError.CreateParseError(element, "does NOT have <city> element", ParseErrorLevel.Warning));
 
             if(!addr.Line.Any())
-                Errors.Add(ParseError.CreateParseError(element, "does NOT have <streetAddressLine> element", ParseErrorLevel.Warning));
+                Errors.Add(ParserError.CreateParseError(element, "does NOT have <streetAddressLine> element", ParseErrorLevel.Warning));
 
             return addr;
         }

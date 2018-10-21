@@ -6,9 +6,9 @@ using Hl7.Fhir.Model;
 
 namespace Wyw.Cda2Fhir.Core.Serialization.DataType
 {
-    public class FhirBooleanParser
+    public class FhirBooleanParser : BaseParser<FhirBoolean>
     {
-        public FhirBoolean FromXml(XElement element)
+        public override FhirBoolean FromXml(XElement element)
         {
             var value = element?.Attribute("value")?.Value;
 

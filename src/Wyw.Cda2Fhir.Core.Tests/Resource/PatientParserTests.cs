@@ -4,6 +4,7 @@ using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Wyw.Cda2Fhir.Core.Extension;
 using Wyw.Cda2Fhir.Core.Serialization;
+using Wyw.Cda2Fhir.Core.Serialization.Rersource;
 
 namespace Wyw.Cda2Fhir.Core.Tests.Resource
 {

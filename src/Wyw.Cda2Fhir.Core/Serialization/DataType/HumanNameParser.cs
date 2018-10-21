@@ -1,13 +1,14 @@
 ﻿using System.Linq;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
+using Wyw.Cda2Fhir.Core.Model;
 using Wyw.Cda2Fhir.Core.Serialization.ValueSet;
 
 namespace Wyw.Cda2Fhir.Core.Serialization.DataType
 {
-    public class HumanNameParser
+    public class HumanNameParser : BaseParser<HumanName>
     {
-        public HumanName FromXml(XElement element)
+        public override HumanName FromXml(XElement element)
         {
             if (element == null)
                 return null;
@@ -40,9 +41,17 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
                         break;
                 }
 
-            // Name shall have Family and Given
-            if (string.IsNullOrEmpty(name.Family) || !name.Given.Any())
+            if (string.IsNullOrEmpty(name.Family))
+            {
+                Errors.Add(ParserError.CreateParseError(element, "does NOT have family element", ParseErrorLevel.Error));
                 return null;
+            }
+
+            if (!name.Given.Any())
+            {
+                Errors.Add(ParserError.CreateParseError(element, "does NOT have given element", ParseErrorLevel.Error));
+                return null;
+            }
 
             return name;
         }

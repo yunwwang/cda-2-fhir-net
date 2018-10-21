@@ -1,12 +1,13 @@
 ﻿using System.Xml.Linq;
 using Hl7.Fhir.Model;
+using Wyw.Cda2Fhir.Core.Model;
 using Wyw.Cda2Fhir.Core.Serialization.ValueSet;
 
 namespace Wyw.Cda2Fhir.Core.Serialization.DataType
 {
-    public class CodingParser
+    public class CodingParser : BaseParser<Coding>
     {
-        public Coding FromXml(XElement element)
+        public override Coding FromXml(XElement element)
         {
             if (element == null)
                 return null;
@@ -19,9 +20,15 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
             if (!string.IsNullOrEmpty(nullFlavor))
                 return new Coding("http://hl7.org/fhir/v3/NullFlavor", nullFlavor);
 
-            if (string.IsNullOrWhiteSpace(code) || string.IsNullOrWhiteSpace(system))
+            if (string.IsNullOrWhiteSpace(code))
             {
-               
+                Errors.Add(ParserError.CreateParseError(element, "does NOT have code attribute", ParseErrorLevel.Error));
+                return null;
+            }
+
+            if (string.IsNullOrWhiteSpace(system))
+            {
+                Errors.Add(ParserError.CreateParseError(element, "does NOT have codeSystem attribute", ParseErrorLevel.Error));
                 return null;
             }
 

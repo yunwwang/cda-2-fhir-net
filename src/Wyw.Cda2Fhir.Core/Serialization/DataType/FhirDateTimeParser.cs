@@ -1,17 +1,32 @@
 ﻿using System;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
+using Wyw.Cda2Fhir.Core.Model;
 
 namespace Wyw.Cda2Fhir.Core.Serialization.DataType
 {
-    public class FhirDateTimeParser
+    public class FhirDateTimeParser : BaseParser<FhirDateTime>
     {
-        public FhirDateTime FromXml(XElement element)
+        public override FhirDateTime FromXml(XElement element)
         {
-            var timeString = element?.Attribute("value")?.Value;
-
-            if (timeString == null || timeString.Length < 4)
+            if (element == null)
                 return null;
+
+            var timeString = element.Attribute("value")?.Value;
+
+            if (timeString == null)
+            {
+                Errors.Add(ParserError.CreateParseError(element, "does NOT have value attribute",
+                    ParseErrorLevel.Error));
+                return null;
+            }
+
+            if (timeString.Length < 4)
+            {
+                Errors.Add(ParserError.CreateParseError(element, "does NOT have valid value attribute",
+                    ParseErrorLevel.Error));
+                return null;
+            }
 
             var format = string.Empty;
 

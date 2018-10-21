@@ -16,10 +16,19 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
             var system = element.Attribute("root")?.Value;
             var value = element.Attribute("extension")?.Value;
 
-            if (!string.IsNullOrEmpty(system))
-                system = "urn:oid:" + system;
-            else
-                Errors.Add(ParseError.CreateParseError(element, "does NOT have root attribute", ParseErrorLevel.Warning));
+            if (string.IsNullOrEmpty(system))
+            {
+                Errors.Add(ParserError.CreateParseError(element, "does NOT have root attribute", ParseErrorLevel.Error));
+                return null;
+            }
+
+            if (string.IsNullOrEmpty(value))
+            {
+                Errors.Add(ParserError.CreateParseError(element, "does NOT have extension attribute", ParseErrorLevel.Warning));
+                return null;
+            }
+
+            system = "urn:oid:" + system;
 
             return new Identifier(system, value);
         }

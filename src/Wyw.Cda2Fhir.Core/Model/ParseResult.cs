@@ -8,13 +8,13 @@ namespace Wyw.Cda2Fhir.Core.Model
     public class ParseResult
     {
         public Base Resource { get; set; }
-        public List<ParseError> Errors { get; set; } = new List<ParseError>();
+        public List<ParserError> Errors { get; set; } = new List<ParserError>();
 
         public ParseResult()
         {
         }
 
-        public ParseResult(Base resource, List<ParseError> errors)
+        public ParseResult(Base resource, List<ParserError> errors)
         {
             Resource = resource;
             Errors = errors;

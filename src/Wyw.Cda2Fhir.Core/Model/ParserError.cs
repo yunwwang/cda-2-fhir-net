@@ -6,28 +6,28 @@ using System.Xml;
 
 namespace Wyw.Cda2Fhir.Core.Model
 {
-    public class ParseError
+    public class ParserError
     {
         public ParseErrorLevel ErrorLevel { get; set; }
         public string Message { get; set; }
 
-        public ParseError()
+        public ParserError()
         {
         }
 
-        public ParseError(string message, ParseErrorLevel level)
+        public ParserError(string message, ParseErrorLevel level)
         {
             Message = message;
             ErrorLevel = level;
         }
 
-        public static ParseError CreateParseError(XElement element, string message, ParseErrorLevel level)
+        public static ParserError CreateParseError(XElement element, string message, ParseErrorLevel level)
         {
             var lineNuber = ((IXmlLineInfo)element).LineNumber;
 
             message = $"Line {lineNuber}: <{element.Name.LocalName}> {message}";
 
-            return new ParseError(message, level);
+            return new ParserError(message, level);
         }
     }
 

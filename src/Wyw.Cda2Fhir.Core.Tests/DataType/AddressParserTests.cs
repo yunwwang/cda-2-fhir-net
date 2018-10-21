@@ -31,15 +31,13 @@ namespace Wyw.Cda2Fhir.Core.Tests.DataType
 
             var element = XElement.Parse(xml);
             var result = new AddressParser().FromXml(element);
-            result.Resource.Should().NotBeNull();
-            var addr = (Address) result.Resource;
-
-            addr.Use.Should().Be(Address.AddressUse.Home);
-            addr.Line.First().Should().Be("2222 Home Street");
-            addr.City.Should().Be("Beaverton");
-            addr.State.Should().Be("OR");
-            addr.PostalCode.Should().Be("97867");
-            addr.Country.Should().Be("US");
+            result.Should().NotBeNull();
+            result.Use.Should().Be(Address.AddressUse.Home);
+            result.Line.First().Should().Be("2222 Home Street");
+            result.City.Should().Be("Beaverton");
+            result.State.Should().Be("OR");
+            result.PostalCode.Should().Be("97867");
+            result.Country.Should().Be("US");
         }
     }
 }

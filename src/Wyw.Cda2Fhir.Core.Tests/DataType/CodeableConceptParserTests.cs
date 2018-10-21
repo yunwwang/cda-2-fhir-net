@@ -16,17 +16,6 @@ namespace Wyw.Cda2Fhir.Core.Tests.DataType
         }
 
         [TestMethod]
-        public void ElementWithoutCodingShallRenturnNull()
-        {
-            var xml =
-                @"<code displayName=""Summarization of Episode Note"" codeSystem=""2.16.840.1.113883.6.1"" codeSystemName=""LOINC"" />";
-
-            var element = XElement.Parse(xml);
-            var result = new CodeableConceptParser().FromXml(element);
-            result.Should().BeNull();
-        }
-
-        [TestMethod]
         public void ShallRenturnCodeableConcept()
         {
             var xml =
