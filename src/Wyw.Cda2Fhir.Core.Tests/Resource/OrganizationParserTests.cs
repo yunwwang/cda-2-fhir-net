@@ -30,7 +30,7 @@ namespace Wyw.Cda2Fhir.Core.Tests.Resource
             result.Id.Should().NotBeNullOrEmpty();
             // US-Core Shall have identifier
             result.Identifier.Count.Should().BeGreaterThan(0);
-            // Us-Core Shall have name
+            // US-Core Shall have name
             result.Name.Should().NotBeNullOrEmpty();
             // US-Core Shall have telcom
             result.Telecom.Count.Should().BeGreaterThan(0);

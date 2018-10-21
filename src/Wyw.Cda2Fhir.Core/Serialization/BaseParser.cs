@@ -28,5 +28,10 @@ namespace Wyw.Cda2Fhir.Core.Serialization
 
             return result;
         }
+
+        public virtual TChild FromXml<TChild>(IParser<TChild> parser, XElement element) where TChild: Base
+        {
+            return parser.FromXml(element, Errors);
+        }
     }
 }

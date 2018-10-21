@@ -50,7 +50,7 @@ namespace Wyw.Cda2Fhir.Core
             foreach (var child in rootElement.Elements())
                 if (child.Name.LocalName == "id")
                 {
-                    bundle.Identifier = new IdentifierParser().FromXml(child, Errors);
+                    bundle.Identifier = FromXml(new IdentifierParser(), child);
                 }
                 else if (child.Name.LocalName == "code")
                 {
@@ -62,7 +62,7 @@ namespace Wyw.Cda2Fhir.Core
                 }
                 else if (child.Name.LocalName == "effectiveTime")
                 {
-                    header.DateElement = new FhirDateTimeParser().FromXml(child, Errors);
+                    header.DateElement = FromXml(new FhirDateTimeParser(), child);
                 }
                 else if (child.Name.LocalName == "confidentialityCode")
                 {
