@@ -95,8 +95,7 @@ namespace Wyw.Cda2Fhir.Core
                 }
                 else if (child.Name.LocalName == "recordTarget")
                 {
-                    var patientRole = child.CdaElement("patientRole");
-                    var patient = FromXml(new PatientParser(bundle), patientRole);
+                    var patient = FromXml(new PatientParser(bundle), child.CdaElement("patientRole"));
                     if (patient != null)
                     {
                         header.Subject = new ResourceReference($"{patient.TypeName}/{patient.Id}");
@@ -105,6 +104,13 @@ namespace Wyw.Cda2Fhir.Core
                 }
                 else if (child.Name.LocalName == "author")
                 {
+                    var practitioner = FromXml(new PractitionerParser(bundle), child.CdaElement("assignedAuthor"));
+
+                    if (practitioner != null)
+                    {
+                        header.Author.Add(new ResourceReference($"{practitioner.TypeName}/{practitioner.Id}"));
+                        bundle.Entry.Add(new Bundle.EntryComponent { Resource = practitioner });
+                    }
                 }
 
             

@@ -21,8 +21,6 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
             Bundle = bundle;
         }
 
-        private Bundle Bundle { get; }
-
         public override Patient FromXml(XElement element)
         {
             if (element == null)
@@ -42,7 +40,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
 
             foreach (var child in element.Elements())
                 if (child.Name.LocalName == "id")
-                {
+                { 
                     var id = new IdentifierParser().FromXml(child, Errors);
 
                     if (id != null)
@@ -131,7 +129,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                 }
                 else if (child.Name.LocalName == "guardian")
                 {
-                    var relatedPerson = new RelatedPersonParser().FromXml(child, Errors);
+                    var relatedPerson = FromXml(new RelatedPersonParser(),child);
                     if (relatedPerson != null && Bundle != null)
                     {
                         relatedPerson.Patient = new ResourceReference($"{patient.TypeName}/{patient.Id}");

@@ -6,6 +6,7 @@ using Hl7.Fhir.Model;
 using Hl7.Fhir.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
+using Wyw.Cda2Fhir.Core.Model;
 
 namespace Wyw.Cda2Fhir.Core.Tests
 {
@@ -16,6 +17,7 @@ namespace Wyw.Cda2Fhir.Core.Tests
         public void ShallReturnComposition()
         {
             var xml = XDocument.Load("C-CDA_R2-1_CCD.xml");
+
             var parserSettings = new CdaParserSettings
             {
                 RunValidation = false
