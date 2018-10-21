@@ -3,16 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Specification.Source;
+using Hl7.Fhir.Validation;
 using Wyw.Cda2Fhir.Core.Extension;
 using Wyw.Cda2Fhir.Core.Model;
 using Wyw.Cda2Fhir.Core.Serialization;
 using Wyw.Cda2Fhir.Core.Serialization.DataType;
-using Wyw.Cda2Fhir.Core.Serialization.Rersource;
+using Wyw.Cda2Fhir.Core.Serialization.Resource;
 
 namespace Wyw.Cda2Fhir.Core
 {
     public class CdaParser : BaseParser<Bundle>
     {
+        public CdaParserSettings ParserSettings { get; set; }
+
+        public CdaParser()
+        { }
+
+        public CdaParser(CdaParserSettings settings)
+        {
+            ParserSettings = settings;
+        }
+
         public Bundle Convert(XDocument xml)
         {
             return FromXml(xml?.Root);
@@ -36,13 +48,15 @@ namespace Wyw.Cda2Fhir.Core
 
             var bundle = new Bundle
             {
-                Id = Guid.NewGuid().ToString()
+                Id = Guid.NewGuid().ToString(),
+                Type = Bundle.BundleType.Document
             };
 
             var header = new Composition
             {
                 Id = Guid.NewGuid().ToString(),
-                Meta = new Meta()
+                Meta = new Meta(),
+                Status = CompositionStatus.Final
             };
 
             bundle.Entry.Add(new Bundle.EntryComponent {Resource = header});
@@ -66,31 +80,56 @@ namespace Wyw.Cda2Fhir.Core
                 }
                 else if (child.Name.LocalName == "confidentialityCode")
                 {
-                    var confidentialityCode = new CodeParser().FromXml(child, Errors)?.Value;
+                    var confidentialityCode = FromXml(new CodeParser(), child)?.Value;
                     if (!string.IsNullOrEmpty(confidentialityCode) && Enum.TryParse(confidentialityCode, true,
                             out Composition.ConfidentialityClassification confidentialityClassification))
                         header.Confidentiality = confidentialityClassification;
                 }
                 else if (child.Name.LocalName == "languageCode")
                 {
-                    header.Language = new CodeParser().FromXml(child, Errors)?.Value;
+                    header.Language = FromXml(new CodeParser(), child)?.Value;
                 }
                 else if (child.Name.LocalName == "setId")
                 {
-                    header.Identifier = new IdentifierParser().FromXml(child, Errors);
+                    header.Identifier = FromXml(new IdentifierParser(), child);
                 }
                 else if (child.Name.LocalName == "recordTarget")
                 {
                     var patientRole = child.CdaElement("patientRole");
-                    var patient = new PatientParser(bundle).FromXml(patientRole, Errors);
+                    var patient = FromXml(new PatientParser(bundle), patientRole);
                     if (patient != null)
                     {
                         header.Subject = new ResourceReference($"{patient.TypeName}/{patient.Id}");
-                        bundle.Entry.Add(new Bundle.EntryComponent {Resource = patient});
+                        bundle.Entry.Add(new Bundle.EntryComponent { Resource = patient });
                     }
                 }
+                else if (child.Name.LocalName == "author")
+                {
+                }
 
+            
+            if (ParserSettings.RunValidation)
+            {
+                var settings = new ValidationSettings
+                {
+                    ResourceResolver = new CachedResolver(new MultiResolver(
+                        new ZipSource("Definitions/stu3-definitions.xml.zip"),
+                        new ZipSource("Definitions/us-core-definitions.xml.zip"),                        
+                        new DirectorySource("Definitions", new DirectorySourceSettings
+                        {
+                            Mask = "*.xml"
+                        })
+                    ))
+                };
+                var validator = new Validator(settings);
 
+                var outcome = validator.Validate(bundle);
+
+                foreach (var issue in outcome.Issue)
+                {
+                    Errors.Add(new ParserError(issue.Details.Text, ParseErrorLevel.Error));
+                }
+            }
             return bundle;
         }
 

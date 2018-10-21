@@ -5,7 +5,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Hl7.Fhir.Specification.STU3" Version="0.96.0" />
     <PackageReference Include="Hl7.Fhir.STU3" Version="0.96.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Definitions\StructureDefinition-CCDA-on-FHIR-Continuity-of-Care-Document.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Definitions\StructureDefinition-CCDA-on-FHIR-US-Realm-Header.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Definitions\stu3-definitions.xml.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Definitions\us-core-definitions.xml.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="C:\Users\yunww\.nuget\packages\hl7.fhir.specification.stu3\0.96.0\contentFiles\any\any\specification.zip" Link="specification.zip" />
   </ItemGroup>
 
 </Project>

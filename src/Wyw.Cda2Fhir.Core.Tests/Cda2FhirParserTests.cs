@@ -16,7 +16,12 @@ namespace Wyw.Cda2Fhir.Core.Tests
         public void ShallReturnComposition()
         {
             var xml = XDocument.Load("C-CDA_R2-1_CCD.xml");
-            var bundle = new CdaParser().Convert(xml);
+            var parserSettings = new CdaParserSettings
+            {
+                RunValidation = false
+            };
+
+            var bundle = new CdaParser(parserSettings).Convert(xml);
 
             bundle.Should().NotBeNull();
             bundle.Id.Should().NotBeNullOrEmpty();
