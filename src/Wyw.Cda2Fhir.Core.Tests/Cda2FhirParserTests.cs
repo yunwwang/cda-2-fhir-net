@@ -20,7 +20,7 @@ namespace Wyw.Cda2Fhir.Core.Tests
 
             var parserSettings = new CdaParserSettings
             {
-                RunValidation = true
+                RunValidation = false
             };
 
             var parser = new CdaParser(parserSettings);
@@ -51,6 +51,23 @@ namespace Wyw.Cda2Fhir.Core.Tests
                 jWriter.Formatting = Formatting.Indented;
                 new FhirJsonSerializer().Serialize(bundle, jWriter);
             }
+        }
+
+        [TestMethod]
+        public void ShallReturnNoValidationError()
+        {
+            var xml = XDocument.Load("C-CDA_R2-1_CCD.xml");
+
+            var parserSettings = new CdaParserSettings
+            {
+                RunValidation = true
+            };
+
+            var parser = new CdaParser(parserSettings);
+            var bundle = parser.Convert(xml);
+
+            parser.Errors.Count.Should().Be(0);
+
 
             using (var writer = new StreamWriter("error.json"))
             using (var jWriter = new JsonTextWriter(writer))
