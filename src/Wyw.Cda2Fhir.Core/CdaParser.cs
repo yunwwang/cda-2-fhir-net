@@ -127,6 +127,39 @@ namespace Wyw.Cda2Fhir.Core
                         bundle.Entry.Add(new Bundle.EntryComponent { Resource = practitioner });
                     }
                 }
+                else if (child.Name.LocalName == "informant")
+                {
+                    foreach (var entity in child.Elements())
+                    {
+                        if (entity.Name.LocalName == "assignedEntity")
+                        {
+                            var practitioner = FromXml(new PractitionerParser(bundle), entity);
+
+                            if (practitioner != null)
+                            {
+                                header.Extension.Add(new Hl7.Fhir.Model.Extension
+                                {
+                                    Url = "http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Informant",
+                                    Value = new ResourceReference($"{practitioner.TypeName}/{practitioner.Id}")
+                                });
+                                bundle.Entry.Add(new Bundle.EntryComponent { Resource = practitioner });
+                            }
+                        }
+                        else if (entity.Name.LocalName == "relatedEntity")
+                        {
+                            var relatedPerson = FromXml(new RelatedPersonParser(), entity);
+                            if (relatedPerson != null)
+                            {
+                                header.Extension.Add(new Hl7.Fhir.Model.Extension
+                                {
+                                    Url = "http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Informant",
+                                    Value = new ResourceReference($"{relatedPerson.TypeName}/{relatedPerson.Id}")
+                                });
+                                bundle.Entry.Add(new Bundle.EntryComponent { Resource = relatedPerson });
+                            }
+                        }
+                    }
+                }
             }
 
             if (ParserSettings.RunValidation)

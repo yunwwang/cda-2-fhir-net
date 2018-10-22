@@ -24,23 +24,24 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                 switch (child.Name.LocalName)
                 {
                     case "code":
-                        relatedPerson.Relationship = new CodeableConceptParser().FromXml(child);
+                        relatedPerson.Relationship = FromXml(new CodeableConceptParser(),child);
                         break;
 
                     case "addr":
-                        var addr = new AddressParser().FromXml(child);
+                        var addr = FromXml(new AddressParser(),child);
                         if (addr != null)
                             relatedPerson.Address.Add(addr);
                         break;
 
                     case "telecom":
-                        var contactPoint = new ContactPointParser().FromXml(child);
+                        var contactPoint = FromXml(new ContactPointParser(), child);
                         if (contactPoint != null)
                             relatedPerson.Telecom.Add(contactPoint);
                         break;
 
                     case "guardianPerson":
-                        var name = new HumanNameParser().FromXml(child.CdaElement("name"));
+                    case "relatedPerson":
+                        var name = FromXml(new HumanNameParser(), child.CdaElement("name"));
                         if (name != null)
                             relatedPerson.Name.Add(name);
                         break;
