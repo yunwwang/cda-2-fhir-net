@@ -156,9 +156,15 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
 
             var race = new CodingParser().FromXml(element, Errors);
 
+            if (race == null) return;
+
+            // Remove display text
+            var display = race.Display;
+
+            race.Display = null;
+
             var raceExtension = patient.Extension.FirstOrDefault(e => e.Url == url);
 
-            if (race == null) return;
 
             if (raceExtension == null)
             {
@@ -182,6 +188,12 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                     raceExtension.Extension.Add(new Hl7.Fhir.Model.Extension("detailed", race));
                     break;
             }
+
+            if (raceExtension.Extension.All(e => e.Url != "text"))
+            {
+                raceExtension.Extension.Add(new Hl7.Fhir.Model.Extension("text", new FhirString(display)));
+            }
+
         }
 
         private void AddEthnicGroupCode(Patient patient, XElement element)
@@ -190,9 +202,14 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
 
             var ethnicity = new CodingParser().FromXml(element, Errors);
 
+            if (ethnicity == null) return;
+
+            var display = ethnicity.Display;
+
+            ethnicity.Display = null;
+
             var ethnicityExtension = patient.Extension.FirstOrDefault(e => e.Url == url);
 
-            if (ethnicity == null) return;
 
             if (ethnicityExtension == null)
             {
@@ -211,6 +228,11 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                 default:
                     ethnicityExtension.Extension.Add(new Hl7.Fhir.Model.Extension("detail", ethnicity));
                     break;
+            }
+
+            if (ethnicityExtension.Extension.All(e => e.Url != "text"))
+            {
+                ethnicityExtension.Extension.Add(new Hl7.Fhir.Model.Extension("text", new FhirString(display)));
             }
         }
 

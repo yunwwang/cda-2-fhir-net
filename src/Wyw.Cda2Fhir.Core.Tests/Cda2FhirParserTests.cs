@@ -20,10 +20,11 @@ namespace Wyw.Cda2Fhir.Core.Tests
 
             var parserSettings = new CdaParserSettings
             {
-                RunValidation = false
+                RunValidation = true
             };
 
-            var bundle = new CdaParser(parserSettings).Convert(xml);
+            var parser = new CdaParser(parserSettings);
+            var bundle = parser.Convert(xml);
 
             bundle.Should().NotBeNull();
             bundle.Id.Should().NotBeNullOrEmpty();
@@ -37,9 +38,10 @@ namespace Wyw.Cda2Fhir.Core.Tests
             composition.Identifier.Should().NotBeNull();
             composition.Subject.Should().NotBeNull();
             composition.Date.Should().NotBeNullOrEmpty();
-            //composition.Author.Count.Should().BeGreaterThan(0);
+            composition.Author.Count.Should().BeGreaterThan(0);
             composition.Title.Should().NotBeNullOrEmpty();
             composition.Confidentiality.Should().NotBeNull();
+            //composition.Custodian.Should().NotBeNull();
             composition.Type.Should().NotBeNull();            
             
 
@@ -48,6 +50,14 @@ namespace Wyw.Cda2Fhir.Core.Tests
             {
                 jWriter.Formatting = Formatting.Indented;
                 new FhirJsonSerializer().Serialize(bundle, jWriter);
+            }
+
+            using (var writer = new StreamWriter("error.json"))
+            using (var jWriter = new JsonTextWriter(writer))
+            {
+                jWriter.Formatting = Formatting.Indented;
+                var serializer = new JsonSerializer();
+                serializer.Serialize(jWriter, parser.Errors);
             }
         }
     }

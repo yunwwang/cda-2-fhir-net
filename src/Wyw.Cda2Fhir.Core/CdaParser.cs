@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
@@ -15,15 +14,16 @@ namespace Wyw.Cda2Fhir.Core
 {
     public class CdaParser : BaseParser<Bundle>
     {
-        public CdaParserSettings ParserSettings { get; set; }
-
         public CdaParser()
-        { }
+        {
+        }
 
         public CdaParser(CdaParserSettings settings)
         {
             ParserSettings = settings;
         }
+
+        public CdaParserSettings ParserSettings { get; set; }
 
         public Bundle Convert(XDocument xml)
         {
@@ -99,7 +99,7 @@ namespace Wyw.Cda2Fhir.Core
                     if (patient != null)
                     {
                         header.Subject = new ResourceReference($"{patient.TypeName}/{patient.Id}");
-                        bundle.Entry.Add(new Bundle.EntryComponent { Resource = patient });
+                        bundle.Entry.Add(new Bundle.EntryComponent {Resource = patient});
                     }
                 }
                 else if (child.Name.LocalName == "author")
@@ -109,18 +109,18 @@ namespace Wyw.Cda2Fhir.Core
                     if (practitioner != null)
                     {
                         header.Author.Add(new ResourceReference($"{practitioner.TypeName}/{practitioner.Id}"));
-                        bundle.Entry.Add(new Bundle.EntryComponent { Resource = practitioner });
+                        bundle.Entry.Add(new Bundle.EntryComponent {Resource = practitioner});
                     }
                 }
 
-            
+
             if (ParserSettings.RunValidation)
             {
                 var settings = new ValidationSettings
                 {
                     ResourceResolver = new CachedResolver(new MultiResolver(
                         new ZipSource("Definitions/stu3-definitions.xml.zip"),
-                        new ZipSource("Definitions/us-core-definitions.xml.zip"),                        
+                        new ZipSource("Definitions/us-core-definitions.xml.zip"),
                         new DirectorySource("Definitions", new DirectorySourceSettings
                         {
                             Mask = "*.xml"
@@ -132,10 +132,9 @@ namespace Wyw.Cda2Fhir.Core
                 var outcome = validator.Validate(bundle);
 
                 foreach (var issue in outcome.Issue)
-                {
                     Errors.Add(new ParserError(issue.Details.Text, ParseErrorLevel.Error));
-                }
             }
+
             return bundle;
         }
 

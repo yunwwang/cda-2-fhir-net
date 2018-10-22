@@ -21,9 +21,30 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
             if (!string.IsNullOrEmpty(value))
             {
                 if (value.StartsWith("tel:"))
-                    value = value.Substring(4);
-
-                contactPoint.Value = value;
+                {
+                    contactPoint.Value = value.Substring(4);
+                    contactPoint.System = ContactPoint.ContactPointSystem.Phone;
+                }
+                else if (value.StartsWith("fax:"))
+                {
+                    contactPoint.Value = value.Substring(4);
+                    contactPoint.System = ContactPoint.ContactPointSystem.Fax;
+                }
+                else if (value.StartsWith("mailto:"))
+                {
+                    contactPoint.Value = value.Substring(7);
+                    contactPoint.System = ContactPoint.ContactPointSystem.Email;
+                }
+                else if (value.StartsWith("http:"))
+                {
+                    contactPoint.Value = value.Substring(5);
+                    contactPoint.System = ContactPoint.ContactPointSystem.Url;
+                }
+                else
+                {
+                    contactPoint.Value = value;
+                    contactPoint.System = ContactPoint.ContactPointSystem.Other;
+                }
             }
 
             return contactPoint;
