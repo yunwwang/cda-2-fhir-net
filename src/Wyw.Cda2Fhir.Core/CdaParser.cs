@@ -62,6 +62,7 @@ namespace Wyw.Cda2Fhir.Core
             bundle.Entry.Add(new Bundle.EntryComponent {Resource = header});
 
             foreach (var child in rootElement.Elements())
+            {
                 if (child.Name.LocalName == "id")
                 {
                     bundle.Identifier = FromXml(new IdentifierParser(), child);
@@ -112,7 +113,21 @@ namespace Wyw.Cda2Fhir.Core
                         bundle.Entry.Add(new Bundle.EntryComponent {Resource = practitioner});
                     }
                 }
+                else if (child.Name.LocalName == "dataEnterer")
+                {
+                    var practitioner = FromXml(new PractitionerParser(bundle), child.CdaElement("assignedEntity"));
 
+                    if (practitioner != null)
+                    {
+                        header.Extension.Add(new Hl7.Fhir.Model.Extension
+                        {
+                            Url = "http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Data-Enterer",
+                            Value = new ResourceReference($"{practitioner.TypeName}/{practitioner.Id}")
+                        });
+                        bundle.Entry.Add(new Bundle.EntryComponent { Resource = practitioner });
+                    }
+                }
+            }
 
             if (ParserSettings.RunValidation)
             {
