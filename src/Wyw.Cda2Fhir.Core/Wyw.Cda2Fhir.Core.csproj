@@ -10,7 +10,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Definitions\ccda-on-fhir-definitions.xml.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Definitions\ccda-on-fhir-definitions.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Definitions\StructureDefinition-CCDA-on-FHIR-Continuity-of-Care-Document.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Definitions\StructureDefinition-CCDA-on-FHIR-Data-Enterer.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Definitions\StructureDefinition-CCDA-on-FHIR-Informant.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Definitions\StructureDefinition-CCDA-on-FHIR-Information-Recipient.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Definitions\StructureDefinition-CCDA-on-FHIR-US-Realm-Header.xml">

@@ -66,9 +66,6 @@ namespace Wyw.Cda2Fhir.Core.Tests
             var parser = new CdaParser(parserSettings);
             var bundle = parser.Convert(xml);
 
-            parser.Errors.Count.Should().Be(0);
-
-
             using (var writer = new StreamWriter("error.json"))
             using (var jWriter = new JsonTextWriter(writer))
             {
@@ -76,6 +73,8 @@ namespace Wyw.Cda2Fhir.Core.Tests
                 var serializer = new JsonSerializer();
                 serializer.Serialize(jWriter, parser.Errors);
             }
+
+            parser.Errors.Count.Should().Be(0);
         }
     }
 }

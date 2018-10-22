@@ -148,8 +148,10 @@ namespace Wyw.Cda2Fhir.Core
                         else if (entity.Name.LocalName == "relatedEntity")
                         {
                             var relatedPerson = FromXml(new RelatedPersonParser(), entity);
+
                             if (relatedPerson != null)
                             {
+                                relatedPerson.Patient = header.Subject;
                                 header.Extension.Add(new Hl7.Fhir.Model.Extension
                                 {
                                     Url = "http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Informant",
@@ -158,6 +160,17 @@ namespace Wyw.Cda2Fhir.Core
                                 bundle.Entry.Add(new Bundle.EntryComponent { Resource = relatedPerson });
                             }
                         }
+                    }
+                }
+                else if (child.Name.LocalName == "custodian")
+                {
+                    var custodian = FromXml(new OrganizationParser(),
+                        child.CdaElement("assignedCustodian")?.CdaElement("representedCustodianOrganization"));
+
+                    if (custodian != null)
+                    {
+                        header.Custodian = new ResourceReference($"{custodian.TypeName}/{custodian.Id}");
+                        bundle.Entry.Add(new Bundle.EntryComponent { Resource = custodian });
                     }
                 }
             }
@@ -169,10 +182,7 @@ namespace Wyw.Cda2Fhir.Core
                     ResourceResolver = new CachedResolver(new MultiResolver(
                         new ZipSource("Definitions/stu3-definitions.xml.zip"),
                         new ZipSource("Definitions/us-core-definitions.xml.zip"),
-                        new DirectorySource("Definitions", new DirectorySourceSettings
-                        {
-                            Mask = "*.xml"
-                        })
+                        new ZipSource("Definitions/ccda-on-fhir-definitions.xml.zip")
                     ))
                 };
                 var validator = new Validator(settings);
