@@ -42,8 +42,8 @@ namespace Wyw.Cda2Fhir.Core.Tests
             composition.Title.Should().NotBeNullOrEmpty();
             composition.Confidentiality.Should().NotBeNull();
             //composition.Custodian.Should().NotBeNull();
-            composition.Type.Should().NotBeNull();            
-            
+            composition.Type.Should().NotBeNull();
+
 
             using (var writer = new StreamWriter("output.json"))
             using (var jWriter = new JsonTextWriter(writer))
