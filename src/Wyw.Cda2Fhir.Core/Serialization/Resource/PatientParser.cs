@@ -16,9 +16,8 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
         {
         }
 
-        public PatientParser(Bundle bundle)
+        public PatientParser(Bundle bundle) : base(bundle)
         {
-            Bundle = bundle;
         }
 
         public override Patient FromXml(XElement element)
@@ -37,6 +36,8 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                     }
                 }
             };
+
+            Bundle?.Entry.Add(new Bundle.EntryComponent(){Resource = patient});
 
             foreach (var child in element.Elements())
                 if (child.Name.LocalName == "id")
@@ -67,12 +68,9 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                 }
                 else if (child.Name.LocalName == "providerOrganization")
                 {
-                    var org = new OrganizationParser().FromXml(child, Errors);
+                    var org = FromXml(new OrganizationParser(Bundle), child);
                     if (org != null && Bundle != null)
-                    {
                         patient.ManagingOrganization = new ResourceReference($"{org.TypeName}/{org.Id}");
-                        Bundle.Entry.Add(new Bundle.EntryComponent{Resource = org});
-                    }
                 }
 
             if (!patient.Identifier.Any())

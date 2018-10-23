@@ -1,20 +1,21 @@
-﻿using Hl7.Fhir.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Xml.Linq;
-using Wyw.Cda2Fhir.Core.Serialization.DataType;
+using Hl7.Fhir.Model;
 using Wyw.Cda2Fhir.Core.Extension;
+using Wyw.Cda2Fhir.Core.Serialization.DataType;
 
 namespace Wyw.Cda2Fhir.Core.Serialization.Resource
 {
     public class PractitionerParser : BaseParser<Practitioner>
     {
-        public PractitionerParser() { }
-
-        public PractitionerParser(Bundle bundle)
+        public PractitionerParser()
         {
-            Bundle = bundle;
+        }
+
+        public PractitionerParser(Bundle bundle) : base(bundle)
+        {
         }
 
         public override Practitioner FromXml(XElement element)
@@ -34,8 +35,9 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                 }
             };
 
-            foreach(var child in element.Elements())
-            {
+            Bundle?.Entry.Add(new Bundle.EntryComponent {Resource = practitioner});
+
+            foreach (var child in element.Elements())
                 if (child.Name.LocalName == "id")
                 {
                     var id = FromXml(new IdentifierParser(), child);
@@ -45,24 +47,19 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                 }
                 else if (child.Name.LocalName == "code")
                 {
-                    var role = FromXml(new PratitionerRoleParser(), child);
-                    if (role != null)
-                    {
-                        role.Practitioner = new ResourceReference($"{practitioner.TypeName}/{practitioner.Id}");
-                        Bundle.Entry.Add(new Bundle.EntryComponent { Resource = role });
-                    }
+                    AddPractitionerRole(practitioner, child);
                 }
                 else if (child.Name.LocalName == "addr")
                 {
                     var addr = FromXml(new AddressParser(), child);
-                    if(addr != null)
+                    if (addr != null)
                         practitioner.Address.Add(addr);
                 }
                 else if (child.Name.LocalName == "telecom")
                 {
                     var telecom = FromXml(new ContactPointParser(), child);
                     if (telecom != null)
-                        practitioner.Telecom.Add(telecom);                    
+                        practitioner.Telecom.Add(telecom);
                 }
                 else if (child.Name.LocalName == "assignedPerson")
                 {
@@ -70,9 +67,25 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                     if (name != null)
                         practitioner.Name.Add(name);
                 }
-            }
 
             return practitioner;
+        }
+
+
+        private void AddPractitionerRole(Practitioner practitioner, XElement element)
+        {
+            var code = FromXml(new CodeableConceptParser(), element);
+
+            if (code == null) return;
+
+            var role = new PractitionerRole
+            {
+                Id = Guid.NewGuid().ToString(),
+                Specialty = new List<CodeableConcept>{code},
+                Practitioner = new ResourceReference($"{practitioner.TypeName}/{practitioner.Id}")
+            };
+
+            Bundle?.Entry.Add(new Bundle.EntryComponent {Resource = role});
         }
     }
 }

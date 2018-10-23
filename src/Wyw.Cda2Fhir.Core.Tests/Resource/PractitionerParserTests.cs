@@ -21,10 +21,10 @@ namespace Wyw.Cda2Fhir.Core.Tests.Resource
         }
 
         [TestMethod]
-        public void ShallReturnOrganization()
+        public void ShallReturnPractitioner()
         {
             var xml = XDocument.Load("C-CDA_R2-1_CCD.xml");
-            var element = xml.Root.CdaElement("author");
+            var element = xml.Root.CdaElement("author")?.CdaElement("assignedAuthor");
 
             var result = new PractitionerParser().FromXml(element);
             result.Should().NotBeNull();

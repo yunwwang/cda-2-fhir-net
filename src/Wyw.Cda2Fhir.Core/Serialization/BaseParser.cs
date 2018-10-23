@@ -17,9 +17,18 @@ namespace Wyw.Cda2Fhir.Core.Serialization
 
     public abstract class BaseParser<T> :IParser<T>  where T: Base
     {
-        protected Bundle Bundle { get; set; }
+        public Bundle Bundle { get; set; }
 
         public List<ParserError> Errors { get; set; } = new List<ParserError>();
+
+        protected BaseParser()
+        {
+        }
+
+        protected BaseParser(Bundle bundle)
+        {
+            Bundle = bundle;
+        }
 
         public abstract T FromXml(XElement element);
 

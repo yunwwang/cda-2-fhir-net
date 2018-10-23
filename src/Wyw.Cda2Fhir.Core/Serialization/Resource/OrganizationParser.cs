@@ -9,6 +9,14 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
 {
     public class OrganizationParser : BaseParser<Organization>
     {
+        public OrganizationParser()
+        {
+        }
+
+        public OrganizationParser(Bundle bundle) : base(bundle)
+        {
+        }
+
         public override Organization FromXml(XElement element)
         {
             if (element == null)
@@ -19,6 +27,8 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                 Id = Guid.NewGuid().ToString(),
                 Active =  true,
             };
+
+            Bundle?.Entry.Add(new Bundle.EntryComponent(){Resource = org});
 
             foreach(var child in element.Elements())
                 if (child.Name.LocalName == "id")
@@ -63,3 +73,4 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
         }
     }
 }
+

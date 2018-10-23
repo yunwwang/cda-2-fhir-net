@@ -10,6 +10,14 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
 {
     public class RelatedPersonParser : BaseParser<RelatedPerson>
     {
+        public RelatedPersonParser()
+        {
+        }
+
+        public RelatedPersonParser(Bundle bundle) : base(bundle)
+        {
+        }
+
         public override RelatedPerson FromXml(XElement element)
         {
             if (element == null)
@@ -20,15 +28,17 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                 Id = Guid.NewGuid().ToString()
             };
 
+            Bundle?.Entry.Add(new Bundle.EntryComponent {Resource = relatedPerson});
+
             foreach (var child in element.Elements())
                 switch (child.Name.LocalName)
                 {
                     case "code":
-                        relatedPerson.Relationship = FromXml(new CodeableConceptParser(),child);
+                        relatedPerson.Relationship = FromXml(new CodeableConceptParser(), child);
                         break;
 
                     case "addr":
-                        var addr = FromXml(new AddressParser(),child);
+                        var addr = FromXml(new AddressParser(), child);
                         if (addr != null)
                             relatedPerson.Address.Add(addr);
                         break;
@@ -48,7 +58,8 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                 }
 
             if (!relatedPerson.Name.Any())
-                Errors.Add(ParserError.CreateParseError(element, "does NOT have name element", ParseErrorLevel.Warning));
+                Errors.Add(ParserError.CreateParseError(element, "does NOT have name element",
+                    ParseErrorLevel.Warning));
 
             return relatedPerson;
         }

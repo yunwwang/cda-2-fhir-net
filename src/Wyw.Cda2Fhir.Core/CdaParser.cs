@@ -46,7 +46,7 @@ namespace Wyw.Cda2Fhir.Core
             }
 
 
-            var bundle = new Bundle
+            Bundle = new Bundle
             {
                 Id = Guid.NewGuid().ToString(),
                 Type = Bundle.BundleType.Document
@@ -59,13 +59,12 @@ namespace Wyw.Cda2Fhir.Core
                 Status = CompositionStatus.Final
             };
 
-            bundle.Entry.Add(new Bundle.EntryComponent {Resource = header});
+            Bundle.Entry.Add(new Bundle.EntryComponent {Resource = header});
 
             foreach (var child in rootElement.Elements())
-            {
                 if (child.Name.LocalName == "id")
                 {
-                    bundle.Identifier = FromXml(new IdentifierParser(), child);
+                    Bundle.Identifier = FromXml(new IdentifierParser(), child);
                 }
                 else if (child.Name.LocalName == "code")
                 {
@@ -96,84 +95,36 @@ namespace Wyw.Cda2Fhir.Core
                 }
                 else if (child.Name.LocalName == "recordTarget")
                 {
-                    var patient = FromXml(new PatientParser(bundle), child.CdaElement("patientRole"));
-                    if (patient != null)
-                    {
-                        header.Subject = new ResourceReference($"{patient.TypeName}/{patient.Id}");
-                        bundle.Entry.Add(new Bundle.EntryComponent {Resource = patient});
-                    }
+                    var patient = FromXml(new PatientParser(Bundle), child.CdaElement("patientRole"));
+                    if (patient != null) header.Subject = new ResourceReference($"{patient.TypeName}/{patient.Id}");
                 }
                 else if (child.Name.LocalName == "author")
                 {
-                    var practitioner = FromXml(new PractitionerParser(bundle), child.CdaElement("assignedAuthor"));
-
-                    if (practitioner != null)
-                    {
-                        header.Author.Add(new ResourceReference($"{practitioner.TypeName}/{practitioner.Id}"));
-                        bundle.Entry.Add(new Bundle.EntryComponent {Resource = practitioner});
-                    }
+                    AddAuthor(header, child);
                 }
                 else if (child.Name.LocalName == "dataEnterer")
                 {
-                    var practitioner = FromXml(new PractitionerParser(bundle), child.CdaElement("assignedEntity"));
+                    var practitioner = FromXml(new PractitionerParser(Bundle), child.CdaElement("assignedEntity"));
 
                     if (practitioner != null)
-                    {
                         header.Extension.Add(new Hl7.Fhir.Model.Extension
                         {
                             Url = "http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Data-Enterer",
                             Value = new ResourceReference($"{practitioner.TypeName}/{practitioner.Id}")
                         });
-                        bundle.Entry.Add(new Bundle.EntryComponent { Resource = practitioner });
-                    }
                 }
                 else if (child.Name.LocalName == "informant")
                 {
-                    foreach (var entity in child.Elements())
-                    {
-                        if (entity.Name.LocalName == "assignedEntity")
-                        {
-                            var practitioner = FromXml(new PractitionerParser(bundle), entity);
-
-                            if (practitioner != null)
-                            {
-                                header.Extension.Add(new Hl7.Fhir.Model.Extension
-                                {
-                                    Url = "http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Informant",
-                                    Value = new ResourceReference($"{practitioner.TypeName}/{practitioner.Id}")
-                                });
-                                bundle.Entry.Add(new Bundle.EntryComponent { Resource = practitioner });
-                            }
-                        }
-                        else if (entity.Name.LocalName == "relatedEntity")
-                        {
-                            var relatedPerson = FromXml(new RelatedPersonParser(), entity);
-
-                            if (relatedPerson != null)
-                            {
-                                relatedPerson.Patient = header.Subject;
-                                header.Extension.Add(new Hl7.Fhir.Model.Extension
-                                {
-                                    Url = "http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Informant",
-                                    Value = new ResourceReference($"{relatedPerson.TypeName}/{relatedPerson.Id}")
-                                });
-                                bundle.Entry.Add(new Bundle.EntryComponent { Resource = relatedPerson });
-                            }
-                        }
-                    }
+                    AddInformant(header, child);
                 }
                 else if (child.Name.LocalName == "custodian")
                 {
-                    var custodian = FromXml(new OrganizationParser(),
+                    var custodian = FromXml(new OrganizationParser(Bundle),
                         child.CdaElement("assignedCustodian")?.CdaElement("representedCustodianOrganization"));
 
                     if (custodian != null)
-                    {
                         header.Custodian = new ResourceReference($"{custodian.TypeName}/{custodian.Id}");
-                        bundle.Entry.Add(new Bundle.EntryComponent { Resource = custodian });
-                    }
                 }
-            }
 
             if (ParserSettings.RunValidation)
             {
@@ -187,13 +138,13 @@ namespace Wyw.Cda2Fhir.Core
                 };
                 var validator = new Validator(settings);
 
-                var outcome = validator.Validate(bundle);
+                var outcome = validator.Validate(Bundle);
 
                 foreach (var issue in outcome.Issue)
                     Errors.Add(new ParserError(issue.Details.Text, ParseErrorLevel.Error));
             }
 
-            return bundle;
+            return Bundle;
         }
 
         private void AddCode(Composition header, XElement element)
@@ -218,6 +169,55 @@ namespace Wyw.Cda2Fhir.Core
                 if (!string.IsNullOrEmpty(templateId) && header.Meta.ProfileElement.All(p => p.Value != templateId))
                     header.Meta.ProfileElement.Add(new FhirUri(templateId));
             }
+        }
+
+        private void AddAuthor(Composition header, XElement element)
+        {
+            var assignedAuthorElement = element.CdaElement("assignedAuthor");
+
+            Resource author = null;
+
+            if (assignedAuthorElement.CdaElement("assignedPerson") != null)
+                author = FromXml(new PractitionerParser(Bundle), assignedAuthorElement);
+            else if (assignedAuthorElement.CdaElement("assignedAuthoringDevice") != null)
+                author = FromXml(new DeviceParser(Bundle), assignedAuthorElement);
+            else
+                Errors.Add(ParserError.CreateParseError(assignedAuthorElement,
+                    "does NOT have either assignedPerson element or assignedAuthoringDevice element",
+                    ParseErrorLevel.Error));
+
+            if (author != null)
+                header.Author.Add(new ResourceReference($"{author.TypeName}/{author.Id}"));
+        }
+
+        private void AddInformant(Composition header, XElement element)
+        {
+            foreach (var entity in element.Elements())
+                if (entity.Name.LocalName == "assignedEntity")
+                {
+                    var practitioner = FromXml(new PractitionerParser(Bundle), entity);
+
+                    if (practitioner != null)
+                        header.Extension.Add(new Hl7.Fhir.Model.Extension
+                        {
+                            Url = "http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Informant",
+                            Value = new ResourceReference($"{practitioner.TypeName}/{practitioner.Id}")
+                        });
+                }
+                else if (entity.Name.LocalName == "relatedEntity")
+                {
+                    var relatedPerson = FromXml(new RelatedPersonParser(Bundle), entity);
+
+                    if (relatedPerson != null)
+                    {
+                        relatedPerson.Patient = header.Subject;
+                        header.Extension.Add(new Hl7.Fhir.Model.Extension
+                        {
+                            Url = "http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Informant",
+                            Value = new ResourceReference($"{relatedPerson.TypeName}/{relatedPerson.Id}")
+                        });
+                    }
+                }
         }
     }
 }
