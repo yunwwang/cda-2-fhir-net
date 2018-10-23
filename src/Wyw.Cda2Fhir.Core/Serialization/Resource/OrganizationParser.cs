@@ -1,5 +1,6 @@
 ﻿using Hl7.Fhir.Model;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using Wyw.Cda2Fhir.Core.Model;
@@ -25,6 +26,13 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
             var org = new Organization()
             {
                 Id = Guid.NewGuid().ToString(),
+                Meta = new Meta()
+                {
+                    Profile = new List<string>()
+                    {
+                        "http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization"
+                    }
+                },
                 Active =  true,
             };
 
