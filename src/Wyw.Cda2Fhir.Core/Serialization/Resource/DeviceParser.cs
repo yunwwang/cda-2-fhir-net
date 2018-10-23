@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Wyw.Cda2Fhir.Core.Extension;
@@ -24,20 +22,19 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
             if (element == null)
                 return null;
 
-            var device = new Device()
+            var device = new Device
             {
                 Id = Guid.NewGuid().ToString()
             };
 
-            var location = new Location()
+            var location = new Location
             {
                 Id = Guid.NewGuid().ToString()
             };
 
-            Bundle?.Entry.Add(new Bundle.EntryComponent { Resource = device });
+            Bundle?.AddResourceEntry(device, null);
 
             foreach (var child in element.Elements())
-            {
                 if (child.Name.LocalName == "id")
                 {
                     var id = FromXml(new IdentifierParser(), child);
@@ -63,16 +60,14 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                 {
                     device.Model = child.CdaElement("manufacturerModelName")?.Value;
                 }
-            }
 
             if (location.Address != null || location.Telecom.Any())
             {
                 device.Location = new ResourceReference($"{location.TypeName}/{location.Id}");
-                Bundle?.Entry.Add(new Bundle.EntryComponent(){Resource = location});
+                Bundle?.AddResourceEntry(location, null);
             }
 
             return device;
         }
-
     }
 }

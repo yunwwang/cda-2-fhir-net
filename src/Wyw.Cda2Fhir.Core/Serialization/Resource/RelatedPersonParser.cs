@@ -28,7 +28,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                 Id = Guid.NewGuid().ToString()
             };
 
-            Bundle?.Entry.Add(new Bundle.EntryComponent {Resource = relatedPerson});
+            Bundle?.AddResourceEntry(relatedPerson, null);
 
             foreach (var child in element.Elements())
                 switch (child.Name.LocalName)
@@ -60,8 +60,6 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
             if (!relatedPerson.Name.Any())
                 Errors.Add(ParserError.CreateParseError(element, "does NOT have name element",
                     ParseErrorLevel.Warning));
-
-
 
             return relatedPerson;
         }

@@ -59,7 +59,7 @@ namespace Wyw.Cda2Fhir.Core
                 Status = CompositionStatus.Final
             };
 
-            Bundle.Entry.Add(new Bundle.EntryComponent {Resource = header});
+            Bundle.AddResourceEntry(header, null);
 
             foreach (var child in rootElement.Elements())
                 if (child.Name.LocalName == "id")
@@ -107,11 +107,8 @@ namespace Wyw.Cda2Fhir.Core
                     var practitioner = FromXml(new PractitionerParser(Bundle), child.CdaElement("assignedEntity"));
 
                     if (practitioner != null)
-                        header.Extension.Add(new Hl7.Fhir.Model.Extension
-                        {
-                            Url = "http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Data-Enterer",
-                            Value = new ResourceReference($"{practitioner.TypeName}/{practitioner.Id}")
-                        });
+                        header.AddExtension("http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Data-Enterer",
+                            new ResourceReference($"{practitioner.TypeName}/{practitioner.Id}"));
                 }
                 else if (child.Name.LocalName == "informant")
                 {
@@ -198,11 +195,8 @@ namespace Wyw.Cda2Fhir.Core
                     var practitioner = FromXml(new PractitionerParser(Bundle), entity);
 
                     if (practitioner != null)
-                        header.Extension.Add(new Hl7.Fhir.Model.Extension
-                        {
-                            Url = "http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Informant",
-                            Value = new ResourceReference($"{practitioner.TypeName}/{practitioner.Id}")
-                        });
+                        header.AddExtension("http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Informant",
+                            new ResourceReference($"{practitioner.TypeName}/{practitioner.Id}"));
                 }
                 else if (entity.Name.LocalName == "relatedEntity")
                 {
@@ -211,11 +205,8 @@ namespace Wyw.Cda2Fhir.Core
                     if (relatedPerson != null)
                     {
                         relatedPerson.Patient = header.Subject;
-                        header.Extension.Add(new Hl7.Fhir.Model.Extension
-                        {
-                            Url = "http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Informant",
-                            Value = new ResourceReference($"{relatedPerson.TypeName}/{relatedPerson.Id}")
-                        });
+                        header.AddExtension("http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Informant",
+                            new ResourceReference($"{relatedPerson.TypeName}/{relatedPerson.Id}"));
                     }
                 }
         }

@@ -1,8 +1,8 @@
-﻿using Hl7.Fhir.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using Hl7.Fhir.Model;
 using Wyw.Cda2Fhir.Core.Extension;
 using Wyw.Cda2Fhir.Core.Model;
 using Wyw.Cda2Fhir.Core.Serialization.DataType;
@@ -24,20 +24,20 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
             if (element == null)
                 return null;
 
-            var org = new Organization()
+            var org = new Organization
             {
                 Id = Guid.NewGuid().ToString(),
-                Meta = new Meta()
+                Meta = new Meta
                 {
-                    Profile = new List<string>()
+                    Profile = new List<string>
                     {
                         "http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization"
                     }
                 },
-                Active =  true,
+                Active = true
             };
 
-            foreach(var child in element.Elements())
+            foreach (var child in element.Elements())
                 if (child.Name.LocalName == "id")
                 {
                     var id = new IdentifierParser().FromXml(child, Errors);
@@ -71,24 +71,20 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                 Errors.Add(ParserError.CreateParseError(element, "does NOT have name element", ParseErrorLevel.Error));
 
             if (!org.Telecom.Any())
-                Errors.Add(ParserError.CreateParseError(element, "does NOT have telecom element", ParseErrorLevel.Error));
+                Errors.Add(
+                    ParserError.CreateParseError(element, "does NOT have telecom element", ParseErrorLevel.Error));
 
             if (!org.Address.Any())
                 Errors.Add(ParserError.CreateParseError(element, "does NOT have addr element", ParseErrorLevel.Error));
 
-            var existingOrg = Bundle.FirstOrDefault<Organization>(p => p.Identifier.Matches(org.Identifier));
+            var existingOrg = Bundle?.FirstOrDefault<Organization>(p => p.Identifier.Matches(org.Identifier));
 
             if (existingOrg == null)
-            {
-                Bundle?.Entry.Add(new Bundle.EntryComponent() { Resource = org });
-            }
+                Bundle?.AddResourceEntry(org, null);
             else
-            {
                 org = existingOrg;
-            }
 
             return org;
         }
     }
 }
-

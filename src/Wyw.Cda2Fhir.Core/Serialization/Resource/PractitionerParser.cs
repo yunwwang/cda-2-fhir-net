@@ -51,7 +51,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                 }
                 else if (child.Name.LocalName == "code")
                 {
-                    var code = FromXml(new CodeableConceptParser(), element);
+                    var code = FromXml(new CodeableConceptParser(), child);
                     if (code != null)
                         role.Specialty.Add(code);
                 }
@@ -78,35 +78,19 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                     // extension?
                 }
 
-            var existingPractitioner = Bundle.FirstOrDefault<Practitioner>(p => p.Identifier.Matches(practitioner.Identifier));
+            var existingPractitioner = Bundle?.FirstOrDefault<Practitioner>(p => p.Identifier.Matches(practitioner.Identifier));
 
             if (existingPractitioner == null)
             {
-                Bundle?.Entry.Add(new Bundle.EntryComponent(){Resource = practitioner});
-                Bundle?.Entry.Add(new Bundle.EntryComponent(){Resource = role});
+                Bundle?.AddResourceEntry(practitioner, null);
+                Bundle?.AddResourceEntry(role, null);
             }
             else
             {
                 practitioner = existingPractitioner;
             }
+
             return practitioner;
-        }
-
-
-        private void AddPractitionerRole(Practitioner practitioner, XElement element)
-        {
-            var code = FromXml(new CodeableConceptParser(), element);
-
-            if (code == null) return;
-
-            var role = new PractitionerRole
-            {
-                Id = Guid.NewGuid().ToString(),
-                Specialty = new List<CodeableConcept>{code},
-                Practitioner = new ResourceReference($"{practitioner.TypeName}/{practitioner.Id}")
-            };
-
-            Bundle?.Entry.Add(new Bundle.EntryComponent {Resource = role});
         }
     }
 }
