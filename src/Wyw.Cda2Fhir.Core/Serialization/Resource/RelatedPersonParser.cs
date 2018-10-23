@@ -61,6 +61,8 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                 Errors.Add(ParserError.CreateParseError(element, "does NOT have name element",
                     ParseErrorLevel.Warning));
 
+
+
             return relatedPerson;
         }
     }

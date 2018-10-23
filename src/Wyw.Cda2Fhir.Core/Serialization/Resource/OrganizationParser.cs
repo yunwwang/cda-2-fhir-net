@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using Wyw.Cda2Fhir.Core.Extension;
 using Wyw.Cda2Fhir.Core.Model;
 using Wyw.Cda2Fhir.Core.Serialization.DataType;
 
@@ -35,8 +36,6 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                 },
                 Active =  true,
             };
-
-            Bundle?.Entry.Add(new Bundle.EntryComponent(){Resource = org});
 
             foreach(var child in element.Elements())
                 if (child.Name.LocalName == "id")
@@ -76,6 +75,17 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
 
             if (!org.Address.Any())
                 Errors.Add(ParserError.CreateParseError(element, "does NOT have addr element", ParseErrorLevel.Error));
+
+            var existingOrg = Bundle.FirstOrDefault<Organization>(p => p.Identifier.Matches(org.Identifier));
+
+            if (existingOrg == null)
+            {
+                Bundle?.Entry.Add(new Bundle.EntryComponent() { Resource = org });
+            }
+            else
+            {
+                org = existingOrg;
+            }
 
             return org;
         }
