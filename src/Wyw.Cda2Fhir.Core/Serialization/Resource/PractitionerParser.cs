@@ -41,53 +41,76 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                 Practitioner = new ResourceReference($"{practitioner.TypeName}/{practitioner.Id}")
             };
 
-            foreach (var child in element.Elements())
-                if (child.Name.LocalName == "id")
-                {
-                    var id = FromXml(new IdentifierParser(), child);
+            var location = new Location
+            {
+                Id = Guid.NewGuid().ToString()
+            };
 
-                    if (id != null)
-                        practitioner.Identifier.Add(id);
-                }
-                else if (child.Name.LocalName == "code")
+            foreach (var child in element.Elements())
+                switch (child.Name.LocalName)
                 {
-                    var code = FromXml(new CodeableConceptParser(), child);
-                    if (code != null)
-                        role.Specialty.Add(code);
-                }
-                else if (child.Name.LocalName == "addr")
-                {
-                    var addr = FromXml(new AddressParser(), child);
-                    if (addr != null)
-                        practitioner.Address.Add(addr);
-                }
-                else if (child.Name.LocalName == "telecom")
-                {
-                    var telecom = FromXml(new ContactPointParser(), child);
-                    if (telecom != null)
-                        practitioner.Telecom.Add(telecom);
-                }
-                else if (child.Name.LocalName == "assignedPerson")
-                {
-                    var name = FromXml(new HumanNameParser(), child.CdaElement("name"));
-                    if (name != null)
-                        practitioner.Name.Add(name);
-                }
-                else if (child.Name.LocalName == "receivedOrganization")
-                {
-                    // extension?
+                    case "id":
+                        var id = FromXml(new IdentifierParser(), child);
+                        if (id != null)
+                            practitioner.Identifier.Add(id);
+                        break;
+                    case "code":
+                        var code = FromXml(new CodeableConceptParser(), child);
+                        if (code != null)
+                            role.Specialty.Add(code);
+                        break;
+                    case "addr":
+                        location.Address = FromXml(new AddressParser(), child);
+                        break;
+                    case "telecom":
+                        var telecom = FromXml(new ContactPointParser(), child);
+                        if (telecom != null)
+                            location.Telecom.Add(telecom);
+                        break;
+                    case "assignedPerson":
+                    case "informationRecipient":
+                        var name = FromXml(new HumanNameParser(), child.CdaElement("name"));
+                        if (name != null)
+                            practitioner.Name.Add(name);
+                        break;
+                    case "receivedOrganization":
+                        break;
                 }
 
             var existingPractitioner = Bundle?.FirstOrDefault<Practitioner>(p => p.Identifier.Matches(practitioner.Identifier));
 
-            if (existingPractitioner == null)
+            if (existingPractitioner != null)
             {
-                Bundle?.AddResourceEntry(practitioner, null);
-                Bundle?.AddResourceEntry(role, null);
+                practitioner = existingPractitioner;
             }
             else
             {
-                practitioner = existingPractitioner;
+                Bundle?.AddResourceEntry(practitioner, null);
+            }
+
+            role.Practitioner = practitioner.GetResourceReference();
+
+            if (location.Address != null || location.Telecom.Any())
+            {
+                var existingLocation = Bundle?.FirstOrDefault<Location>(l =>
+                    l.Address.Matches(location.Address) && l.Telecom.Matches(location.Telecom));
+
+                if (existingLocation != null)
+                    location = existingLocation;
+                else
+                    Bundle?.AddResourceEntry(location, null);
+
+                role.Location.Add(location.GetResourceReference());
+            }
+
+            var existingRole = Bundle?.FirstOrDefault<PractitionerRole>(pr =>
+                pr.Location.Matches(role.Location) 
+                && pr.Specialty.Matches(role.Specialty) 
+                && pr.Practitioner.Matches(role.Practitioner));
+            
+            if (existingRole == null)
+            { 
+                Bundle?.AddResourceEntry(role, null);
             }
 
             return practitioner;

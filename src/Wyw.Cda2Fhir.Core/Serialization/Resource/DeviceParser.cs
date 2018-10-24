@@ -61,11 +61,6 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                     device.Model = child.CdaElement("manufacturerModelName")?.Value;
                 }
 
-            if (location.Address != null || location.Telecom.Any())
-            {
-                device.Location = new ResourceReference($"{location.TypeName}/{location.Id}");
-                Bundle?.AddResourceEntry(location, null);
-            }
 
             return device;
         }

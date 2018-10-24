@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
@@ -62,65 +63,73 @@ namespace Wyw.Cda2Fhir.Core
             Bundle.AddResourceEntry(header, null);
 
             foreach (var child in rootElement.Elements())
-                if (child.Name.LocalName == "id")
+                switch (child.Name.LocalName)
                 {
-                    Bundle.Identifier = FromXml(new IdentifierParser(), child);
-                }
-                else if (child.Name.LocalName == "code")
-                {
-                    AddCode(header, child);
-                }
-                else if (child.Name.LocalName == "title")
-                {
-                    header.Title = child.Value;
-                }
-                else if (child.Name.LocalName == "effectiveTime")
-                {
-                    header.DateElement = FromXml(new FhirDateTimeParser(), child);
-                }
-                else if (child.Name.LocalName == "confidentialityCode")
-                {
-                    var confidentialityCode = FromXml(new CodeParser(), child)?.Value;
-                    if (!string.IsNullOrEmpty(confidentialityCode) && Enum.TryParse(confidentialityCode, true,
-                            out Composition.ConfidentialityClassification confidentialityClassification))
-                        header.Confidentiality = confidentialityClassification;
-                }
-                else if (child.Name.LocalName == "languageCode")
-                {
-                    header.Language = FromXml(new CodeParser(), child)?.Value;
-                }
-                else if (child.Name.LocalName == "setId")
-                {
-                    header.Identifier = FromXml(new IdentifierParser(), child);
-                }
-                else if (child.Name.LocalName == "recordTarget")
-                {
-                    var patient = FromXml(new PatientParser(Bundle), child.CdaElement("patientRole"));
-                    if (patient != null) header.Subject = new ResourceReference($"{patient.TypeName}/{patient.Id}");
-                }
-                else if (child.Name.LocalName == "author")
-                {
-                    AddAuthor(header, child);
-                }
-                else if (child.Name.LocalName == "dataEnterer")
-                {
-                    var practitioner = FromXml(new PractitionerParser(Bundle), child.CdaElement("assignedEntity"));
+                    case "id":
+                        Bundle.Identifier = FromXml(new IdentifierParser(), child);
+                        break;
+                    case "code":
+                        AddCode(header, child);
+                        break;
+                    case "title":
+                        header.Title = child.Value;
+                        break;
+                    case "effectiveTime":
+                        header.DateElement = FromXml(new FhirDateTimeParser(), child);
+                        break;
+                    case "confidentialityCode":
+                        var confidentialityCode = FromXml(new CodeParser(), child)?.Value;
+                        if (!string.IsNullOrEmpty(confidentialityCode) && Enum.TryParse(confidentialityCode, true,
+                                out Composition.ConfidentialityClassification confidentialityClassification))
+                            header.Confidentiality = confidentialityClassification;
+                        break;
+                    case "languageCode":
+                        header.Language = FromXml(new CodeParser(), child)?.Value;
+                        break;
+                    case "setId":
+                        header.Identifier = FromXml(new IdentifierParser(), child);
+                        break;
+                    case "recordTarget":
+                        var patient = FromXml(new PatientParser(Bundle), child.CdaElement("patientRole"));
+                        if (patient != null)
+                            header.Subject = patient.GetResourceReference();
+                        break;
+                    case "author":
+                        AddAuthor(header, child);
+                        break;
+                    case "dataEnterer":
+                        var dataEnterer = FromXml(new PractitionerParser(Bundle), child.CdaElement("assignedEntity"));
+                        if (dataEnterer != null)
+                            header.AddExtension(
+                                "http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Data-Enterer",
+                                dataEnterer.GetResourceReference());
+                        break;
+                    case "informant":
+                        AddInformant(header, child);
+                        break;
+                    case "custodian":
+                        var custodian = FromXml(new OrganizationParser(Bundle),
+                            child.CdaElement("assignedCustodian")
+                                ?.CdaElement("representedCustodianOrganization"));
 
-                    if (practitioner != null)
-                        header.AddExtension("http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Data-Enterer",
-                            new ResourceReference($"{practitioner.TypeName}/{practitioner.Id}"));
-                }
-                else if (child.Name.LocalName == "informant")
-                {
-                    AddInformant(header, child);
-                }
-                else if (child.Name.LocalName == "custodian")
-                {
-                    var custodian = FromXml(new OrganizationParser(Bundle),
-                        child.CdaElement("assignedCustodian")?.CdaElement("representedCustodianOrganization"));
-
-                    if (custodian != null)
-                        header.Custodian = new ResourceReference($"{custodian.TypeName}/{custodian.Id}");
+                        if (custodian != null)
+                            header.Custodian = custodian.GetResourceReference();
+                        break;
+                    case "informationRecipient":
+                        var infoRecipient = FromXml(new PractitionerParser(Bundle),
+                            child.CdaElement("intendedRecipient"));
+                        if (infoRecipient != null)
+                            header.AddExtension(
+                                "http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Information-Recipient",
+                                infoRecipient.GetResourceReference());
+                        break;
+                    case "legalAuthenticator":
+                        AddAuthenticator(header, child, Composition.CompositionAttestationMode.Legal);
+                        break;
+                    case "authenticator":
+                        AddAuthenticator(header, child,
+                            Composition.CompositionAttestationMode.Professional);
+                        break;
                 }
 
             if (ParserSettings.RunValidation)
@@ -196,7 +205,7 @@ namespace Wyw.Cda2Fhir.Core
 
                     if (practitioner != null)
                         header.AddExtension("http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Informant",
-                            new ResourceReference($"{practitioner.TypeName}/{practitioner.Id}"));
+                            practitioner.GetResourceReference());
                 }
                 else if (entity.Name.LocalName == "relatedEntity")
                 {
@@ -206,9 +215,20 @@ namespace Wyw.Cda2Fhir.Core
                     {
                         relatedPerson.Patient = header.Subject;
                         header.AddExtension("http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Informant",
-                            new ResourceReference($"{relatedPerson.TypeName}/{relatedPerson.Id}"));
+                            relatedPerson.GetResourceReference());
                     }
                 }
+        }
+
+        private void AddAuthenticator(Composition header, XElement element, Composition.CompositionAttestationMode mode)
+        {
+            var authenticator = FromXml(new PractitionerParser(Bundle), element.CdaElement("assignedEntity"));
+            if (authenticator != null)
+                header.Attester.Add(new Composition.AttesterComponent
+                {
+                    Mode = new List<Composition.CompositionAttestationMode?> {mode},
+                    Party = authenticator.GetResourceReference()
+                });
         }
     }
 }
