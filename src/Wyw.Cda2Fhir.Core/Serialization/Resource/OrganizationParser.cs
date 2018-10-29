@@ -77,7 +77,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
             if (!org.Address.Any())
                 Errors.Add(ParserError.CreateParseError(element, "does NOT have addr element", ParseErrorLevel.Error));
 
-            var existingOrg = Bundle?.FirstOrDefault<Organization>(p => p.Identifier.Matches(org.Identifier));
+            var existingOrg = Bundle?.FirstOrDefault<Organization>(p => p.Identifier.IsExactly(org.Identifier));
 
             if (existingOrg == null)
                 Bundle?.AddResourceEntry(org, null);

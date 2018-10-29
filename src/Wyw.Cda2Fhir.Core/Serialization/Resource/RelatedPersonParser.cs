@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
@@ -28,7 +29,16 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                 Id = Guid.NewGuid().ToString()
             };
 
-            Bundle?.AddResourceEntry(relatedPerson, null);
+            var classCode = element.Attribute("classCode")?.Value;
+
+            if (!string.IsNullOrEmpty(classCode))
+                relatedPerson.Relationship = new CodeableConcept
+                {
+                    Coding = new List<Coding>
+                    {
+                        new Coding("urn:oid:2.16.840.1.113883.1.11.19563", classCode)
+                    }
+                };
 
             foreach (var child in element.Elements())
                 switch (child.Name.LocalName)
@@ -51,6 +61,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
 
                     case "guardianPerson":
                     case "relatedPerson":
+                    case "associatedPerson":
                         var name = FromXml(new HumanNameParser(), child.CdaElement("name"));
                         if (name != null)
                             relatedPerson.Name.Add(name);
@@ -60,6 +71,13 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
             if (!relatedPerson.Name.Any())
                 Errors.Add(ParserError.CreateParseError(element, "does NOT have name element",
                     ParseErrorLevel.Warning));
+
+            var existingPerson = Bundle?.FirstOrDefault<RelatedPerson>(p => p.Name.IsExactly(relatedPerson.Name));
+
+            if (existingPerson != null)
+                return existingPerson;
+
+            Bundle?.AddResourceEntry(relatedPerson, null);
 
             return relatedPerson;
         }

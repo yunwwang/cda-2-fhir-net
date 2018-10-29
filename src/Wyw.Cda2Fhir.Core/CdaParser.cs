@@ -130,6 +130,13 @@ namespace Wyw.Cda2Fhir.Core
                         AddAuthenticator(header, child,
                             Composition.CompositionAttestationMode.Professional);
                         break;
+                    case "participant":
+                        var participant = FromXml(new RelatedPersonParser(Bundle), child.CdaElement("associatedEntity"));
+                        if (participant != null)
+                            header.AddExtension(
+                                "http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Participant",
+                                participant.GetResourceReference());
+                        break;
                 }
 
             if (ParserSettings.RunValidation)

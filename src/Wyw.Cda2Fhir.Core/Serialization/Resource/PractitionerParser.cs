@@ -4,6 +4,7 @@ using System.Linq;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Wyw.Cda2Fhir.Core.Extension;
+using Wyw.Cda2Fhir.Core.Model;
 using Wyw.Cda2Fhir.Core.Serialization.DataType;
 
 namespace Wyw.Cda2Fhir.Core.Serialization.Resource
@@ -77,7 +78,10 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                         break;
                 }
 
-            var existingPractitioner = Bundle?.FirstOrDefault<Practitioner>(p => p.Identifier.Matches(practitioner.Identifier));
+            if (!practitioner.Identifier.Any())
+                Errors.Add(ParserError.CreateParseError(element, "does NOT have identifier", ParseErrorLevel.Error));
+
+            var existingPractitioner = Bundle?.FirstOrDefault<Practitioner>(p => p.Identifier.IsExactly(practitioner.Identifier));
 
             if (existingPractitioner != null)
             {
@@ -93,7 +97,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
             if (location.Address != null || location.Telecom.Any())
             {
                 var existingLocation = Bundle?.FirstOrDefault<Location>(l =>
-                    l.Address.Matches(location.Address) && l.Telecom.Matches(location.Telecom));
+                    l.Address.IsExactly(location.Address) && l.Telecom.IsExactly(location.Telecom));
 
                 if (existingLocation != null)
                     location = existingLocation;
@@ -104,11 +108,11 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
             }
 
             var existingRole = Bundle?.FirstOrDefault<PractitionerRole>(pr =>
-                pr.Location.Matches(role.Location) 
-                && pr.Specialty.Matches(role.Specialty) 
-                && pr.Practitioner.Matches(role.Practitioner));
+                pr.Location.IsExactly(role.Location) 
+                && pr.Specialty.IsExactly(role.Specialty) 
+                && pr.Practitioner.IsExactly(role.Practitioner));
             
-            if (existingRole == null)
+            if (existingRole == null && (role.Location.Any() || role.Specialty.Any()))
             { 
                 Bundle?.AddResourceEntry(role, null);
             }

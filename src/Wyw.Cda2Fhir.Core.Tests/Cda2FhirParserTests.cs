@@ -56,7 +56,7 @@ namespace Wyw.Cda2Fhir.Core.Tests
         [TestMethod]
         public void ShallReturnNoValidationError()
         {
-            var xml = XDocument.Load("C-CDA_R2-1_CCD.xml");
+            var xml = XDocument.Load("C-CDA_R2-1_CCD.xml", LoadOptions.SetLineInfo);
 
             var parserSettings = new CdaParserSettings
             {

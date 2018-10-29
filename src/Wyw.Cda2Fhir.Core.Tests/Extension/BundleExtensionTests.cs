@@ -46,7 +46,7 @@ namespace Wyw.Cda2Fhir.Core.Tests.Extension
 
             var id = new Identifier("system1", "value1");
 
-            var result = bundle.FirstOrDefault<Practitioner>(p => p.Identifier.Any(i => i.Matches(id)));
+            var result = bundle.FirstOrDefault<Practitioner>(p => p.Identifier.Any(i => i.IsExactly(id)));
 
             result.Should().NotBeNull();
         }
