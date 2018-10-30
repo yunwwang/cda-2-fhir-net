@@ -23,7 +23,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
                 return null;
             }
 
-            if (dateString.Length < 4)
+            if (dateString.Length < 4 || dateString.Length > 8)
             {
                 Errors.Add(ParserError.CreateParseError(element, "does NOT have valid value attribute",
                     ParseErrorLevel.Error));

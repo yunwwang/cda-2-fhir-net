@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Text;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Wyw.Cda2Fhir.Core.Model;
@@ -28,50 +28,84 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
                 return null;
             }
 
-            var format = string.Empty;
+            var sb = new StringBuilder();
 
-            var timeZoneIndex = timeString.IndexOfAny(new char[] { '-', '+' });
+            var timeZoneIndex = timeString.IndexOfAny(new[] {'-', '+'});
 
             if (timeZoneIndex == -1)
                 timeZoneIndex = timeString.Length;
 
-            switch (timeZoneIndex)
+            for (var i = 0; i < timeZoneIndex; i++)
             {
-                case 4:
-                    format = "yyyy";
-                    break;
-                case 6:
-                    format = "yyyyMM";
-                    break;
-                case 8:
-                    format = "yyyyMMdd";
-                    break;
-                case 10:
-                    format = "yyyyMMddHH";
-                    break;
-                case 12:
-                    format = "yyyyMMddHHmm";
-                    break;
-                case 14:
-                    format = "yyyyMMddHHmmss";
-                    break;
-                case 19:
-                    format = "yyyyMMddHHmmss.ffff";
-                    break;
+                if (i == 4 || i == 6)
+                    sb.Append("-");
+                else if (i == 8)
+                    sb.Append("T");
+                else if (i == 10 || i == 12)
+                    sb.Append(":");
+
+                sb.Append(timeString[i]);
             }
 
+            if (timeZoneIndex == 10)
+                sb.Append(":00:00");
+            else if (timeZoneIndex == 12)
+                sb.Append(":00");
 
-            if (timeZoneIndex == timeString.Length - 3)
-                format += "zz";
-            else if (timeZoneIndex == timeString.Length - 5)
+            for (var i = timeZoneIndex; i < timeString.Length; i++)
             {
-                format += "zzz";
-                timeString = timeString.Insert(timeString.Length - 2, ":");
+                if (i == timeZoneIndex + 3)
+                    sb.Append(":");
+                sb.Append(timeString[i]);
             }
 
-            DateTime datetime = DateTime.ParseExact(timeString, format, null).ToUniversalTime();
+            return new FhirDateTime {Value = sb.ToString()};
 
-            return new FhirDateTime(datetime);
+
+            //    var format = string.Empty;
+
+            //var timeZoneIndex = timeString.IndexOfAny(new char[] { '-', '+' });
+
+            //if (timeZoneIndex == -1)
+            //    timeZoneIndex = timeString.Length;
+
+            //switch (timeZoneIndex)
+            //{
+            //    case 4:
+            //        format = "yyyy";
+            //        break;
+            //    case 6:
+            //        format = "yyyyMM";
+            //        break;
+            //    case 8:
+            //        format = "yyyyMMdd";
+            //        break;
+            //    case 10:
+            //        format = "yyyyMMddHH";
+            //        break;
+            //    case 12:
+            //        format = "yyyyMMddHHmm";
+            //        break;
+            //    case 14:
+            //        format = "yyyyMMddHHmmss";
+            //        break;
+            //    case 19:
+            //        format = "yyyyMMddHHmmss.ffff";
+            //        break;
+            //}
+
+
+            //if (timeZoneIndex == timeString.Length - 3)
+            //    format += "zz";
+            //else if (timeZoneIndex == timeString.Length - 5)
+            //{
+            //    format += "zzz";
+            //    timeString = timeString.Insert(timeString.Length - 2, ":");
+            //}
+
+            //DateTime datetime = DateTime.ParseExact(timeString, format, null).ToUniversalTime();
+
+            //return new FhirDateTime(datetime);
         }
     }
 }

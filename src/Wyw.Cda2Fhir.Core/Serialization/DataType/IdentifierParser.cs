@@ -13,18 +13,18 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
             if (element == null)
                 return null;
 
-            var system = element.Attribute("root")?.Value;
-            var value = element.Attribute("extension")?.Value;
+            var root = element.Attribute("root")?.Value;
+            var extension = element.Attribute("extension")?.Value;
 
-            if (string.IsNullOrEmpty(system))
+            if (string.IsNullOrEmpty(root))
             {
                 Errors.Add(ParserError.CreateParseError(element, "does NOT have root attribute", ParseErrorLevel.Error));
                 return null;
             }
 
-            system = "urn:oid:" + system;
+            root = "urn:oid:" + root;
 
-            return new Identifier(system, value);
+            return string.IsNullOrEmpty(extension) ? new Identifier("urn:ietf:rfc:3986", root) : new Identifier(root, extension);
         }
     }
 }

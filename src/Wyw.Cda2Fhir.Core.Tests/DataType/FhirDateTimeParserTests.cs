@@ -38,7 +38,24 @@ namespace Wyw.Cda2Fhir.Core.Tests.DataType
         }
 
         [TestMethod]
-        public void ShallReturnYear()
+        public void ShallReturnYearMonthDay()
+        {
+            var xml = @"<effectiveTime value=""20130815""/>";
+
+            var element = XElement.Parse(xml);
+            var result = new FhirDateTimeParser().FromXml(element);
+            result.Should().NotBeNull();
+
+            var dateTime = result.ToDateTime();
+
+            dateTime?.Kind.Should().Be(DateTimeKind.Utc);
+            dateTime?.Year.Should().Be(2013);
+            dateTime?.Month.Should().Be(08);
+            dateTime?.Day.Should().Be(15);
+        }
+
+        [TestMethod]
+        public void ShallReturnYearMonthDayHourMinute()
         {
             var xml = @"<effectiveTime value=""201308151030-0800""/>";
 
@@ -54,6 +71,27 @@ namespace Wyw.Cda2Fhir.Core.Tests.DataType
             dateTime?.Day.Should().Be(15);
             dateTime?.Hour.Should().Be(18);
             dateTime?.Minute.Should().Be(30);
+        }
+
+        [TestMethod]
+        public void ShallReturnYearMonthDayHourMinuteSecond()
+        {
+            var xml = @"<effectiveTime value=""20130815103015.222-0800""/>";
+
+            var element = XElement.Parse(xml);
+            var result = new FhirDateTimeParser().FromXml(element);
+            result.Should().NotBeNull();
+
+            var dateTime = result.ToDateTime();
+
+            dateTime?.Kind.Should().Be(DateTimeKind.Utc);
+            dateTime?.Year.Should().Be(2013);
+            dateTime?.Month.Should().Be(08);
+            dateTime?.Day.Should().Be(15);
+            dateTime?.Hour.Should().Be(18);
+            dateTime?.Minute.Should().Be(30);
+            dateTime?.Second.Should().Be(15);
+            dateTime?.Millisecond.Should().Be(222);
         }
     }
 }

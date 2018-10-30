@@ -137,6 +137,9 @@ namespace Wyw.Cda2Fhir.Core
                                 "http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Participant",
                                 participant.GetResourceReference());
                         break;
+                    case "documentationOf":
+                        AddServiceEvent(header, child.CdaElement("serviceEvent"));
+                        break;
                 }
 
             if (ParserSettings.RunValidation)
@@ -162,6 +165,9 @@ namespace Wyw.Cda2Fhir.Core
 
         private void AddCode(Composition header, XElement element)
         {
+            if (header == null || element == null)
+                return;
+
             header.Type = new CodeableConceptParser().FromXml(element, Errors);
 
             var type = header.Type?.Coding.FirstOrDefault()?.Code;
@@ -186,6 +192,9 @@ namespace Wyw.Cda2Fhir.Core
 
         private void AddAuthor(Composition header, XElement element)
         {
+            if (header == null || element == null)
+                return;
+
             var assignedAuthorElement = element.CdaElement("assignedAuthor");
 
             Resource author = null;
@@ -205,6 +214,9 @@ namespace Wyw.Cda2Fhir.Core
 
         private void AddInformant(Composition header, XElement element)
         {
+            if (header == null || element == null)
+                return;
+
             foreach (var entity in element.Elements())
                 if (entity.Name.LocalName == "assignedEntity")
                 {
@@ -229,6 +241,9 @@ namespace Wyw.Cda2Fhir.Core
 
         private void AddAuthenticator(Composition header, XElement element, Composition.CompositionAttestationMode mode)
         {
+            if (header == null || element == null)
+                return;
+
             var authenticator = FromXml(new PractitionerParser(Bundle), element.CdaElement("assignedEntity"));
             if (authenticator != null)
                 header.Attester.Add(new Composition.AttesterComponent
@@ -236,6 +251,44 @@ namespace Wyw.Cda2Fhir.Core
                     Mode = new List<Composition.CompositionAttestationMode?> {mode},
                     Party = authenticator.GetResourceReference()
                 });
+        }
+
+        public void AddServiceEvent(Composition header, XElement element)
+        {
+            if (header == null || element == null)
+                return;
+
+            var serviceEvent = new Composition.EventComponent()
+            {
+                Period = new Period()
+            };
+
+            foreach (var child in element.Elements())
+            {
+                switch (child.Name.LocalName)
+                {
+                    case "effectiveTime":
+                        serviceEvent.Period.StartElement = FromXml(new FhirDateTimeParser(), child.CdaElement("low"));
+                        serviceEvent.Period.EndElement = FromXml(new FhirDateTimeParser(), child.CdaElement("high"));
+                        break;
+
+                    case "performer":
+                        var performer = FromXml(new PractitionerParser(Bundle), child.CdaElement("assignedEntity"));
+
+                        if (performer != null)
+                            serviceEvent.AddExtension(
+                                "http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Performer",
+                                performer.GetResourceReference());
+                        break;
+                }
+            }
+
+            if (serviceEvent.Period?.StartElement == null)
+            {
+                Errors.Add(ParserError.CreateParseError(element, "does NOT have effectiveTime.low element", ParseErrorLevel.Warning));
+            }
+           
+            header.Event.Add(serviceEvent);
         }
     }
 }
