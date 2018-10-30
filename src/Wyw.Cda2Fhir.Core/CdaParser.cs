@@ -131,7 +131,8 @@ namespace Wyw.Cda2Fhir.Core
                             Composition.CompositionAttestationMode.Professional);
                         break;
                     case "participant":
-                        var participant = FromXml(new RelatedPersonParser(Bundle), child.CdaElement("associatedEntity"));
+                        var participant = FromXml(new RelatedPersonParser(Bundle),
+                            child.CdaElement("associatedEntity"));
                         if (participant != null)
                             header.AddExtension(
                                 "http://hl7.org/fhir/us/ccda/StructureDefinition/CCDA-on-FHIR-Participant",
@@ -139,6 +140,10 @@ namespace Wyw.Cda2Fhir.Core
                         break;
                     case "documentationOf":
                         AddServiceEvent(header, child.CdaElement("serviceEvent"));
+                        break;
+                    case "component":
+                        foreach(var sectionElement in child.CdaDescendants("section"))
+                            AddSection(header, sectionElement);
                         break;
                 }
 
@@ -258,13 +263,12 @@ namespace Wyw.Cda2Fhir.Core
             if (header == null || element == null)
                 return;
 
-            var serviceEvent = new Composition.EventComponent()
+            var serviceEvent = new Composition.EventComponent
             {
                 Period = new Period()
             };
 
             foreach (var child in element.Elements())
-            {
                 switch (child.Name.LocalName)
                 {
                     case "effectiveTime":
@@ -281,14 +285,63 @@ namespace Wyw.Cda2Fhir.Core
                                 performer.GetResourceReference());
                         break;
                 }
-            }
 
             if (serviceEvent.Period?.StartElement == null)
-            {
-                Errors.Add(ParserError.CreateParseError(element, "does NOT have effectiveTime.low element", ParseErrorLevel.Warning));
-            }
-           
+                Errors.Add(ParserError.CreateParseError(element, "does NOT have effectiveTime.low element",
+                    ParseErrorLevel.Warning));
+
             header.Event.Add(serviceEvent);
+        }
+
+        public void AddSection(Composition header, XElement element)
+        {
+            if (header == null || element == null)
+                return;
+
+            var section = new Composition.SectionComponent();
+
+            foreach (var child in element.Elements())
+                switch (child.Name.LocalName)
+                {
+                    case "code":
+                        section.Code = FromXml(new CodeableConceptParser(), child);
+                        break;
+
+                    case "title":
+                        section.Title = child.Value;
+                        break;
+
+                    case "text":
+                        section.Text = new Narrative
+                        {
+                            Div = $"<div xmlns=\"http://www.w3.org/1999/xhtml\">{child.Value}</div>"
+                        };
+                        break;
+
+                    case "entry":
+                        AddEntryAct(section, child.CdaElement("act"));
+                        break;
+                }
+
+            if (section.Entry.Any())
+                header.Section.Add(section);
+        }
+
+        public void AddEntryAct(Composition.SectionComponent section, XElement element)
+        {
+            if (section == null || element == null)
+                return;
+
+            Resource resource = null;
+            switch (section.Code.Coding[0].Code)
+            {
+                case "48765-2":
+                    resource = FromXml(new AllergyIntoleranceParser(Bundle), element);
+                    break;
+            }
+
+            if (resource != null)
+                section.Entry.Add(resource.GetResourceReference());
         }
     }
 }
