@@ -37,7 +37,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                 }
             };
 
-            Bundle?.AddResourceEntry(patient, null);
+            Bundle?.AddResourceEntry(patient);
 
             foreach (var child in element.Elements())
                 if (child.Name.LocalName == "id")
@@ -122,11 +122,10 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                 }
                 else if (child.Name.LocalName == "guardian")
                 {
-                    var relatedPerson = FromXml(new RelatedPersonParser(), child);
+                    var relatedPerson = FromXml(new RelatedPersonParser(Bundle), child);
                     if (relatedPerson != null && Bundle != null)
                     {
-                        relatedPerson.Patient = new ResourceReference($"{patient.TypeName}/{patient.Id}");
-                        Bundle?.AddResourceEntry(relatedPerson, null);
+                        relatedPerson.Patient = patient.GetResourceReference();
                     }
                 }
                 else if (child.Name.LocalName == "birthplace")

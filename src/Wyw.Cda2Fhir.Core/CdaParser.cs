@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Specification.Source;
@@ -60,7 +61,7 @@ namespace Wyw.Cda2Fhir.Core
                 Status = CompositionStatus.Final
             };
 
-            Bundle.AddResourceEntry(header, null);
+            Bundle.AddResourceEntry(header);
 
             foreach (var child in rootElement.Elements())
                 switch (child.Name.LocalName)
@@ -314,7 +315,8 @@ namespace Wyw.Cda2Fhir.Core
                     case "text":
                         section.Text = new Narrative
                         {
-                            Div = $"<div xmlns=\"http://www.w3.org/1999/xhtml\">{child.Value}</div>"
+                            Div = $"<div xmlns=\"http://www.w3.org/1999/xhtml\">{child.FirstNode.ToString(SaveOptions.DisableFormatting)}</div>",
+                            Status = Narrative.NarrativeStatus.Generated
                         };
                         break;
 

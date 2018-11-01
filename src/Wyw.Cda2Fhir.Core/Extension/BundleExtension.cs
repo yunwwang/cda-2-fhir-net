@@ -26,7 +26,13 @@ namespace Wyw.Cda2Fhir.Core.Extension
             return null;
         }
 
+        public static Bundle.EntryComponent AddResourceEntry(this Bundle bundle, Resource resource)
+        {
+            if (bundle == null || resource == null)
+                return null;
 
+            return bundle.AddResourceEntry(resource, resource.GetResourceReference().Reference);
+        }
 
     }
 }

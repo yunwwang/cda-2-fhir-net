@@ -32,7 +32,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                 Id = Guid.NewGuid().ToString()
             };
 
-            Bundle?.AddResourceEntry(device, null);
+            Bundle?.AddResourceEntry(device);
 
             foreach (var child in element.Elements())
                 if (child.Name.LocalName == "id")

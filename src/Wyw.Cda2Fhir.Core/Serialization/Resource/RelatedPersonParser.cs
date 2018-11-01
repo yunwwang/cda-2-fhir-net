@@ -77,7 +77,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
             if (existingPerson != null)
                 return existingPerson;
 
-            Bundle?.AddResourceEntry(relatedPerson, null);
+            Bundle?.AddResourceEntry(relatedPerson);
 
             return relatedPerson;
         }

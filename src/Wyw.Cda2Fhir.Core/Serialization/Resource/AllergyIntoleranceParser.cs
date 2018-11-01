@@ -23,8 +23,11 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
 
             var ai = new AllergyIntolerance
             {
-                Id = Guid.NewGuid().ToString()
+                Id = Guid.NewGuid().ToString(),
+                Meta = new Meta()
             };
+
+            ai.Meta.ProfileElement.Add(new FhirUri("http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance"));
 
             foreach(var child in element.Elements())
                 switch (child.Name.LocalName)
@@ -41,8 +44,18 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                         ai.Onset = FromXml(new FhirDateTimeParser(), child.CdaElement("low"));
                         ai.LastOccurrenceElement = FromXml(new FhirDateTimeParser(), child.CdaElement("high"));
                         break;
+                    case "author":
+                        var author = FromXml(new PractitionerParser(Bundle), child.CdaElement("assignedAuthor"));
+                        if (author != null)
+                            ai.Recorder = author.GetResourceReference();
+                        break;
+                    case "entryRelationship":
+                        break;
+
                 }
 
+            
+            Bundle.Entry.Add(new Bundle.EntryComponent(){Resource = ai});
             return ai;
         }
 
@@ -73,6 +86,24 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                     ai.VerificationStatus = AllergyIntolerance.AllergyIntoleranceVerificationStatus.Unconfirmed;
                     break;
 
+            }
+        }
+
+        private void AddObservation(AllergyIntolerance ai, XElement element)
+        {
+            if (ai == null || element == null)
+                return;
+
+            foreach (var child in element.Elements())
+            {
+                switch (child.Name.LocalName)
+                {
+                    case "id":
+                        var id = FromXml(new IdentifierParser(), child);
+                        if (id != null)
+                            ai.Identifier.Add(id);
+                        break;
+                }
             }
         }
     }

@@ -18,5 +18,7 @@ namespace Wyw.Cda2Fhir.Core.Extension
 
             return new ResourceReference(resourceUrl);
         }
+
+
     }
 }

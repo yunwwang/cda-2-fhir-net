@@ -80,7 +80,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
             var existingOrg = Bundle?.FirstOrDefault<Organization>(p => p.Identifier.IsExactly(org.Identifier));
 
             if (existingOrg == null)
-                Bundle?.AddResourceEntry(org, null);
+                Bundle?.AddResourceEntry(org);
             else
                 org = existingOrg;
 

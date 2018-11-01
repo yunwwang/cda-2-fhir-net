@@ -81,6 +81,9 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
             if (!practitioner.Identifier.Any())
                 Errors.Add(ParserError.CreateParseError(element, "does NOT have identifier", ParseErrorLevel.Error));
 
+            if (!practitioner.Name.Any())
+                Errors.Add(ParserError.CreateParseError(element, "does NOT have name", ParseErrorLevel.Warning));
+
             var existingPractitioner = Bundle?.FirstOrDefault<Practitioner>(p => p.Identifier.IsExactly(practitioner.Identifier));
 
             if (existingPractitioner != null)
@@ -89,7 +92,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
             }
             else
             {
-                Bundle?.AddResourceEntry(practitioner, null);
+                Bundle?.AddResourceEntry(practitioner);
             }
 
             role.Practitioner = practitioner.GetResourceReference();
@@ -102,19 +105,19 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                 if (existingLocation != null)
                     location = existingLocation;
                 else
-                    Bundle?.AddResourceEntry(location, null);
+                    Bundle?.AddResourceEntry(location);
 
                 role.Location.Add(location.GetResourceReference());
             }
 
             var existingRole = Bundle?.FirstOrDefault<PractitionerRole>(pr =>
-                pr.Location.IsExactly(role.Location) 
-                && pr.Specialty.IsExactly(role.Specialty) 
-                && pr.Practitioner.IsExactly(role.Practitioner));
+                pr.Location.IsExactly(role.Location) &&
+                pr.Specialty.IsExactly(role.Specialty) &&
+                pr.Practitioner.IsExactly(role.Practitioner));
             
             if (existingRole == null && (role.Location.Any() || role.Specialty.Any()))
             { 
-                Bundle?.AddResourceEntry(role, null);
+                Bundle?.AddResourceEntry(role);
             }
 
             return practitioner;
