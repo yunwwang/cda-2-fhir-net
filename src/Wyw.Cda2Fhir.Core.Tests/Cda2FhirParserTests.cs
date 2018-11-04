@@ -41,8 +41,16 @@ namespace Wyw.Cda2Fhir.Core.Tests
             composition.Author.Count.Should().BeGreaterThan(0);
             composition.Title.Should().NotBeNullOrEmpty();
             composition.Confidentiality.Should().NotBeNull();
-            //composition.Custodian.Should().NotBeNull();
+            composition.Custodian.Should().NotBeNull();
             composition.Type.Should().NotBeNull();
+
+            // US-Core Shall have Allergies and Intolerances Section
+            composition.Section.Any(s => s.Code.Coding.Any(c => c.Code == "48765-2")).Should().BeTrue();
+            // US-Core Shall have Medications Section
+            // US-Core Shall have Problem Section
+            // US-Core Shall have Results Section
+            // US-Core Shall have Social History Section
+            // US-Core Shall have Vital Signs Section
 
 
             using (var writer = new StreamWriter("output.json"))

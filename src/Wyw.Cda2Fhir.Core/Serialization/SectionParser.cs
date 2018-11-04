@@ -21,6 +21,9 @@ namespace Wyw.Cda2Fhir.Core.Serialization
 
         public override Composition.SectionComponent FromXml(XElement element)
         {
+            if (element == null)
+                return null;
+
             var section = new Composition.SectionComponent();
 
             foreach (var child in element.Elements())
