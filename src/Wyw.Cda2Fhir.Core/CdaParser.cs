@@ -299,51 +299,12 @@ namespace Wyw.Cda2Fhir.Core
             if (header == null || element == null)
                 return;
 
-            var section = new Composition.SectionComponent();
-
-            foreach (var child in element.Elements())
-                switch (child.Name.LocalName)
-                {
-                    case "code":
-                        section.Code = FromXml(new CodeableConceptParser(), child);
-                        break;
-
-                    case "title":
-                        section.Title = child.Value;
-                        break;
-
-                    case "text":
-                        section.Text = new Narrative
-                        {
-                            Div = $"<div xmlns=\"http://www.w3.org/1999/xhtml\">{child.FirstNode.ToString(SaveOptions.DisableFormatting)}</div>",
-                            Status = Narrative.NarrativeStatus.Generated
-                        };
-                        break;
-
-                    case "entry":
-                        AddEntryAct(section, child.CdaElement("act"));
-                        break;
-                }
+            var section = FromXml(new SectionParser(Bundle), element);
 
             if (section.Entry.Any())
                 header.Section.Add(section);
         }
 
-        public void AddEntryAct(Composition.SectionComponent section, XElement element)
-        {
-            if (section == null || element == null)
-                return;
-
-            Resource resource = null;
-            switch (section.Code.Coding[0].Code)
-            {
-                case "48765-2":
-                    resource = FromXml(new AllergyIntoleranceParser(Bundle), element);
-                    break;
-            }
-
-            if (resource != null)
-                section.Entry.Add(resource.GetResourceReference());
-        }
+       
     }
 }

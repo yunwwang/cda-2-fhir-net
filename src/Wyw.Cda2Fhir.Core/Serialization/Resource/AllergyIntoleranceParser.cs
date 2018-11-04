@@ -8,7 +8,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
 {
     public class AllergyIntoleranceParser : BaseParser<AllergyIntolerance>
     {
-        public AllergyIntoleranceParser()
+        public AllergyIntoleranceParser() : base()
         {
         }
 
@@ -50,12 +50,13 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                             ai.Recorder = author.GetResourceReference();
                         break;
                     case "entryRelationship":
+                        AddObservation(ai, child.CdaElement("observation"));
                         break;
 
                 }
 
-            
-            Bundle.Entry.Add(new Bundle.EntryComponent(){Resource = ai});
+            Bundle?.Entry.Add(new Bundle.EntryComponent(){Resource = ai});
+
             return ai;
         }
 
@@ -102,6 +103,21 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                         var id = FromXml(new IdentifierParser(), child);
                         if (id != null)
                             ai.Identifier.Add(id);
+                        break;
+                    case "code":
+                        // always "ASSERTION"
+                        break;
+                    case "statusCode":
+                        // always "completed"
+                        break;
+                    case "effectiveTime":
+                        // What is the difference from ACT?
+                        break;
+                    case "author":
+                        var author = FromXml(new PractitionerParser(Bundle), child.CdaElement("assignedAuthor"));
+                        if (author != null)
+                            ai.Asserter = author.GetResourceReference();
+                        ai.AssertedDateElement = FromXml(new FhirDateTimeParser(), child.CdaElement("time"));
                         break;
                 }
             }

@@ -6,6 +6,7 @@ CDA to FHIR converter takes a CDA/CCD document as input. Parse the content to a 
 ## Limitation ##
 This library currently support the follow sections from CDA document:
 * Header
+* Allergy Concern
 
 To add more sections, please submit a request.
 
