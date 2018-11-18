@@ -38,6 +38,7 @@ namespace Wyw.Cda2Fhir.Core.Tests.Resource
                     // Shall have verificationStatus
                     result.VerificationStatus.Should().NotBeNull();
                     // Shall have code
+                    result.Code?.Coding.Any().Should().BeTrue();
                     // US-Core Shall have patient
                     break;
                 }

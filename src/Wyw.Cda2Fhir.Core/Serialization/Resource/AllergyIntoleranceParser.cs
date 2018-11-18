@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Wyw.Cda2Fhir.Core.Extension;
@@ -123,6 +124,9 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                         if (author != null)
                             ai.Asserter = author.GetResourceReference();
                         ai.AssertedDateElement = FromXml(new FhirDateTimeParser(), child.CdaElement("time"));
+                        break;
+                    case "participant":
+                        ai.Code = FromXml(new CodeableConceptParser(), child.CdaDescendants("code").FirstOrDefault());
                         break;
                 }
             }

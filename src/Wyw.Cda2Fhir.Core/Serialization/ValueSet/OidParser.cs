@@ -18,6 +18,9 @@
                 case "2.16.840.1.113883.6.1":
                     return "http://loinc.org";
 
+                case "2.16.840.1.113883.6.88":
+                    return "http://www.nlm.nih.gov/research/umls/rxnorm";
+
                 case "2.16.840.1.113883.6.96":
                     return "http://snomed.info/sct";
 
