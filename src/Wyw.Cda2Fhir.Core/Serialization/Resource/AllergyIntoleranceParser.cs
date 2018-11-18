@@ -23,10 +23,13 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
             if (element == null)
                 return null;
 
+            var patient = Bundle?.FirstOrDefault<Patient>(null);
+
             var ai = new AllergyIntolerance
             {
                 Id = Guid.NewGuid().ToString(),
-                Meta = new Meta()
+                Meta = new Meta(),
+                Patient = patient?.GetResourceReference()
             };
 
             ai.Meta.ProfileElement.Add(new FhirUri("http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance"));
@@ -127,6 +130,8 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                         break;
                     case "participant":
                         ai.Code = FromXml(new CodeableConceptParser(), child.CdaDescendants("code").FirstOrDefault());
+                        break;
+                    case "entryRelationship":
                         break;
                 }
             }

@@ -10,14 +10,14 @@ namespace Wyw.Cda2Fhir.Core.Extension
     {
         public static T FirstOrDefault<T>(this Bundle bundle, Func<T, bool> compareFunc) where T: Resource
         {
-            if (compareFunc == null)
-                return null;
-
             foreach (var entry in bundle.Entry)
             {
                 var resource = entry.Resource as T;
 
                 if (resource == null) continue;
+
+                if (compareFunc == null)
+                    return resource;
 
                 if (compareFunc(resource))
                     return resource;
