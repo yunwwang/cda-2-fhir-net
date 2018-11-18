@@ -3,6 +3,7 @@ using System.Xml.Linq;
 using Hl7.Fhir.Model;
 using Wyw.Cda2Fhir.Core.Extension;
 using Wyw.Cda2Fhir.Core.Serialization.DataType;
+using Wyw.Cda2Fhir.Core.Serialization.ValueSet;
 
 namespace Wyw.Cda2Fhir.Core.Serialization.Resource
 {
@@ -41,8 +42,8 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                         AddStatusCode(ai, child);
                         break;
                     case "effectiveTime":
-                        ai.Onset = FromXml(new FhirDateTimeParser(), child.CdaElement("low"));
-                        ai.LastOccurrenceElement = FromXml(new FhirDateTimeParser(), child.CdaElement("high"));
+                        //ai.Onset = FromXml(new FhirDateTimeParser(), child.CdaElement("low"));
+                        //ai.LastOccurrenceElement = FromXml(new FhirDateTimeParser(), child.CdaElement("high"));
                         break;
                     case "author":
                         var author = FromXml(new PractitionerParser(Bundle), child.CdaElement("assignedAuthor"));
@@ -111,7 +112,11 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                         // always "completed"
                         break;
                     case "effectiveTime":
-                        // What is the difference from ACT?
+                        ai.Onset = FromXml(new FhirDateTimeParser(), child.CdaElement("low"));
+                        ai.LastOccurrenceElement = FromXml(new FhirDateTimeParser(), child.CdaElement("high"));
+                        break;
+                    case "value":
+                        ai.Type = new AllergyIntoleranceTypeParser().FromCda(child.Attribute("code")?.Value);
                         break;
                     case "author":
                         var author = FromXml(new PractitionerParser(Bundle), child.CdaElement("assignedAuthor"));
