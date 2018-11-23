@@ -1,0 +1,1195 @@
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Composition",
+        "id": "1",
+        "identifier": {
+          "system": "urn:oid:2.16.840.1.113883.19.5.99999.1",
+          "value": "TT662"
+        },
+        "date": "2015-07-22T18:00:00-05:00",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34133-9",
+              "display": "Summarization of Episode Note"
+            }
+          ]
+        },
+        "title": "170.315_b1_toc_gold_sample2 test data",
+        "status": "preliminary",
+        "confidentiality": "N",
+        "subject": {
+          "reference": "Patient/2"
+        },
+        "author": [
+          {
+            "reference": "Practitioner/4"
+          }
+        ],
+        "attester": [
+          {
+            "mode": [
+              "legal"
+            ],
+            "time": "2015-07-22",
+            "party": {
+              "reference": "Practitioner/5"
+            }
+          },
+          {
+            "mode": [
+              "professional"
+            ],
+            "time": "2015-07-22",
+            "party": {
+              "reference": "Practitioner/6"
+            }
+          }
+        ],
+        "custodian": {
+          "reference": "Organization/7"
+        },
+        "section": [
+          {
+            "title": "IMMUNIZATIONS",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "11369-6",
+                  "display": "History of immunizations"
+                }
+              ]
+            },
+            "text": {
+              "status": "additional",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No immunization history</div>"
+            },
+            "entry": [
+              {
+                "reference": "Immunization/8"
+              }
+            ]
+          },
+          {
+            "title": "MEDICATIONS",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "10160-0",
+                  "display": "HISTORY OF MEDICATION USE"
+                }
+              ]
+            },
+            "text": {
+              "status": "additional",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No known Medications</div>"
+            },
+            "entry": [
+              {
+                "reference": "MedicationStatement/9"
+              }
+            ]
+          },
+          {
+            "title": "ASSESSMENTS",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "51848-0",
+                  "display": "ASSESSMENTS"
+                }
+              ]
+            },
+            "text": {
+              "status": "additional",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">The patient Mr Richard Maur was found to have first degree burns and Dr Seven and his staff Mr Bates by cleaning the burn and dressing the burn and observed for couple of hours before discharging Mr Maur.</div>"
+            }
+          },
+          {
+            "title": "TREATMENT PLAN",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "18776-5",
+                  "display": "Treatment plan"
+                }
+              ]
+            },
+            "text": {
+              "status": "additional",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><span> Hand-off Communication:</span><br></br><br></br><table border=\"1\" width=\"100%\"><thead><tr><th>Planned Care</th><th>Start Date</th></tr></thead><tbody><!--  The two narrative elements can also be combined into a single paragraph  --><tr><td>Schedule an appointment with Dr Seven after 1 week for Follow up with Outpatient facility.</td><td>July 29, 2015</td></tr><tr><td>Medication: Tylenol 500mg</td><td>As needed</td></tr></tbody></table></div>"
+            }
+          },
+          {
+            "title": "PROBLEMS",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "11450-4",
+                  "display": "PROBLEM LIST"
+                }
+              ]
+            },
+            "text": {
+              "status": "additional",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><span>No known <span>health problems</span></span></div>"
+            },
+            "entry": [
+              {
+                "reference": "Condition/12"
+              }
+            ]
+          },
+          {
+            "title": "MEDICAL EQUIPMENT",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "46264-8"
+                }
+              ]
+            },
+            "text": {
+              "status": "additional",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Patient has no history of implantable devices</p></div>"
+            },
+            "entry": [
+              {
+                "reference": "Procedure/13"
+              }
+            ]
+          },
+          {
+            "title": "ADMISSION DIAGNOSIS",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "46241-6",
+                  "display": "Hospital Admission Diagnosis"
+                },
+                {
+                  "system": "http://loinc.org",
+                  "code": "42347-5",
+                  "display": "Admission Diagnosis"
+                }
+              ]
+            },
+            "text": {
+              "status": "additional",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Skin burn</div>"
+            }
+          },
+          {
+            "title": "VITAL SIGNS",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8716-3",
+                  "display": "VITAL SIGNS"
+                }
+              ]
+            },
+            "text": {
+              "status": "additional",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table border=\"1\" width=\"100%\"><thead><tr><th align=\"right\">Date / Time: </th><th>June 22, 2015</th></tr></thead><tbody><tr><th align=\"left\">Blood Pressure</th><td>145/88</td></tr></tbody></table><!--  added for inp -db  --><table border=\"1\" width=\"100%\"><thead><tr><th align=\"right\">Date / Time: </th><th>July 22, 2015</th></tr></thead><tbody><tr><th align=\"left\">Body Temperature</th><td>99 degrees Fahrenheit</td></tr></tbody></table></div>"
+            },
+            "entry": [
+              {
+                "reference": "Observation/14"
+              },
+              {
+                "reference": "Observation/15"
+              },
+              {
+                "reference": "Observation/16"
+              }
+            ]
+          },
+          {
+            "title": "HOSPITAL DISCHARGE INSTRUCTIONS",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8653-8",
+                  "display": "HOSPITAL DISCHARGE INSTRUCTIONS"
+                }
+              ]
+            },
+            "text": {
+              "status": "additional",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">    <ol>    <li>Appointments: Schedule an appointment with Dr Seven after 1 week. Follow up with Outpatient facility.</li><li>In case of fever, take Tylenol as advised in plan of treatment.</li>    </ol>    </div>"
+            }
+          },
+          {
+            "title": "SOCIAL HISTORY",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29762-2",
+                  "display": "Social History"
+                }
+              ]
+            },
+            "text": {
+              "status": "additional",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table border=\"1\" width=\"100%\"><thead><tr><th>Social History Observation</th><th>Description</th><th>Dates Observed</th></tr></thead><tbody><tr><td>Current Smoking Status</td><td>Current every day</td><td>July 22, 2015</td></tr></tbody></table></div>"
+            },
+            "entry": [
+              {
+                "reference": "Observation/17"
+              }
+            ]
+          },
+          {
+            "title": "PROCEDURES",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "47519-4",
+                  "display": "HISTORY OF PROCEDURES"
+                }
+              ]
+            },
+            "text": {
+              "status": "additional",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table border=\"1\" width=\"100%\"><thead><tr><th>Procedure</th><th>Date</th></tr></thead><tbody><tr><td>Application of Dressing for burn</td><td>July 22, 2015</td></tr></tbody></table></div>"
+            },
+            "entry": [
+              {
+                "reference": "Procedure/18"
+              }
+            ]
+          },
+          {
+            "title": "Admission Medications",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "42346-7",
+                  "display": "MEDICATIONS ON ADMISSION"
+                }
+              ]
+            },
+            "text": {
+              "status": "additional",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No Medications Administered</div>"
+            }
+          },
+          {
+            "title": "ALLERGIES AND ADVERSE REACTIONS",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "48765-2"
+                }
+              ]
+            },
+            "text": {
+              "status": "additional",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No Known Drug Allergies</div>"
+            },
+            "entry": [
+              {
+                "reference": "AllergyIntolerance/21"
+              }
+            ]
+          },
+          {
+            "title": "Health Concerns",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "75310-3",
+                  "display": "Health Concerns Document"
+                }
+              ]
+            },
+            "text": {
+              "status": "additional",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No Known Health Concerns on 07/22/2015</div>"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "2",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-patient"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\">Richard <b>MAUR </b>jr</div><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>414122222</td></tr><tr><td>Address</td><td><span>1357 Amber Dr </span><br/><span>Beaverton </span><span>OR </span><span>US </span></td></tr><tr><td>Date of birth</td><td><span>01 August 1980</span></td></tr></tbody></table></div>"
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/us-core-religion",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.5.1076",
+                  "code": "1013",
+                  "display": "Christian (non-Catholic, non-specific)"
+                }
+              ]
+            }
+          }
+        ],
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.1",
+            "value": "414122222"
+          }
+        ],
+        "name": [
+          {
+            "use": "usual",
+            "family": [
+              "Maur"
+            ],
+            "given": [
+              "Richard"
+            ],
+            "suffix": [
+              "jr"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)-777-1234",
+            "use": "mobile"
+          },
+          {
+            "system": "phone",
+            "value": "+1(555)-723-1544",
+            "use": "home"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1980-08-01",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "1357 Amber Dr"
+            ],
+            "city": "Beaverton",
+            "state": "OR",
+            "postalCode": "97006",
+            "country": "US"
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en"
+                }
+              ]
+            },
+            "preferred": true
+          }
+        ],
+        "managingOrganization": {
+          "reference": "Organization/3"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "3",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>99999999</td></tr><tr><td>Name</td><td>Community Health and Hospitals</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "99999999"
+          }
+        ],
+        "name": "Community Health and Hospitals",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)-555-5000",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1002 Healthcare Dr"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "97266",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "4",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>111111</td></tr><tr><td>Name</td><td>Dr Henry <b>SEVEN </b></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "111111"
+          }
+        ],
+        "name": {
+          "family": [
+            "Seven"
+          ],
+          "given": [
+            "Henry"
+          ],
+          "prefix": [
+            "Dr"
+          ]
+        },
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)-555-1002",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1002 Healthcare Dr"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "97266",
+            "country": "US"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "281P00000X",
+                  "display": "Chronic Disease Hospital"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "5",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>999998899</td></tr><tr><td>Name</td><td>Dr Henry <b>SEVEN </b></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "999998899"
+          }
+        ],
+        "name": {
+          "family": [
+            "Seven"
+          ],
+          "given": [
+            "Henry"
+          ],
+          "prefix": [
+            "Dr"
+          ]
+        },
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)-555-1002",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1002 Healthcare Dr"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "97266",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "6",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>999998899</td></tr><tr><td>Name</td><td>Dr Henry <b>SEVEN </b></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "999998899"
+          }
+        ],
+        "name": {
+          "family": [
+            "Seven"
+          ],
+          "given": [
+            "Henry"
+          ],
+          "prefix": [
+            "Dr"
+          ]
+        },
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)-555-1002",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1002 Healthcare Dr"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "97266",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "7",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>99998899</td></tr><tr><td>Name</td><td>Community Health and Hospitals</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "99998899"
+          }
+        ],
+        "name": "Community Health and Hospitals",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)-555-5000",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1002 Healthcare Dr"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "97266",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "8",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-immunization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Vaccine Code</td><td></td></tr><tr><td>Not Given</td><td>True</td></tr><tr><td>Route</td><td></td></tr><tr><td>Dose</td><td><div></div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "de10790f-1496-4729-8fe6-f1b87b6219f7"
+          }
+        ],
+        "status": "active",
+        "patient": {
+          "reference": "Patient/2"
+        },
+        "wasNotGiven": true,
+        "reported": false
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "9",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-medicationstatement"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><span>Medication was not taken</span><div><table class=\"hapiPropertyTable\"><tbody><tr><th>Dosage</th></tr><tr><td>Timing</td><td></td></tr><tr><td>Route</td><td></td></tr></tbody></table></div></div>"
+        },
+        "identifier": [
+          {
+            "value": "cdbd33f0-6cde-11db-9fe1-0833200c9a66"
+          }
+        ],
+        "patient": {
+          "reference": "Patient/2"
+        },
+        "status": "active",
+        "wasNotTaken": true,
+        "medicationReference": {
+          "reference": "Medication/10"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Medication",
+        "id": "10",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-medication"
+          ]
+        },
+        "product": {
+          "ingredient": [
+            {
+              "item": {
+                "reference": "Substance/11"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Substance",
+        "id": "11",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-substance"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Substance</td><td><div>drug or medication</div></td></tr></tbody></table></div>"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "410942007",
+              "display": "drug or medication"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "12",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-condition"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Problem</div></td></tr><tr><td>Category</td><td></td></tr><tr><td>Clinical Status</td><td>active</td></tr><tr><td>Onset</td><td><div>Sat Jul 22 00:00:00 CST 2015</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "4adc1021-7b14-11db-9fe1-0836200c9a67"
+          }
+        ],
+        "patient": {
+          "reference": "Patient/2"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "55607006",
+              "display": "Problem"
+            }
+          ]
+        },
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/condition-category",
+              "code": "diagnosis"
+            }
+          ]
+        },
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "onsetDateTime": "2015-07-22"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "13",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-procedure"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Type</td><td><div>Procedure</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "d5b614bd-01ce-410d-8728-e1fd01dcc72a"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/2"
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "71388002",
+              "display": "Procedure"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "14",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-vitalsigns"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Body Temperature</div></td></tr><tr><td>Date/Period</td><td>Sat Jul 22 00:00:00 CST 2015 - ?</td></tr><tr><td>Result</td><td><div>99[degF]</div></td></tr><tr><td>Interpretation</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "ed9589fd-fda0-42f7-a3d0-dc537554f5c2"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8310-5",
+              "display": "Body Temperature"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/2"
+        },
+        "effectivePeriod": {
+          "start": "2015-07-22"
+        },
+        "valueQuantity": {
+          "value": 99,
+          "unit": "[degF]"
+        },
+        "interpretation": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v2/0078",
+              "code": "N"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "15",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-vitalsigns"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Intravascular Systolic</div></td></tr><tr><td>Date/Period</td><td>Sat Jul 22 00:00:00 CST 2015 - ?</td></tr><tr><td>Result</td><td><div>145mm[Hg]</div></td></tr><tr><td>Interpretation</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "a0e39c70-9674-4b2a-9837-cdf74200d8d5"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Intravascular Systolic"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/2"
+        },
+        "effectivePeriod": {
+          "start": "2015-07-22"
+        },
+        "valueQuantity": {
+          "value": 145,
+          "unit": "mm[Hg]"
+        },
+        "interpretation": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v2/0078",
+              "code": "N"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "16",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-vitalsigns"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>BP Diastolic</div></td></tr><tr><td>Date/Period</td><td>Sat Jul 22 00:00:00 CST 2015 - ?</td></tr><tr><td>Result</td><td><div>88mm[Hg]</div></td></tr><tr><td>Interpretation</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "1c2748b7-e440-41ba-bc01-dde97d84a036"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "BP Diastolic"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/2"
+        },
+        "effectivePeriod": {
+          "start": "2015-07-22"
+        },
+        "valueQuantity": {
+          "value": 88,
+          "unit": "mm[Hg]"
+        },
+        "interpretation": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v2/0078",
+              "code": "N"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "17",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Tobacco smoking status NHIS</div></td></tr><tr><td>Date/Period</td><td>Sat Jul 22 00:00:00 CST 2015 - ?</td></tr><tr><td>Result</td><td><div>Current every day smoker</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.19",
+            "value": "123456789"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "72166-2",
+              "display": "Tobacco smoking status NHIS"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/2"
+        },
+        "effectivePeriod": {
+          "start": "2015-07-22"
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "449868002",
+              "display": "Current every day smoker"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "18",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-procedure"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Type</td><td><div>Application of Dressing for burn</div></td></tr><tr><td>Date/Period</td><td>Sat Jul 22 00:00:00 CST 2015 - Sat Jul 22 00:00:00 CST 2015</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "d68b7e32-7810-4f5b-9cc2-acd54b0fd85d"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/2"
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "90660004",
+              "display": "Application of Dressing for burn"
+            }
+          ]
+        },
+        "bodySite": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "281737009",
+                "display": "Skin of part of forearm"
+              }
+            ]
+          }
+        ],
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/19"
+            }
+          }
+        ],
+        "performedPeriod": {
+          "start": "2015-07-22",
+          "end": "2015-07-22"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "19",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>2981823</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.19.5.9999.456",
+            "value": "2981823"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)-555-5000",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "line": [
+              "1002 Healthcare Dr"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "97266",
+            "country": "US"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "managingOrganization": {
+              "reference": "Organization/20"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "20",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>2.16.840.1.113883.19.5.9999.1393</td></tr><tr><td>Name</td><td>Community Health and Hospitals</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "2.16.840.1.113883.19.5.9999.1393"
+          }
+        ],
+        "name": "Community Health and Hospitals",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)-555-5000",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "line": [
+              "1002 Healthcare Dr"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "97266",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "21",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-allergyintolerance"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Substance</td><td></td></tr><tr><td>Onset</td><td><div>Sat Jul 22 00:00:00 CST 2015</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "36e3e930-7b15-11db-9fe1-0831200c9a66"
+          }
+        ],
+        "onset": "2015-07-22",
+        "patient": {
+          "reference": "Patient/2"
+        },
+        "status": "active",
+        "category": "medication"
+      }
+    }
+  ]
+}

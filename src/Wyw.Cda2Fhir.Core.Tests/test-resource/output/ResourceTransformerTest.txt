@@ -1,0 +1,6282 @@
+## TEST: FunctionalStatus2Observation
+
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "1446d3ac-a986-4709-b778-266f1ede994a",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Category</td><td><div>Functional status</div></td></tr><tr><td>Code</td><td><div> Independent walking</div></td></tr><tr><td>Date/Period</td><td>Tue Mar 11 00:00:00 CST 2013 - ?</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "b63a8636-cfff-4461-b018-40ba58ba8b32"
+          }
+        ],
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "54522-8",
+              "display": "Functional status"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "165245003",
+              "display": " Independent walking"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "2013-03-11"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/3afd8209-cae0-40f3-ade2-e5cc30616a0a"
+          }
+        ],
+        "device": {
+          "reference": "Device/dffff2f2-c4d0-47b0-853c-d255d268c3cd"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "3afd8209-cae0-40f3-ade2-e5cc30616a0a",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>555555555</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "555555555"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Device",
+        "id": "dffff2f2-c4d0-47b0-853c-d255d268c3cd",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>742aee30-21c5-11e1-bfc2-0800200c9a66</td></tr><tr><td>Type</td><td><div>cane, device (physical object)</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "742aee30-21c5-11e1-bfc2-0800200c9a66"
+          }
+        ],
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "87405001",
+              "display": "cane, device (physical object)"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/0"
+        }
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "0e96bdcb-182f-4a27-bd1c-9496e3440791",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Category</td><td><div>Bathing</div></td></tr><tr><td>Code</td><td><div>Independent</div></td></tr><tr><td>Date/Period</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "c6b5a04b-2bf4-49d1-8336-636a3813df0a"
+          }
+        ],
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "46008-9",
+              "display": "Bathing"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "371153006",
+              "display": "Independent"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/6a45d130-3411-4909-a09a-41cd38c809f8"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "6a45d130-3411-4909-a09a-41cd38c809f8",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>555555555</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "555555555"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+## END OF TEST
+## TEST: Guardian2Contact
+
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Patient",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody></tbody></table></div>"
+  },
+  "contact": [
+    {
+      "relationship": [
+        {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/patient-contact-relationship",
+              "code": "agent",
+              "display": "Agent"
+            }
+          ]
+        }
+      ],
+      "name": {
+        "family": [
+          "Betterhalf"
+        ],
+        "given": [
+          "Boris",
+          "Bo"
+        ]
+      },
+      "telecom": [
+        {
+          "system": "phone",
+          "value": "+1(555)555-2008",
+          "use": "mobile"
+        }
+      ],
+      "address": {
+        "use": "home",
+        "line": [
+          "2222 Home Street"
+        ],
+        "city": "Beaverton",
+        "state": "OR",
+        "postalCode": "97867",
+        "country": "US"
+      }
+    }
+  ]
+}
+## END OF TEST
+## TEST: MedicationDispense2MedicationDispense
+
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "MedicationDispense",
+        "id": "b8e685e1-819d-4bce-973e-76bd6f8f088c",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-medicationdispense"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><th>Dosage Instruction</th></tr><tr><td>Timing</td><td></td></tr><tr><td>Dose</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": {
+          "system": "urn:oid:1.2.3.4.56789.1",
+          "value": "cb734647-fc99-424c-a864-7e3cda82e704"
+        },
+        "status": "completed",
+        "patient": {
+          "reference": "Patient/0"
+        },
+        "dispenser": {
+          "reference": "Practitioner/976a3068-3e71-41ba-b55d-1d19f1d4920e"
+        },
+        "quantity": {
+          "value": 75,
+          "unit": "1"
+        },
+        "medicationReference": {
+          "reference": "Medication/44695c13-f1cf-45fd-ba31-0979479fa771"
+        },
+        "whenPrepared": "2012-08-15T14:50:00-08:00",
+        "dosageInstruction": [
+          {
+            "timing": {
+              "event": [
+                "2012-08-15T14:50:00-08:00"
+              ]
+            },
+            "doseQuantity": {
+              "value": 75,
+              "unit": "1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Medication",
+        "id": "44695c13-f1cf-45fd-ba31-0979479fa771",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-medication"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\"><div>Proventil 0.09 MG/ACTUAT inhalant solution</div></div></div>"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "573621",
+              "display": "Proventil 0.09 MG/ACTUAT inhalant solution"
+            }
+          ]
+        },
+        "manufacturer": {
+          "reference": "Organization/7495a635-9f0a-4b93-b01d-cd25019798c3"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "7495a635-9f0a-4b93-b01d-cd25019798c3",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Name</td><td>Medication Factory Inc.</td></tr></tbody></table></div>"
+        },
+        "name": "Medication Factory Inc."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "976a3068-3e71-41ba-b55d-1d19f1d4920e",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>333222222</td></tr><tr><td>Name</td><td>Susan <b>SCRIPT </b>Pharm.D.</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "333222222"
+          }
+        ],
+        "name": {
+          "family": [
+            "Script"
+          ],
+          "given": [
+            "Susan"
+          ],
+          "suffix": [
+            "Pharm.D."
+          ]
+        },
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)555-1016",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1016 Health Drive"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "managingOrganization": {
+              "reference": "Organization/3a862547-1277-40c5-a3e0-b8c9012bd802"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "3a862547-1277-40c5-a3e0-b8c9012bd802",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Name</td><td>People&apos;s Pharmacy</td></tr></tbody></table></div>"
+        },
+        "name": "People's Pharmacy"
+      }
+    }
+  ]
+}
+## END OF TEST
+## TEST: PatientRole2Patient
+
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "218eda6a-2570-4560-bf72-db61aa7ca28a",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-patient"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\">Eve <b>BETTERHALF </b></div><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>444222222</td></tr><tr><td>Address</td><td><span>2222 Home Street </span><br/><span>Beaverton </span><span>OR </span><span>US </span></td></tr><tr><td>Date of birth</td><td><span>01 May 1975</span></td></tr></tbody></table></div>"
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/us-core-race",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2106-3",
+                  "display": "White"
+                }
+              ]
+            }
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/us-core-ethnicity",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2186-5",
+                  "display": "Not Hispanic or Latino"
+                }
+              ]
+            }
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/us-core-religion",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.5.1076",
+                  "code": "1013",
+                  "display": "Christian (non-Catholic, non-specific)"
+                }
+              ]
+            }
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/birthPlace",
+            "valueAddress": {
+              "line": [
+                "4444 Home Street"
+              ],
+              "city": "Beaverton",
+              "state": "OR",
+              "postalCode": "97867",
+              "country": "US"
+            }
+          }
+        ],
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.1",
+            "value": "444222222"
+          }
+        ],
+        "name": [
+          {
+            "use": "usual",
+            "family": [
+              "Betterhalf"
+            ],
+            "given": [
+              "Eve"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)555-2003",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1975-05-01",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "2222 Home Street"
+            ],
+            "city": "Beaverton",
+            "state": "OR",
+            "postalCode": "97867",
+            "country": "US"
+          }
+        ],
+        "maritalStatus": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v3/MaritalStatus",
+              "code": "M"
+            }
+          ]
+        },
+        "contact": [
+          {
+            "relationship": [
+              {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/patient-contact-relationship",
+                    "code": "agent",
+                    "display": "Agent"
+                  }
+                ]
+              }
+            ],
+            "name": {
+              "family": [
+                "Betterhalf"
+              ],
+              "given": [
+                "Boris",
+                "Bo"
+              ]
+            },
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "+1(555)555-2008",
+                "use": "mobile"
+              }
+            ],
+            "address": {
+              "use": "home",
+              "line": [
+                "2222 Home Street"
+              ],
+              "city": "Beaverton",
+              "state": "OR",
+              "postalCode": "97867",
+              "country": "US"
+            }
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en"
+                }
+              ]
+            },
+            "preferred": true
+          }
+        ],
+        "managingOrganization": {
+          "reference": "Organization/5b53fb53-06a9-4260-8684-8f4066036e3a"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "5b53fb53-06a9-4260-8684-8f4066036e3a",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>219BX</td></tr><tr><td>Name</td><td>The DoctorsTogether Physician Group</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "219BX"
+          }
+        ],
+        "name": "The DoctorsTogether Physician Group",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": " +1(555)555-5000",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1007 Health Drive"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ]
+      }
+    }
+  ]
+}
+## END OF TEST
+## TEST: ResultOrganizer2DiagnosticReport
+
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "f9f45bb4-0d08-40bd-8701-35da508bb698",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-diagnosticreport"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\"> Blood chemistry test </div><table class=\"hapiPropertyTable\"><tbody><tr><td>Status</td><td>partial</td></tr><tr><td>Issued</td><td>20 March 2008 11:30:00</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "122ed3ae-6d9e-43d0-bfa2-434ea34b1426"
+          }
+        ],
+        "status": "partial",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "166312007",
+              "display": "Blood chemistry test"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "2008-03-20T09:30:00-08:00",
+          "end": "2008-03-20T09:30:00-08:00"
+        },
+        "issued": "2008-03-20T09:30:00-08:00",
+        "performer": {
+          "reference": "Practitioner/cb88813e-beda-4393-a75f-ba61ee318606"
+        },
+        "result": [
+          {
+            "reference": "Observation/59fc223b-6dbb-46a6-85f3-99e78dbb5e6a"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "cb88813e-beda-4393-a75f-ba61ee318606",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+            "valueCoding": {
+              "system": "http://hl7.org/fhir/data-absent-reason",
+              "code": "unknown",
+              "display": "Unknown"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "59fc223b-6dbb-46a6-85f3-99e78dbb5e6a",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-resultobs"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Urea nitrogen, Serum</div></td></tr><tr><td>Date/Period</td><td>Wed Mar 20 11:30:00 CST 2008 - ?</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "aed821af-3330-4138-97f0-e84dfe5f3c35"
+          }
+        ],
+        "status": "preliminary",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "3094-0",
+              "display": "Urea nitrogen, Serum"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "2008-03-20T09:30:00-08:00"
+        },
+        "dataAbsentReason": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/data-absent-reason",
+              "code": "error",
+              "display": "Error"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "3f4642b7-eef4-4b86-ba4c-c0ebe2d2984c",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-diagnosticreport"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\"> CBC W Auto Differential panel in Blood </div><table class=\"hapiPropertyTable\"><tbody><tr><td>Status</td><td>final</td></tr><tr><td>Issued</td><td>19 March 2008 10:30:00</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "7d5a02b0-67a4-11db-bd13-0800200c9a66"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "57021-8",
+              "display": "CBC W Auto Differential panel in Blood"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "2008-03-19T08:30:00-08:00",
+          "end": "2008-03-19T08:30:00-08:00"
+        },
+        "issued": "2008-03-19T08:30:00-08:00",
+        "performer": {
+          "reference": "Practitioner/f5ed8c79-8f60-4c20-8574-e002d61f367d"
+        },
+        "result": [
+          {
+            "reference": "Observation/45202951-d979-4c16-be8b-5d677283c309"
+          },
+          {
+            "reference": "Observation/d53d64d7-17a1-4b5e-8b6e-df4ce6a6d2f8"
+          },
+          {
+            "reference": "Observation/c6ef5c5c-f6cc-4f29-ad15-ba9af24b656f"
+          },
+          {
+            "reference": "Observation/1e4bbc0b-ffc5-4c07-801a-95ff46c658e6"
+          },
+          {
+            "reference": "Observation/32f3ceca-cd55-4bc2-9d15-99f6a8046a0f"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "f5ed8c79-8f60-4c20-8574-e002d61f367d",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+            "valueCoding": {
+              "system": "http://hl7.org/fhir/data-absent-reason",
+              "code": "unknown",
+              "display": "Unknown"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "45202951-d979-4c16-be8b-5d677283c309",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-resultobs"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Platelets</div></td></tr><tr><td>Date/Period</td><td>Tue Mar 19 10:30:00 CST 2008 - ?</td></tr><tr><td>Result</td><td><div>12310*9/L</div></td></tr><tr><td>Interpretation</td><td><div>Low</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "ef5c1c58-4665-4556-a8e8-6e720d82f572"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "777-3",
+              "display": "Platelets"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "2008-03-19T08:30:00-08:00"
+        },
+        "issued": "2008-03-19T08:30:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/19ffaee8-531b-4d32-8173-0b3eb3d82307"
+          }
+        ],
+        "valueQuantity": {
+          "value": 123,
+          "unit": "10*9/L"
+        },
+        "interpretation": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v2/0078",
+              "code": "L",
+              "display": "Low"
+            }
+          ]
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 150,
+              "unit": "10*9/L"
+            },
+            "high": {
+              "value": 350,
+              "unit": "10*9/L"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "19ffaee8-531b-4d32-8173-0b3eb3d82307",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>333444444</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "333444444"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "246Q00000X",
+                  "display": "Technician, Pathology"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "d53d64d7-17a1-4b5e-8b6e-df4ce6a6d2f8",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-resultobs"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Erythrocytes</div></td></tr><tr><td>Date/Period</td><td>Tue Mar 19 10:30:00 CST 2008 - ?</td></tr><tr><td>Result</td><td><div>4.2110*12/L</div></td></tr><tr><td>Interpretation</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "bccd6fc9-0c7f-455e-8616-923ed0d04d09"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "789-8",
+              "display": "Erythrocytes"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "2008-03-19T08:30:00-08:00"
+        },
+        "issued": "2008-03-19T08:30:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/e22e04c1-7e90-40c4-aaea-7fca4f431dd5"
+          }
+        ],
+        "valueQuantity": {
+          "value": 4.21,
+          "unit": "10*12/L"
+        },
+        "interpretation": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v2/0078",
+              "code": "N"
+            }
+          ]
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 3.90,
+              "unit": "10*12/L"
+            },
+            "high": {
+              "value": 5.03,
+              "unit": "10*12/L"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "e22e04c1-7e90-40c4-aaea-7fca4f431dd5",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>333444444</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "333444444"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "246Q00000X",
+                  "display": "Technician, Pathology"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "c6ef5c5c-f6cc-4f29-ad15-ba9af24b656f",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-resultobs"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Hematocrit</div></td></tr><tr><td>Date/Period</td><td>Tue Mar 19 10:30:00 CST 2008 - ?</td></tr><tr><td>Result</td><td><div>35.3%</div></td></tr><tr><td>Interpretation</td><td><div>Low</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "7c0704bb-9c40-41b5-9c7d-26b2d59e234f"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "4544-3",
+              "display": "Hematocrit"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "2008-03-19T08:30:00-08:00"
+        },
+        "issued": "2008-03-19T08:30:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/f199eb56-2d25-43c2-9d99-dc17dc800f7f"
+          }
+        ],
+        "valueQuantity": {
+          "value": 35.3,
+          "unit": "%"
+        },
+        "interpretation": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v2/0078",
+              "code": "L",
+              "display": "Low"
+            }
+          ]
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 34.9,
+              "unit": "%"
+            },
+            "high": {
+              "value": 44.5,
+              "unit": "%"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "f199eb56-2d25-43c2-9d99-dc17dc800f7f",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>333444444</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "333444444"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "246Q00000X",
+                  "display": "Technician, Pathology"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "1e4bbc0b-ffc5-4c07-801a-95ff46c658e6",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-resultobs"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Leukocytes</div></td></tr><tr><td>Date/Period</td><td>Tue Mar 19 10:30:00 CST 2008 - ?</td></tr><tr><td>Result</td><td><div>6.710*9/L</div></td></tr><tr><td>Interpretation</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "a69b3d60-2ffd-4440-958b-72b3335ff35f"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "6690-2",
+              "display": "Leukocytes"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "2008-03-19T08:30:00-08:00"
+        },
+        "issued": "2008-03-19T08:30:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/09b3e4b3-fd00-4d36-a4dd-9f0651fe9dea"
+          }
+        ],
+        "valueQuantity": {
+          "value": 6.7,
+          "unit": "10*9/L"
+        },
+        "interpretation": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v2/0078",
+              "code": "N"
+            }
+          ]
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 4.3,
+              "unit": "10*9/L"
+            },
+            "high": {
+              "value": 10.8,
+              "unit": "10*9/L"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "09b3e4b3-fd00-4d36-a4dd-9f0651fe9dea",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>333444444</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "333444444"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "246Q00000X",
+                  "display": "Technician, Pathology"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "32f3ceca-cd55-4bc2-9d15-99f6a8046a0f",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-resultobs"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Hemoglobin</div></td></tr><tr><td>Date/Period</td><td>Tue Mar 19 10:30:00 CST 2008 - ?</td></tr><tr><td>Result</td><td><div>13.2g/dL</div></td></tr><tr><td>Interpretation</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "107c2dc0-67a5-11db-bd13-0800200c9a66"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "718-7",
+              "display": "Hemoglobin"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "2008-03-19T08:30:00-08:00"
+        },
+        "issued": "2008-03-19T08:30:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/ddd948d4-9c56-4557-bd43-809c5642b651"
+          }
+        ],
+        "valueQuantity": {
+          "value": 13.2,
+          "unit": "g/dL"
+        },
+        "interpretation": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v2/0078",
+              "code": "N"
+            }
+          ]
+        },
+        "referenceRange": [
+          {
+            "low": {
+              "value": 12.0,
+              "unit": "g/dL"
+            },
+            "high": {
+              "value": 15.5,
+              "unit": "g/dL"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "ddd948d4-9c56-4557-bd43-809c5642b651",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>333444444</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "333444444"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "246Q00000X",
+                  "display": "Technician, Pathology"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+## END OF TEST
+## TEST: AssignedEntity2Practitioner
+
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "01bbb290-daf4-4d6b-a298-9be98f947f62",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>2981823</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.19.5.9999.456",
+            "value": "2981823"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)555-5000",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1001 Village Avenue"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "managingOrganization": {
+              "reference": "Organization/6a0d8ffb-8d1f-4f4c-a95a-d1f1cdb23623"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "6a0d8ffb-8d1f-4f4c-a95a-d1f1cdb23623",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>2.16.840.1.113883.19.5.9999.1393</td></tr><tr><td>Name</td><td>Community Health and Hospitals</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "2.16.840.1.113883.19.5.9999.1393"
+          }
+        ],
+        "name": "Community Health and Hospitals",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)555-5000",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1001 Village Avenue"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ]
+      }
+    }
+  ]
+}
+## END OF TEST
+## TEST: Observation2Observation
+
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "24d34b1c-8f05-4c87-a4d4-b128424baada",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Tobacco smoking status NHIS</div></td></tr><tr><td>Date/Period</td><td>Thu Sep 10 00:00:00 CST 2012 - ?</td></tr><tr><td>Result</td><td><div>Former smoker</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.19",
+            "value": "123456789"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "72166-2",
+              "display": "Tobacco smoking status NHIS"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "2012-09-10"
+        },
+        "issued": "2012-09-10T11:45:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/d43b4922-8c5e-4a08-9e06-33a6420fe2aa"
+          }
+        ],
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "8517006",
+              "display": "Former smoker"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "d43b4922-8c5e-4a08-9e06-33a6420fe2aa",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>555555555</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "555555555"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "659059ec-daa4-496d-b19f-f4a444991b4e",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Alcoholic drinks per day</div></td></tr><tr><td>Date/Period</td><td>Sun Feb 15 00:00:00 CST 2012 - ?</td></tr><tr><td>Result</td><td><div>13</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "37f76c51-6411-4e1d-8a37-957fd49d2cef"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "74013-4",
+              "display": "Alcoholic drinks per day"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "2012-02-15"
+        },
+        "issued": "2012-09-10T11:45:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/6f81e529-511f-44a2-9f75-c2c08ea7af4f"
+          }
+        ],
+        "valueQuantity": {
+          "value": 12,
+          "unit": "1"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "6f81e529-511f-44a2-9f75-c2c08ea7af4f",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>555555555</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "555555555"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "4b059b59-3091-49e8-bb39-4c1b2c5dea14",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>History of tobacco use</div></td></tr><tr><td>Date/Period</td><td>Tue Feb 14 00:00:00 CST 2009 - Mon Feb 15 00:00:00 CST 2011</td></tr><tr><td>Result</td><td><div>Moderate cigarette smoker, 10-19/day</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "45efb604-7049-4a2e-ad33-d38556c9636c"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11367-0",
+              "display": "History of tobacco use"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "2009-02-14",
+          "end": "2011-02-15"
+        },
+        "issued": "2012-09-10T11:45:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/cc380739-b728-41c5-81ce-b4960f229cf6"
+          }
+        ],
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "160604004",
+              "display": "Moderate cigarette smoker, 10-19/day"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "cc380739-b728-41c5-81ce-b4960f229cf6",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>555555555</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "555555555"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+## END OF TEST
+## TEST: MedicationActivity2MedicationStatement
+
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "721c0f96-885d-4f80-891c-2ca7c79a72c2",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-medicationstatement"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Period</td><td>Sun Jan 03 00:00:00 CST 2011 - ?</td></tr></tbody></table><div><table class=\"hapiPropertyTable\"><tbody><tr><th>Dosage</th></tr><tr><td>Timing</td><td><div>6/h</div></td></tr><tr><td>Route</td><td><div>RESPIRATORY (INHALATION)</div></td></tr><tr><td>Quantity</td><td><div>3</div></td></tr></tbody></table></div></div>"
+        },
+        "identifier": [
+          {
+            "value": "cdbd33f0-6cde-11db-9fe1-0800200c9a66"
+          }
+        ],
+        "patient": {
+          "reference": "Patient/0"
+        },
+        "status": "active",
+        "wasNotTaken": false,
+        "reasonForUseReference": {
+          "reference": "Condition/1e0f4a4e-b963-4622-ba69-a2f56c63a4bf"
+        },
+        "effectivePeriod": {
+          "start": "2011-01-03"
+        },
+        "medicationReference": {
+          "reference": "Medication/95cc7ea9-3fbc-4398-8022-0959b81faa00"
+        },
+        "dosage": [
+          {
+            "timing": {
+              "repeat": {
+                "period": 6,
+                "periodUnits": "h"
+              }
+            },
+            "route": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.3.26.1.1",
+                  "code": "C38216",
+                  "display": "RESPIRATORY (INHALATION)"
+                }
+              ]
+            },
+            "quantityQuantity": {
+              "value": 2,
+              "unit": "1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Medication",
+        "id": "95cc7ea9-3fbc-4398-8022-0959b81faa00",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-medication"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\"><div>Proventil 0.09 MG/ACTUAT inhalant solution</div></div></div>"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "573621",
+              "display": "Proventil 0.09 MG/ACTUAT inhalant solution"
+            }
+          ]
+        },
+        "manufacturer": {
+          "reference": "Organization/e4a5fb3b-e8b6-4199-a8fd-c9746226d1b9"
+        },
+        "product": {
+          "ingredient": [
+            {
+              "item": {
+                "reference": "Substance/edcb480f-5cf9-4908-9581-26563cda965f"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Substance",
+        "id": "edcb480f-5cf9-4908-9581-26563cda965f",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-substance"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Substance</td><td><div>Proventil HFA</div></td></tr></tbody></table></div>"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "219483",
+              "display": "Proventil HFA"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "e4a5fb3b-e8b6-4199-a8fd-c9746226d1b9",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Name</td><td>Medication Factory Inc.</td></tr></tbody></table></div>"
+        },
+        "name": "Medication Factory Inc."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "1e0f4a4e-b963-4622-ba69-a2f56c63a4bf",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-condition"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Asthma</div></td></tr><tr><td>Category</td><td></td></tr><tr><td>Clinical Status</td><td>active</td></tr><tr><td>Onset</td><td><div>Sun Jan 03 00:00:00 CST 2011</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:uuid:db734647-fc99-424c-a864-7e3cda82e703",
+            "value": "45665"
+          }
+        ],
+        "patient": {
+          "reference": "Patient/0"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "195967001",
+              "display": "Asthma"
+            }
+          ]
+        },
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/condition-category",
+              "code": "finding"
+            }
+          ]
+        },
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "onsetDateTime": "2011-01-03"
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "c018a3eb-b6b7-4616-9048-1937801d58c9",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-medicationstatement"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Period</td><td>Wed Mar 18 00:00:00 CST 2012 - ?</td></tr></tbody></table><div><table class=\"hapiPropertyTable\"><tbody><tr><th>Dosage</th></tr><tr><td>Timing</td><td><div>12/h</div></td></tr><tr><td>Route</td><td><div>ORAL</div></td></tr><tr><td>Quantity</td><td><div>2</div></td></tr></tbody></table></div></div>"
+        },
+        "identifier": [
+          {
+            "value": "6c844c75-aa34-411c-b7bd-5e4a9f206e29"
+          }
+        ],
+        "patient": {
+          "reference": "Patient/0"
+        },
+        "informationSource": {
+          "reference": "Practitioner/2de5d7eb-3f79-4f13-9648-1e2200810642"
+        },
+        "status": "active",
+        "wasNotTaken": false,
+        "reasonForUseReference": {
+          "reference": "Condition/fbefbd09-56d8-48a7-be1a-8af57a2d582a"
+        },
+        "effectivePeriod": {
+          "start": "2012-03-18"
+        },
+        "medicationReference": {
+          "reference": "Medication/cb6ff6ad-3401-4ff4-98fb-53cef9464403"
+        },
+        "dosage": [
+          {
+            "timing": {
+              "repeat": {
+                "period": 12,
+                "periodUnits": "h"
+              }
+            },
+            "route": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.3.26.1.1",
+                  "code": "C38288",
+                  "display": "ORAL"
+                }
+              ]
+            },
+            "quantityQuantity": {
+              "value": 1,
+              "unit": "1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "2de5d7eb-3f79-4f13-9648-1e2200810642",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>5555555555</td></tr><tr><td>Name</td><td>Patricia Patty <b>PRIMARY </b>M.D.</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "5555555555"
+          }
+        ],
+        "name": {
+          "family": [
+            "Primary"
+          ],
+          "given": [
+            "Patricia",
+            "Patty"
+          ],
+          "suffix": [
+            "M.D."
+          ]
+        },
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)555-1004",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1004 Healthcare Drive "
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Medication",
+        "id": "cb6ff6ad-3401-4ff4-98fb-53cef9464403",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-medication"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\"><div>Atenolol 25 MG Oral Tablet</div></div></div>"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "197380",
+              "display": "Atenolol 25 MG Oral Tablet"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "fbefbd09-56d8-48a7-be1a-8af57a2d582a",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-condition"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Hypertension</div></td></tr><tr><td>Category</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "e63166c7-6482-4a44-83a1-37ccdbde725b"
+          }
+        ],
+        "patient": {
+          "reference": "Patient/0"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "38341003",
+              "display": "Hypertension"
+            }
+          ]
+        },
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/condition-category",
+              "code": "finding"
+            }
+          ]
+        },
+        "verificationStatus": "confirmed"
+      }
+    }
+  ]
+}
+## END OF TEST
+## TEST: EncounterActivity2Encounter
+
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "d995915c-0143-4423-b132-12458601e39a",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-encounter"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Type</td><td><div>Office outpatient visit 15 minutes</div></td></tr><tr><td>Start</td><td><div>Sun Sep 27 02:00:00 CST 2012</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "2a620155-9d11-439e-92b3-5d9815ff4de8"
+          }
+        ],
+        "status": "finished",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://www.ama-assn.org/go/cpt",
+                "code": "99213",
+                "display": "Office outpatient visit 15 minutes"
+              }
+            ]
+          }
+        ],
+        "patient": {
+          "reference": "Patient/0"
+        },
+        "participant": [
+          {
+            "type": [
+              {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/v3/ParticipationType",
+                    "code": "PART",
+                    "display": "Participation"
+                  }
+                ]
+              }
+            ],
+            "individual": {
+              "reference": "Practitioner/4fbed336-1b56-4224-9f59-608d6c6427a2"
+            }
+          }
+        ],
+        "period": {
+          "start": "2012-09-27T13:00:00+05:00"
+        },
+        "indication": [
+          {
+            "reference": "Condition/9561e4ab-8944-462a-aeac-c2bf87483805"
+          }
+        ],
+        "location": [
+          {
+            "location": {
+              "reference": "Location/5ead0934-bc36-49aa-9232-5d6fd32bdd35"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "4fbed336-1b56-4224-9f59-608d6c6427a2",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>333444555</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "333444555"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "59058001",
+                  "display": "General Physician"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "9561e4ab-8944-462a-aeac-c2bf87483805",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-condition"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Pneumonia</div></td></tr><tr><td>Category</td><td></td></tr><tr><td>Clinical Status</td><td>active</td></tr><tr><td>Onset</td><td><div>Fri Sep 25 00:30:00 CST 2012</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:uuid:db734647-fc99-424c-a864-7e3cda82e703",
+            "value": "45665"
+          }
+        ],
+        "patient": {
+          "reference": "Patient/0"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "233604007",
+              "display": "Pneumonia"
+            }
+          ]
+        },
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/condition-category",
+              "code": "finding"
+            }
+          ]
+        },
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "onsetDateTime": "2012-09-25T11:30:00+05:00"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Location",
+        "id": "5ead0934-bc36-49aa-9232-5d6fd32bdd35",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-location"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Name</td><td>Good Health Urgent Care</td></tr></tbody></table></div>"
+        },
+        "name": "Good Health Urgent Care",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": " +1(555)555-1030",
+            "use": "work"
+          }
+        ],
+        "address": {
+          "line": [
+            "1007 Health Drive"
+          ],
+          "city": "Portland",
+          "state": "OR",
+          "postalCode": "99123",
+          "country": "US"
+        }
+      }
+    }
+  ]
+}
+## END OF TEST
+## TEST: ClinicalDocument2Composition
+
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Composition",
+        "id": "5cb7e2c3-7eb3-47c6-abf8-af24459f17b3",
+        "identifier": {
+          "system": "urn:oid:2.16.840.1.113883.19.5.99999.1",
+          "value": "TT988"
+        },
+        "date": "2013-08-15T10:30:00-08:00",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "34133-9",
+              "display": "Summarization of Episode Note"
+            }
+          ]
+        },
+        "title": "Patient Chart Summary",
+        "status": "preliminary",
+        "confidentiality": "N",
+        "subject": {
+          "reference": "Patient/48b68801-4ecf-44e3-8a70-9bcf2a8951a7"
+        },
+        "author": [
+          {
+            "reference": "Practitioner/ff7cadd5-75d3-419e-9c50-efc90401be03"
+          }
+        ],
+        "attester": [
+          {
+            "mode": [
+              "legal"
+            ],
+            "time": "2013-08-15T22:36:15-08:00",
+            "party": {
+              "reference": "Practitioner/087c5da1-7cbc-4e9b-88b0-bc29ce848c71"
+            }
+          },
+          {
+            "mode": [
+              "professional"
+            ],
+            "time": "2013-08-15T22:15:45-08:00",
+            "party": {
+              "reference": "Practitioner/cff75f6e-5e78-4329-8169-783a898d6fba"
+            }
+          }
+        ],
+        "custodian": {
+          "reference": "Organization/fd57e053-283e-4f14-949a-17d930aafe49"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "48b68801-4ecf-44e3-8a70-9bcf2a8951a7",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-patient"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\">Eve <b>BETTERHALF </b></div><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>444222222</td></tr><tr><td>Address</td><td><span>2222 Home Street </span><br/><span>Beaverton </span><span>OR </span><span>US </span></td></tr><tr><td>Date of birth</td><td><span>01 May 1975</span></td></tr></tbody></table></div>"
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/us-core-race",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2106-3",
+                  "display": "White"
+                }
+              ]
+            }
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/us-core-ethnicity",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.238",
+                  "code": "2186-5",
+                  "display": "Not Hispanic or Latino"
+                }
+              ]
+            }
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/us-core-religion",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.5.1076",
+                  "code": "1013",
+                  "display": "Christian (non-Catholic, non-specific)"
+                }
+              ]
+            }
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/birthPlace",
+            "valueAddress": {
+              "line": [
+                "4444 Home Street"
+              ],
+              "city": "Beaverton",
+              "state": "OR",
+              "postalCode": "97867",
+              "country": "US"
+            }
+          }
+        ],
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.1",
+            "value": "444222222"
+          }
+        ],
+        "name": [
+          {
+            "use": "usual",
+            "family": [
+              "Betterhalf"
+            ],
+            "given": [
+              "Eve"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)555-2003",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1975-05-01",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "2222 Home Street"
+            ],
+            "city": "Beaverton",
+            "state": "OR",
+            "postalCode": "97867",
+            "country": "US"
+          }
+        ],
+        "maritalStatus": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v3/MaritalStatus",
+              "code": "M"
+            }
+          ]
+        },
+        "contact": [
+          {
+            "relationship": [
+              {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/patient-contact-relationship",
+                    "code": "agent",
+                    "display": "Agent"
+                  }
+                ]
+              }
+            ],
+            "name": {
+              "family": [
+                "Betterhalf"
+              ],
+              "given": [
+                "Boris",
+                "Bo"
+              ]
+            },
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "+1(555)555-2008",
+                "use": "mobile"
+              }
+            ],
+            "address": {
+              "use": "home",
+              "line": [
+                "2222 Home Street"
+              ],
+              "city": "Beaverton",
+              "state": "OR",
+              "postalCode": "97867",
+              "country": "US"
+            }
+          }
+        ],
+        "communication": [
+          {
+            "language": {
+              "coding": [
+                {
+                  "system": "urn:ietf:bcp:47",
+                  "code": "en"
+                }
+              ]
+            },
+            "preferred": true
+          }
+        ],
+        "managingOrganization": {
+          "reference": "Organization/8ee91343-e4aa-454a-94a8-4ab4f5855bf8"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "8ee91343-e4aa-454a-94a8-4ab4f5855bf8",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>219BX</td></tr><tr><td>Name</td><td>The DoctorsTogether Physician Group</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "219BX"
+          }
+        ],
+        "name": "The DoctorsTogether Physician Group",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": " +1(555)555-5000",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1007 Health Drive"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "ff7cadd5-75d3-419e-9c50-efc90401be03",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>5555555555</td></tr><tr><td>Name</td><td>Patricia Patty <b>PRIMARY </b>M.D.</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "5555555555"
+          }
+        ],
+        "name": {
+          "family": [
+            "Primary"
+          ],
+          "given": [
+            "Patricia",
+            "Patty"
+          ],
+          "suffix": [
+            "M.D."
+          ]
+        },
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)555-1004",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1004 Healthcare Drive "
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "087c5da1-7cbc-4e9b-88b0-bc29ce848c71",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>5555555555</td></tr><tr><td>Name</td><td>Patricia Patty <b>PRIMARY </b>M.D.</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "5555555555"
+          }
+        ],
+        "name": {
+          "family": [
+            "Primary"
+          ],
+          "given": [
+            "Patricia",
+            "Patty"
+          ],
+          "suffix": [
+            "M.D."
+          ]
+        },
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)555-1004",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1004 Healthcare Drive "
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "cff75f6e-5e78-4329-8169-783a898d6fba",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>5555555555</td></tr><tr><td>Name</td><td>Patricia Patty <b>PRIMARY </b>M.D.</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "5555555555"
+          }
+        ],
+        "name": {
+          "family": [
+            "Primary"
+          ],
+          "given": [
+            "Patricia",
+            "Patty"
+          ],
+          "suffix": [
+            "M.D."
+          ]
+        },
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)555-1004",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1004 Healthcare Drive "
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "fd57e053-283e-4f14-949a-17d930aafe49",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>321CX</td></tr><tr><td>Name</td><td>Good Health HIE</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "321CX"
+          }
+        ],
+        "name": "Good Health HIE",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)555-1009",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "use": "work",
+            "line": [
+              "1009 Healthcare Drive "
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ]
+      }
+    }
+  ]
+}
+## END OF TEST
+## TEST: Section2Section
+
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Composition",
+  "section": [
+    {
+      "title": "ENCOUNTERS",
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "46240-8",
+            "display": "History of encounters"
+          }
+        ]
+      },
+      "text": {
+        "status": "additional",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table border=\"1\" width=\"100%\"><thead><tr><th>Encounter</th><th>Performer</th><th>Location</th><th>Date</th></tr></thead><tbody><tr><td> Checkup Examination </td><td>Performer Name</td><td>Community Urgent Care Center</td><td>September 27, 2012 at 1:00pm</td></tr></tbody></table></div>"
+      }
+    }
+  ]
+}
+## END OF TEST
+## TEST: VitalSignObservation2Observation
+
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "633df38c-892d-4b2d-96bb-c9008befef2e",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-vitalsigns"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Intravascular Systolic</div></td></tr><tr><td>Date/Period</td><td>Thu Sep 10 00:00:00 CST 2012 - ?</td></tr><tr><td>Result</td><td><div>132mm[Hg]</div></td></tr><tr><td>Interpretation</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "a0e39c70-9674-4b2a-9837-cdf74200d8d5"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "Intravascular Systolic"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "2012-09-10"
+        },
+        "issued": "2012-09-10T11:45:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/fbf7b887-4dfd-45cd-b346-4bd706ab5559"
+          }
+        ],
+        "valueQuantity": {
+          "value": 132,
+          "unit": "mm[Hg]"
+        },
+        "interpretation": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v2/0078",
+              "code": "N"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "fbf7b887-4dfd-45cd-b346-4bd706ab5559",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>555555555</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "555555555"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "92d9f79d-66ab-4862-b6e7-f9447e69fdf5",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-vitalsigns"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Patient Body Weight - Measured</div></td></tr><tr><td>Date/Period</td><td>Thu Sep 10 00:00:00 CST 2012 - ?</td></tr><tr><td>Result</td><td><div>86kg</div></td></tr><tr><td>Interpretation</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "f4e729e2-a97f-4a7e-8e23-c92f9b6b55cf"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "3141-9",
+              "display": "Patient Body Weight - Measured"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "2012-09-10"
+        },
+        "issued": "2012-09-10T11:45:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/597e1273-4c10-4103-909f-97f87f44c7fd"
+          }
+        ],
+        "valueQuantity": {
+          "value": 86,
+          "unit": "kg"
+        },
+        "interpretation": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v2/0078",
+              "code": "N"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "597e1273-4c10-4103-909f-97f87f44c7fd",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>555555555</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "555555555"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "7ee6400f-c0a7-42df-b9d7-b926b72268fd",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-vitalsigns"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>BP Diastolic</div></td></tr><tr><td>Date/Period</td><td>Thu Sep 10 00:00:00 CST 2012 - ?</td></tr><tr><td>Result</td><td><div>88mm[Hg]</div></td></tr><tr><td>Interpretation</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "1c2748b7-e440-41ba-bc01-dde97d84a036"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "BP Diastolic"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "2012-09-10"
+        },
+        "issued": "2011-09-01T09:15:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/28b09c96-86b4-4646-aea6-579baf36c93c"
+          }
+        ],
+        "valueQuantity": {
+          "value": 88,
+          "unit": "mm[Hg]"
+        },
+        "interpretation": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v2/0078",
+              "code": "N"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "28b09c96-86b4-4646-aea6-579baf36c93c",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>555555555</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "555555555"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "1a8c25f9-e671-426e-831f-61057d958d40",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-vitalsigns"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Height</div></td></tr><tr><td>Date/Period</td><td>Thu Sep 10 00:00:00 CST 2012 - ?</td></tr><tr><td>Result</td><td><div>177cm</div></td></tr><tr><td>Interpretation</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "ed9589fd-fda0-41f7-a3d0-dc537554f5c2"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "2012-09-10"
+        },
+        "issued": "2012-09-10T11:45:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/4f03ffb7-decd-4701-bd99-a11957ff22aa"
+          }
+        ],
+        "valueQuantity": {
+          "value": 177,
+          "unit": "cm"
+        },
+        "interpretation": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v2/0078",
+              "code": "N"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "4f03ffb7-decd-4701-bd99-a11957ff22aa",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>555555555</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "555555555"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "ae3489f8-f167-4c01-b1c0-4e7ef9a72c6a",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-vitalsigns"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>BP Diastolic</div></td></tr><tr><td>Date/Period</td><td>Wed Sep 01 00:00:00 CST 2011 - ?</td></tr><tr><td>Result</td><td><div>80mm[Hg]</div></td></tr><tr><td>Interpretation</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "44f54e66-fb4b-4ee5-9ced-9574ef307a23"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8462-4",
+              "display": "BP Diastolic"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "2011-09-01"
+        },
+        "issued": "2011-09-01T09:15:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/d35f86e7-fed0-4b81-862c-6b45f3d342c7"
+          }
+        ],
+        "valueQuantity": {
+          "value": 80,
+          "unit": "mm[Hg]"
+        },
+        "interpretation": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v2/0078",
+              "code": "N"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "d35f86e7-fed0-4b81-862c-6b45f3d342c7",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>555555555</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "555555555"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "7e0c4b72-32d9-4e79-aec7-001c40c4f7a3",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-vitalsigns"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>BP Systolic</div></td></tr><tr><td>Date/Period</td><td>Wed Sep 01 00:00:00 CST 2011 - ?</td></tr><tr><td>Result</td><td><div>128mm[Hg]</div></td></tr><tr><td>Interpretation</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "b046c35a-59c7-4215-ae09-9a8409a30b21"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8480-6",
+              "display": "BP Systolic"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "2011-09-01"
+        },
+        "issued": "2011-09-01T09:15:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/0115919b-3a0a-4ef2-acd3-3f2dc7726fc7"
+          }
+        ],
+        "valueQuantity": {
+          "value": 128,
+          "unit": "mm[Hg]"
+        },
+        "interpretation": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v2/0078",
+              "code": "N"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "0115919b-3a0a-4ef2-acd3-3f2dc7726fc7",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>555555555</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "555555555"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "a09dbc4d-3436-4274-bc37-7009b7493a56",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-vitalsigns"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Patient Body Weight - Measured</div></td></tr><tr><td>Date/Period</td><td>Wed Sep 01 00:00:00 CST 2011 - ?</td></tr><tr><td>Result</td><td><div>88kg</div></td></tr><tr><td>Interpretation</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "21b0f3d5-7d07-4f4f-ad7e-c33dc2ca3835"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "3141-9",
+              "display": "Patient Body Weight - Measured"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "2011-09-01"
+        },
+        "issued": "2011-09-01T09:15:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/36b20c77-032b-4147-9c13-58d2121eb12d"
+          }
+        ],
+        "valueQuantity": {
+          "value": 88,
+          "unit": "kg"
+        },
+        "interpretation": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v2/0078",
+              "code": "N"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "36b20c77-032b-4147-9c13-58d2121eb12d",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>555555555</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "555555555"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "7ac58824-a6c0-4ec2-a6e2-182addabf594",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-vitalsigns"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Height</div></td></tr><tr><td>Date/Period</td><td>Wed Sep 01 00:00:00 CST 2011 - ?</td></tr><tr><td>Result</td><td><div>177cm</div></td></tr><tr><td>Interpretation</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "05c047cd-28c3-41cd-be6c-56f8cc0c3f2f"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8302-2",
+              "display": "Height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "2011-09-01"
+        },
+        "issued": "2011-09-01T09:15:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/5f2703a8-6d97-4548-9a99-f304ecef8ac9"
+          }
+        ],
+        "valueQuantity": {
+          "value": 177,
+          "unit": "cm"
+        },
+        "interpretation": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v2/0078",
+              "code": "N"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "5f2703a8-6d97-4548-9a99-f304ecef8ac9",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>555555555</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "555555555"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+## END OF TEST
+## TEST: Organization2Organization
+
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Organization",
+  "id": "2ba85a91-d2b4-4951-8ce6-13af78766046",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/daf-organization"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>219BX</td></tr><tr><td>Name</td><td>The DoctorsTogether Physician Group</td></tr></tbody></table></div>"
+  },
+  "identifier": [
+    {
+      "system": "urn:oid:2.16.840.1.113883.4.6",
+      "value": "219BX"
+    }
+  ],
+  "name": "The DoctorsTogether Physician Group",
+  "telecom": [
+    {
+      "system": "phone",
+      "value": " +1(555)555-5000",
+      "use": "work"
+    }
+  ],
+  "address": [
+    {
+      "line": [
+        "1007 Health Drive"
+      ],
+      "city": "Portland",
+      "state": "OR",
+      "postalCode": "99123",
+      "country": "US"
+    }
+  ]
+}
+## END OF TEST
+## TEST: Procedure2Procedure
+
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "fef0b4e0-293d-4da0-b945-b8549778af2c",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-procedure"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Type</td><td><div>Colonoscopy</div></td></tr><tr><td>Date/Period</td><td>Tue May 12 00:00:00 CST 2012 - ?</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "d68b7e32-7810-4f5b-9cc2-acd54b0fd85d"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "73761001",
+              "display": "Colonoscopy"
+            }
+          ]
+        },
+        "bodySite": [
+          {
+            "coding": [
+              {
+                "system": "urn:oid:2.16.840.1.113883.3.88.12.3221.8.9",
+                "code": "appropriate_code",
+                "display": "colon"
+              }
+            ]
+          }
+        ],
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/a1bef7dd-d11c-4da3-9f75-a8eeac99b86d"
+            }
+          }
+        ],
+        "performedPeriod": {
+          "start": "2012-05-12"
+        },
+        "encounter": {
+          "reference": "Encounter/b8d94583-19c0-429d-b5cb-c4f621eb7f0b"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "a1bef7dd-d11c-4da3-9f75-a8eeac99b86d",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>2981823</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.19.5.9999.456",
+            "value": "2981823"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)555-5000",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1001 Village Avenue"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "managingOrganization": {
+              "reference": "Organization/c73e1d25-8c77-4e0e-a097-62a0e99e8a86"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "c73e1d25-8c77-4e0e-a097-62a0e99e8a86",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>2.16.840.1.113883.19.5.9999.1393</td></tr><tr><td>Name</td><td>Community Health and Hospitals</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "2.16.840.1.113883.19.5.9999.1393"
+          }
+        ],
+        "name": "Community Health and Hospitals",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)555-5000",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1001 Village Avenue"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "b8d94583-19c0-429d-b5cb-c4f621eb7f0b",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-encounter"
+          ]
+        },
+        "identifier": [
+          {
+            "value": "2a620155-9d11-439e-92b3-5d9815ff4de8"
+          }
+        ],
+        "status": "finished",
+        "patient": {
+          "reference": "Patient/0"
+        }
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "8fb83b24-5281-4edb-97ac-4e2a0990de56",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-procedure"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Type</td><td><div>Stent Placement</div></td></tr><tr><td>Date/Period</td><td>Mon May 12 00:00:00 CST 2013 - ?</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "d5b614bd-01ce-410d-8726-e1fd01dcc72a"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "103716009",
+              "display": "Stent Placement"
+            }
+          ]
+        },
+        "bodySite": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "28273000",
+                "display": "bile duct"
+              }
+            ]
+          }
+        ],
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/49c2f188-869f-460e-8002-b201730455bd"
+            }
+          }
+        ],
+        "performedPeriod": {
+          "start": "2013-05-12"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "49c2f188-869f-460e-8002-b201730455bd",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>1234</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.19",
+            "value": "1234"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": " +1(555)-555-5004",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1004 Health Care Drive"
+            ],
+            "city": "Ann Arbor",
+            "state": "MI",
+            "postalCode": "02368",
+            "country": "US"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "managingOrganization": {
+              "reference": "Organization/f8899d5d-8779-4915-b5a7-4b8536e93071"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "f8899d5d-8779-4915-b5a7-4b8536e93071",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>2.16.840.1.113883.19.5</td></tr><tr><td>Name</td><td>Community Health and Hospitals</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "2.16.840.1.113883.19.5"
+          }
+        ],
+        "name": "Community Health and Hospitals",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)-555-5005",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1003 Health Care Drive"
+            ],
+            "city": "Ann Arbor",
+            "state": "MI",
+            "postalCode": "02368",
+            "country": "US"
+          }
+        ]
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "1739a372-9b89-463a-aaef-07fa19675c3b",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-procedure"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Type</td><td><div>Colonoscopy</div></td></tr><tr><td>Date/Period</td><td>Fri Jun 13 00:00:00 CST 2013 - ?</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "9a6d1bac-17d3-4195-89c4-1121bc809b5a"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "status": "in-progress",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "73761001",
+              "display": "Colonoscopy"
+            }
+          ]
+        },
+        "performedPeriod": {
+          "start": "2013-06-13"
+        }
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "5d5a1845-e7ed-4923-89dc-22145c2268f5",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-procedure"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Type</td><td><div>Colonoscopy</div></td></tr><tr><td>Date/Period</td><td>Tue May 12 00:00:00 CST 2012 - ?</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "d68b7e32-7810-4f5b-9cc2-acd54b0fd85d"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "73761001",
+              "display": "Colonoscopy"
+            }
+          ]
+        },
+        "bodySite": [
+          {
+            "coding": [
+              {
+                "system": "urn:oid:2.16.840.1.113883.3.88.12.3221.8.9",
+                "code": "appropriate_code",
+                "display": "colon"
+              }
+            ]
+          }
+        ],
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/26b685bb-c48a-46f1-a8e5-d5bdd10b9a42"
+            }
+          }
+        ],
+        "performedPeriod": {
+          "start": "2012-05-12"
+        },
+        "encounter": {
+          "reference": "Encounter/c26f3c6d-12aa-428f-ac7f-9f8a84cca4d9"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "26b685bb-c48a-46f1-a8e5-d5bdd10b9a42",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>2981823</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.19.5.9999.456",
+            "value": "2981823"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)555-5000",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1001 Village Avenue"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "managingOrganization": {
+              "reference": "Organization/afab0d50-bb45-4007-a044-e9cea8c554b4"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "afab0d50-bb45-4007-a044-e9cea8c554b4",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>2.16.840.1.113883.19.5.9999.1393</td></tr><tr><td>Name</td><td>Community Health and Hospitals</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "2.16.840.1.113883.19.5.9999.1393"
+          }
+        ],
+        "name": "Community Health and Hospitals",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)555-5000",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1001 Village Avenue"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "c26f3c6d-12aa-428f-ac7f-9f8a84cca4d9",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-encounter"
+          ]
+        },
+        "identifier": [
+          {
+            "value": "2a620155-9d11-439e-92b3-5d9815ff4de8"
+          }
+        ],
+        "status": "finished",
+        "patient": {
+          "reference": "Patient/0"
+        }
+      }
+    }
+  ]
+}
+## END OF TEST
+## TEST: AllergyProblemAct2AllergyIntolerance
+
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "6da622d8-6a68-40e8-9d00-200350583b42",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-allergyintolerance"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Substance</td><td><div>Penicillin</div></td></tr><tr><td>Onset</td><td><div>Mon May 01 13:45:00 CST 1998</div></td></tr><tr><td>Reaction</td><td><span><div>Nausea</div></span></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "36e3e930-7b14-11db-9fe1-0800200c9a66"
+          }
+        ],
+        "onset": "1998-05-01T11:45:00-08:00",
+        "recorder": {
+          "reference": "Practitioner/1ad410be-2a45-4b2b-b8e6-b4591ca0b69f"
+        },
+        "patient": {
+          "reference": "Patient/0"
+        },
+        "substance": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "70618",
+              "display": "Penicillin"
+            }
+          ]
+        },
+        "status": "active",
+        "criticality": "CRITH",
+        "category": "other",
+        "reaction": [
+          {
+            "manifestation": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "422587007",
+                    "display": "Nausea"
+                  }
+                ]
+              }
+            ],
+            "onset": "2008-02-26T08:05:00-08:00",
+            "severity": "mild"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "1ad410be-2a45-4b2b-b8e6-b4591ca0b69f",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>555555555</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "555555555"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "31defeda-5a3e-405d-827c-35357e91fbbb",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-allergyintolerance"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Substance</td><td><div>Codeine</div></td></tr><tr><td>Onset</td><td><div>Mon May 01 13:45:00 CST 1998</div></td></tr><tr><td>Reaction</td><td><span><div>Wheezing</div></span></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "b03805bd-2eb6-4ab8-a9ff-473c6653971a"
+          }
+        ],
+        "onset": "1998-05-01T11:45:00-08:00",
+        "recorder": {
+          "reference": "Practitioner/6c0fe2a6-1866-4b89-a32a-ce4bff68c622"
+        },
+        "patient": {
+          "reference": "Patient/0"
+        },
+        "substance": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "2670",
+              "display": "Codeine"
+            }
+          ]
+        },
+        "status": "active",
+        "category": "other",
+        "reaction": [
+          {
+            "manifestation": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "56018004",
+                    "display": "Wheezing"
+                  }
+                ]
+              }
+            ],
+            "severity": "moderate"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "6c0fe2a6-1866-4b89-a32a-ce4bff68c622",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>555555555</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "555555555"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+## END OF TEST
+## TEST: ProblemConcernAct2Condition
+
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "4ae23e72-fd63-4203-87b0-a2e9bacbb669",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-condition"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Angina</div></td></tr><tr><td>Date Recorded</td><td>Thu Apr 17 17:15:00 CST 2007</td></tr><tr><td>Category</td><td></td></tr><tr><td>Clinical Status</td><td>active</td></tr><tr><td>Onset</td><td><div>Thu Apr 17 00:00:00 CST 2007</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "4991db40-4c4f-41e8-9146-50c12d716424"
+          }
+        ],
+        "patient": {
+          "reference": "Patient/0"
+        },
+        "asserter": {
+          "reference": "Practitioner/6b69212a-496c-4c8c-8fef-ea31875808ad"
+        },
+        "dateRecorded": "2007-04-17",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "194828000",
+              "display": "Angina"
+            }
+          ]
+        },
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/condition-category",
+              "code": "diagnosis"
+            }
+          ]
+        },
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "onsetDateTime": "2007-04-17"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "6b69212a-496c-4c8c-8fef-ea31875808ad",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>222334444</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "222334444"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "cecd4497-7c03-4e37-ae1e-dfc8dcee47c6",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-condition"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Chest pain</div></td></tr><tr><td>Date Recorded</td><td>Mon Apr 14 17:15:00 CST 2007</td></tr><tr><td>Category</td><td></td></tr><tr><td>Clinical Status</td><td>active</td></tr><tr><td>Onset</td><td><div>Mon Apr 14 00:00:00 CST 2007</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "11d088a8-b957-401c-8ee0-3bd20a772fc0"
+          }
+        ],
+        "patient": {
+          "reference": "Patient/0"
+        },
+        "asserter": {
+          "reference": "Practitioner/629050e0-6c66-4a4e-a973-f20455cda9f8"
+        },
+        "dateRecorded": "2007-04-14",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "29857009",
+              "display": "Chest pain"
+            }
+          ]
+        },
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/condition-category",
+              "code": "diagnosis"
+            }
+          ]
+        },
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "onsetDateTime": "2007-04-14"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "629050e0-6c66-4a4e-a973-f20455cda9f8",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>555555555</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "555555555"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "bae922a4-e8a9-43e4-8fed-aae03e250f41",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-condition"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Pneumonia</div></td></tr><tr><td>Date Recorded</td><td>Wed Aug 14 12:30:00 CST 2008</td></tr><tr><td>Category</td><td></td></tr><tr><td>Clinical Status</td><td>active</td></tr><tr><td>Onset</td><td><div>Thu Jul 03 00:00:00 CST 2013</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "ab1791b0-5c71-11db-b0de-0800200c9a66"
+          }
+        ],
+        "patient": {
+          "reference": "Patient/0"
+        },
+        "asserter": {
+          "reference": "Practitioner/97cf1c99-3688-4119-89cf-2f96496e0d14"
+        },
+        "dateRecorded": "2008-08-14",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "233604007",
+              "display": "Pneumonia"
+            }
+          ]
+        },
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/condition-category",
+              "code": "diagnosis"
+            }
+          ]
+        },
+        "clinicalStatus": "active",
+        "verificationStatus": "confirmed",
+        "onsetDateTime": "2013-07-03",
+        "abatementDateTime": "2008-08-14"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "97cf1c99-3688-4119-89cf-2f96496e0d14",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>555555555</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "555555555"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "3ef464a1-378e-43b2-89af-bb5afc647169",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-condition"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Pneumonia</div></td></tr><tr><td>Date Recorded</td><td>Thu Mar 16 12:30:00 CST 1998</td></tr><tr><td>Category</td><td></td></tr><tr><td>Clinical Status</td><td>resolved</td></tr><tr><td>Onset</td><td><div>Fri Mar 10 00:00:00 CST 1998</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "10506b4d-c30a-4220-8bec-97bff9568fd1"
+          }
+        ],
+        "patient": {
+          "reference": "Patient/0"
+        },
+        "asserter": {
+          "reference": "Practitioner/34b6d4a0-1460-4672-b679-40ef45a2face"
+        },
+        "dateRecorded": "1998-03-16",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "233604007",
+              "display": "Pneumonia"
+            }
+          ]
+        },
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/condition-category",
+              "code": "diagnosis"
+            }
+          ]
+        },
+        "clinicalStatus": "resolved",
+        "verificationStatus": "confirmed",
+        "onsetDateTime": "1998-03-10",
+        "abatementDateTime": "1998-03-16"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "34b6d4a0-1460-4672-b679-40ef45a2face",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>555555555</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "555555555"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+## END OF TEST
+## TEST: AssignedAuthor2Practitioner
+
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "8f78f1d7-c435-4912-8e17-0a26ba2cba29",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>5555555555</td></tr><tr><td>Name</td><td>Patricia Patty <b>PRIMARY </b>M.D.</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "5555555555"
+          }
+        ],
+        "name": {
+          "family": [
+            "Primary"
+          ],
+          "given": [
+            "Patricia",
+            "Patty"
+          ],
+          "suffix": [
+            "M.D."
+          ]
+        },
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+1(555)555-1004",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1004 Healthcare Drive "
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+## END OF TEST
+## TEST: FamilyHistoryOrganizer2FamilyMemberHistory
+
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "FamilyMemberHistory",
+  "id": "6fe8488e-7ae6-45a1-b7e7-a6e4202e4a05",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/daf-familymemberhistory"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Relationship</td><td><div>Father</div></td></tr><tr><td>Born</td><td><div>Sat Dec 31 00:00:00 CST 1910</div></td></tr><tr><td>Deceased</td><td>YES</td></tr></tbody></table><table class=\"hapiPropertyTable\"><tbody><tr><th>Condition</th></tr><tr><td>Code</td><td><div>Myocardial infarction</div></td></tr><tr><td>Onset</td><td><div>57a</div></td></tr><tr><td>Outcome</td><td><div>Dead</div></td></tr></tbody></table><table class=\"hapiPropertyTable\"><tbody><tr><th>Condition</th></tr><tr><td>Code</td><td><div>Diabetes mellitus type 2</div></td></tr><tr><td>Onset</td><td><div>40a</div></td></tr></tbody></table></div>"
+  },
+  "identifier": [
+    {
+      "value": "d42ebf70-5c89-11db-b0de-0855200c9a66"
+    }
+  ],
+  "patient": {
+    "reference": "Patient/0"
+  },
+  "status": "completed",
+  "relationship": {
+    "coding": [
+      {
+        "system": "urn:oid:2.16.840.1.113883.5.111",
+        "code": "FTH",
+        "display": "Father"
+      }
+    ]
+  },
+  "gender": "male",
+  "bornDate": "1910",
+  "deceasedBoolean": true,
+  "condition": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "22298006",
+            "display": "Myocardial infarction"
+          }
+        ]
+      },
+      "outcome": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "419099009",
+            "display": "Dead"
+          }
+        ]
+      },
+      "onsetQuantity": {
+        "value": 57,
+        "unit": "a",
+        "system": "http://unitsofmeasure.org"
+      }
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "44054006",
+            "display": "Diabetes mellitus type 2"
+          }
+        ]
+      },
+      "onsetQuantity": {
+        "value": 40,
+        "unit": "a",
+        "system": "http://unitsofmeasure.org"
+      }
+    }
+  ]
+}
+## END OF TEST
+## TEST: SocialHistory
+
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "49f09794-d3c3-4959-b2f0-9cb989089382",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Tobacco smoking status NHIS</div></td></tr><tr><td>Date/Period</td><td>Thu Sep 10 00:00:00 CST 2012 - ?</td></tr><tr><td>Result</td><td><div>Former smoker</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.19",
+            "value": "123456789"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "72166-2",
+              "display": "Tobacco smoking status NHIS"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "2012-09-10"
+        },
+        "issued": "2012-09-10T11:45:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/1e45709a-fd35-4b88-bf75-4f48f7ed616c"
+          }
+        ],
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "8517006",
+              "display": "Former smoker"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "1e45709a-fd35-4b88-bf75-4f48f7ed616c",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>555555555</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "555555555"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "c3e673b0-cf4a-41c4-a6ca-d4927021b51a",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>Alcoholic drinks per day</div></td></tr><tr><td>Date/Period</td><td>Sun Feb 15 00:00:00 CST 2012 - ?</td></tr><tr><td>Result</td><td><div>13</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "37f76c51-6411-4e1d-8a37-957fd49d2cef"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "74013-4",
+              "display": "Alcoholic drinks per day"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "2012-02-15"
+        },
+        "issued": "2012-09-10T11:45:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/72e11444-488d-438d-92b7-a0e6da98b0a7"
+          }
+        ],
+        "valueQuantity": {
+          "value": 12,
+          "unit": "1"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "72e11444-488d-438d-92b7-a0e6da98b0a7",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>555555555</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "555555555"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "a9b35caf-3a7a-4c60-ba3d-cf84e5abc9b9",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td><div>History of tobacco use</div></td></tr><tr><td>Date/Period</td><td>Tue Feb 14 00:00:00 CST 2009 - Mon Feb 15 00:00:00 CST 2011</td></tr><tr><td>Result</td><td><div>Moderate cigarette smoker, 10-19/day</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "45efb604-7049-4a2e-ad33-d38556c9636c"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11367-0",
+              "display": "History of tobacco use"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "2009-02-14",
+          "end": "2011-02-15"
+        },
+        "issued": "2012-09-10T11:45:00-08:00",
+        "performer": [
+          {
+            "reference": "Practitioner/427fb307-8da0-4abf-823b-c7d73193d69d"
+          }
+        ],
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "160604004",
+              "display": "Moderate cigarette smoker, 10-19/day"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "427fb307-8da0-4abf-823b-c7d73193d69d",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>555555555</td></tr><tr><td>Name</td><td></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.4.6",
+            "value": "555555555"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "role": {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.6.101",
+                  "code": "207QA0505X",
+                  "display": "Adult Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+## END OF TEST
+## TEST: LanguageCommunication2Communication
+
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Patient",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody></tbody></table></div>"
+  },
+  "communication": [
+    {
+      "language": {
+        "coding": [
+          {
+            "system": "urn:ietf:bcp:47",
+            "code": "en"
+          }
+        ]
+      },
+      "preferred": true
+    }
+  ]
+}
+## END OF TEST
+## TEST: ImmunizationActivity2Immunization
+
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "2242e721-70df-43e1-bcbd-ec804f458b2f",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-immunization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Vaccine Code</td><td><div>Influenza virus vaccine</div></td></tr><tr><td>Date (Vaccine Administered)</td><td>Wed Nov 30 00:00:00 CST 1999</td></tr><tr><td>Route</td><td><div>Intramuscular injection</div></td></tr><tr><td>Dose</td><td><div>50ug</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "e6f1ba43-c0ed-4b9b-9f12-f435d8ad8f92"
+          }
+        ],
+        "status": "completed",
+        "date": "1999-11",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.59",
+              "code": "88",
+              "display": "Influenza virus vaccine"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/0"
+        },
+        "wasNotGiven": false,
+        "reported": false,
+        "performer": {
+          "reference": "Practitioner/42e9f485-6004-41bc-a077-a278a16ee8d0"
+        },
+        "manufacturer": {
+          "reference": "Organization/d5b78c33-c055-4788-9c1b-647b80568943"
+        },
+        "lotNumber": "1",
+        "route": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.3.26.1.1",
+              "code": "C28161",
+              "display": "Intramuscular injection"
+            }
+          ]
+        },
+        "doseQuantity": {
+          "value": 50,
+          "unit": "ug"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "d5b78c33-c055-4788-9c1b-647b80568943",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Name</td><td>Health LS - Immuno Inc.</td></tr></tbody></table></div>"
+        },
+        "name": "Health LS - Immuno Inc."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "42e9f485-6004-41bc-a077-a278a16ee8d0",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>2981824</td></tr><tr><td>Name</td><td>Harold <b>HIPPOCRATES </b></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.19.5.9999.456",
+            "value": "2981824"
+          }
+        ],
+        "name": {
+          "family": [
+            "Hippocrates"
+          ],
+          "given": [
+            "Harold"
+          ]
+        },
+        "telecom": [
+          {
+            "system": "phone",
+            "value": " +1(555)555-1030",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1007 Health Drive"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "managingOrganization": {
+              "reference": "Organization/48264732-2473-446d-8237-98bf8a593594"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "48264732-2473-446d-8237-98bf8a593594",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>2.16.840.1.113883.19.5.9999.1394</td></tr><tr><td>Name</td><td>Good Health Clinic</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "2.16.840.1.113883.19.5.9999.1394"
+          }
+        ],
+        "name": "Good Health Clinic",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": " +1(555)555-1030",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1007 Health Drive"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ]
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "2040e9db-f749-4c36-9f82-396448e1448a",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-immunization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Vaccine Code</td><td><div>Influenza virus vaccine</div></td></tr><tr><td>Date (Vaccine Administered)</td><td>Fri Dec 15 00:00:00 CST 1998</td></tr><tr><td>Not Given</td><td>True</td></tr><tr><td>Route</td><td><div>Intramuscular injection</div></td></tr><tr><td>Dose</td><td><div>50ug</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "e6f1ba43-c0ed-4b9b-9f12-f435d8ad8f92"
+          }
+        ],
+        "status": "completed",
+        "date": "1998-12-15",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.59",
+              "code": "88",
+              "display": "Influenza virus vaccine"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/0"
+        },
+        "wasNotGiven": true,
+        "reported": false,
+        "performer": {
+          "reference": "Practitioner/a1eb0a9d-b8f5-4ef8-a102-6c6f8bff8c6e"
+        },
+        "manufacturer": {
+          "reference": "Organization/9e2cd60e-2938-4c02-9942-177f58ddfd3a"
+        },
+        "lotNumber": "1",
+        "route": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.3.26.1.1",
+              "code": "C28161",
+              "display": "Intramuscular injection"
+            }
+          ]
+        },
+        "doseQuantity": {
+          "value": 50,
+          "unit": "ug"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "9e2cd60e-2938-4c02-9942-177f58ddfd3a",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Name</td><td>Health LS - Immuno Inc.</td></tr></tbody></table></div>"
+        },
+        "name": "Health LS - Immuno Inc."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "a1eb0a9d-b8f5-4ef8-a102-6c6f8bff8c6e",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>2981824</td></tr><tr><td>Name</td><td>Harold <b>HIPPOCRATES </b></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.19.5.9999.456",
+            "value": "2981824"
+          }
+        ],
+        "name": {
+          "family": [
+            "Hippocrates"
+          ],
+          "given": [
+            "Harold"
+          ]
+        },
+        "telecom": [
+          {
+            "system": "phone",
+            "value": " +1(555)555-1030",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1007 Health Drive"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "managingOrganization": {
+              "reference": "Organization/cdf23c22-750e-4161-9377-ae0251900177"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "cdf23c22-750e-4161-9377-ae0251900177",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>2.16.840.1.113883.19.5.9999.1394</td></tr><tr><td>Name</td><td>Good Health Clinic</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "2.16.840.1.113883.19.5.9999.1394"
+          }
+        ],
+        "name": "Good Health Clinic",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": " +1(555)555-1030",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1007 Health Drive"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ]
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "26baeedb-321c-4697-81bc-afe24de12b6d",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-immunization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Vaccine Code</td><td><div>Hepatitis B vaccine</div></td></tr><tr><td>Date (Vaccine Administered)</td><td>Fri Aug 01 00:00:00 CST 2013</td></tr><tr><td>Route</td><td><div>Intramuscular injection</div></td></tr><tr><td>Dose</td><td><div></div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "de10790f-1496-4719-8fe6-f1b87b6219f7"
+          }
+        ],
+        "status": "completed",
+        "date": "2013-08-01",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.59",
+              "code": "45",
+              "display": "Hepatitis B vaccine"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/0"
+        },
+        "wasNotGiven": false,
+        "reported": false,
+        "performer": {
+          "reference": "Practitioner/a69461fd-8ffe-4e73-bd12-878e1c3073ce"
+        },
+        "lotNumber": "1",
+        "route": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.3.26.1.1",
+              "code": "C28161",
+              "display": "Intramuscular injection"
+            }
+          ]
+        },
+        "explanation": {
+          "reason": [
+            {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "195967001",
+                  "display": "Asthma"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "a69461fd-8ffe-4e73-bd12-878e1c3073ce",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>2981824</td></tr><tr><td>Name</td><td>Harold <b>HIPPOCRATES </b></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.19.5.9999.456",
+            "value": "2981824"
+          }
+        ],
+        "name": {
+          "family": [
+            "Hippocrates"
+          ],
+          "given": [
+            "Harold"
+          ]
+        },
+        "telecom": [
+          {
+            "system": "phone",
+            "value": " +1(555)555-1030",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1007 Health Drive"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "managingOrganization": {
+              "reference": "Organization/c5d7ce12-7d8c-49d1-995a-528e7b02f7e1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "c5d7ce12-7d8c-49d1-995a-528e7b02f7e1",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>2.16.840.1.113883.19.5.9999.1394</td></tr><tr><td>Name</td><td>Good Health Clinic</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "2.16.840.1.113883.19.5.9999.1394"
+          }
+        ],
+        "name": "Good Health Clinic",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": " +1(555)555-1030",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1007 Health Drive"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ]
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "d46437ab-86dd-4ea1-9e30-976c092c747c",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-immunization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Vaccine Code</td><td><div>Pneumococcal polysaccharide vaccine</div></td></tr><tr><td>Date (Vaccine Administered)</td><td>Fri Dec 15 00:00:00 CST 1998</td></tr><tr><td>Route</td><td><div>Intramuscular injection</div></td></tr><tr><td>Dose</td><td><div>50ug</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "e6f1ba43-c0ed-4b9b-9f12-f435d8ad8f92"
+          }
+        ],
+        "status": "completed",
+        "date": "1998-12-15",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.59",
+              "code": "33",
+              "display": "Pneumococcal polysaccharide vaccine"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/0"
+        },
+        "wasNotGiven": false,
+        "reported": false,
+        "performer": {
+          "reference": "Practitioner/5346c425-b7c6-48ac-ba28-875d36932d5b"
+        },
+        "manufacturer": {
+          "reference": "Organization/55ba845d-b506-4e6a-a1e7-54aa7bccadb9"
+        },
+        "lotNumber": "1",
+        "route": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.3.26.1.1",
+              "code": "C28161",
+              "display": "Intramuscular injection"
+            }
+          ]
+        },
+        "doseQuantity": {
+          "value": 50,
+          "unit": "ug"
+        },
+        "reaction": [
+          {
+            "date": "1998-12-15T08:05:00-08:00",
+            "detail": {
+              "reference": "Observation/eccaf0af-0cf2-4795-a56b-6c475e4f3cb9"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "55ba845d-b506-4e6a-a1e7-54aa7bccadb9",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Name</td><td>Health LS - Immuno Inc.</td></tr></tbody></table></div>"
+        },
+        "name": "Health LS - Immuno Inc."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "5346c425-b7c6-48ac-ba28-875d36932d5b",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>2981824</td></tr><tr><td>Name</td><td>Harold <b>HIPPOCRATES </b></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.19.5.9999.456",
+            "value": "2981824"
+          }
+        ],
+        "name": {
+          "family": [
+            "Hippocrates"
+          ],
+          "given": [
+            "Harold"
+          ]
+        },
+        "telecom": [
+          {
+            "system": "phone",
+            "value": " +1(555)555-1030",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1007 Health Drive"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "managingOrganization": {
+              "reference": "Organization/721478c6-db0f-482d-96af-b1f7aee4e770"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "721478c6-db0f-482d-96af-b1f7aee4e770",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>2.16.840.1.113883.19.5.9999.1394</td></tr><tr><td>Name</td><td>Good Health Clinic</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "2.16.840.1.113883.19.5.9999.1394"
+          }
+        ],
+        "name": "Good Health Clinic",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": " +1(555)555-1030",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1007 Health Drive"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "eccaf0af-0cf2-4795-a56b-6c475e4f3cb9",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Code</td><td></td></tr><tr><td>Date/Period</td><td>Fri Dec 15 10:05:00 CST 1998 - Fri Dec 15 14:05:00 CST 1998</td></tr><tr><td>Result</td><td><div>Nausea</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "4adc1020-7b14-11db-9fe1-0800200c9a64"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.5.4",
+              "code": "ASSERTION"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/0"
+        },
+        "effectivePeriod": {
+          "start": "1998-12-15T08:05:00-08:00",
+          "end": "1998-12-15T12:05:00-08:00"
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "422587007",
+              "display": "Nausea"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "4be43776-38e3-4d62-8dca-9c2a33201834",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-immunization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Vaccine Code</td><td><div>Tetanus and diphtheria toxoids - preservative free</div></td></tr><tr><td>Date (Vaccine Administered)</td><td>Fri Dec 15 00:00:00 CST 1998</td></tr><tr><td>Not Given</td><td>True</td></tr><tr><td>Route</td><td><div>Intramuscular injection</div></td></tr><tr><td>Dose</td><td><div>50ug</div></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "e6f1ba43-c0ed-4b9b-9f12-f435d8ad8f92"
+          }
+        ],
+        "status": "completed",
+        "date": "1998-12-15",
+        "vaccineCode": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.59",
+              "code": "103",
+              "display": "Tetanus and diphtheria toxoids - preservative free"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/0"
+        },
+        "wasNotGiven": true,
+        "reported": false,
+        "performer": {
+          "reference": "Practitioner/d7008b89-203e-4beb-8823-53bd03e09b47"
+        },
+        "manufacturer": {
+          "reference": "Organization/a131e153-b7e8-4cf3-8b4c-2fd19e832b47"
+        },
+        "lotNumber": "1",
+        "route": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.3.26.1.1",
+              "code": "C28161",
+              "display": "Intramuscular injection"
+            }
+          ]
+        },
+        "doseQuantity": {
+          "value": 50,
+          "unit": "ug"
+        },
+        "explanation": {
+          "reasonNotGiven": [
+            {
+              "coding": [
+                {
+                  "system": "urn:oid:2.16.840.1.113883.5.8",
+                  "code": "PATOBJ",
+                  "display": "Patient Objection"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "a131e153-b7e8-4cf3-8b4c-2fd19e832b47",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Name</td><td>Health LS - Immuno Inc.</td></tr></tbody></table></div>"
+        },
+        "name": "Health LS - Immuno Inc."
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "d7008b89-203e-4beb-8823-53bd03e09b47",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-pract"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>2981824</td></tr><tr><td>Name</td><td>Harold <b>HIPPOCRATES </b></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "system": "urn:oid:2.16.840.1.113883.19.5.9999.456",
+            "value": "2981824"
+          }
+        ],
+        "name": {
+          "family": [
+            "Hippocrates"
+          ],
+          "given": [
+            "Harold"
+          ]
+        },
+        "telecom": [
+          {
+            "system": "phone",
+            "value": " +1(555)555-1030",
+            "use": "work"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "1007 Health Drive"
+            ],
+            "city": "Portland",
+            "state": "OR",
+            "postalCode": "99123",
+            "country": "US"
+          }
+        ],
+        "practitionerRole": [
+          {
+            "managingOrganization": {
+              "reference": "Organization/896bec56-19fe-4c40-b585-eaf0ca6fb2f1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "896bec56-19fe-4c40-b585-eaf0ca6fb2f1",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>2.16.840.1.113883.19.5.9999.1394</td></tr><tr><td>Name</td><td>Good Health Clinic</td></tr></tbody></table></div>"
+        },
+        "identifier": [
+          {
+            "value": "2.16.840.1.113883.19.5.9999.1394"
+          }
+        ],
+        "name": "Good Health Clinic",
+        "telecom": [
+          {
+            "system": "phone",
+            "value": " +1(555)555-1030",
+            "use": "work"
+          }
+        ]
+      }
+    }
+  ]
+}
+## END OF TEST
+## TEST: ManufacturedProduct2Medication
+
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Medication",
+        "id": "4362783e-6ac4-4789-8889-4298edb255fa",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-medication"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\"><div>Influenza virus vaccine</div></div></div>"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.59",
+              "code": "88",
+              "display": "Influenza virus vaccine"
+            }
+          ]
+        },
+        "manufacturer": {
+          "reference": "Organization/2a84e6d4-b89b-4c45-af3b-e499e97c795e"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "2a84e6d4-b89b-4c45-af3b-e499e97c795e",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Name</td><td>Health LS - Immuno Inc.</td></tr></tbody></table></div>"
+        },
+        "name": "Health LS - Immuno Inc."
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Medication",
+        "id": "2088cf2d-613d-40aa-b577-1a4a7fc17d10",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-medication"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\"><div>Influenza virus vaccine</div></div></div>"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.59",
+              "code": "88",
+              "display": "Influenza virus vaccine"
+            }
+          ]
+        },
+        "manufacturer": {
+          "reference": "Organization/fccfd180-7ca6-4831-bd69-7cbfd576280d"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "fccfd180-7ca6-4831-bd69-7cbfd576280d",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Name</td><td>Health LS - Immuno Inc.</td></tr></tbody></table></div>"
+        },
+        "name": "Health LS - Immuno Inc."
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Medication",
+        "id": "696eca26-085c-40cb-ad2d-249c873b1888",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-medication"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\"><div>Hepatitis B vaccine</div></div></div>"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.59",
+              "code": "45",
+              "display": "Hepatitis B vaccine"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Medication",
+        "id": "5802898f-8eb6-498d-8cf7-a9f28385b5b6",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-medication"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\"><div>Pneumococcal polysaccharide vaccine</div></div></div>"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.59",
+              "code": "33",
+              "display": "Pneumococcal polysaccharide vaccine"
+            }
+          ]
+        },
+        "manufacturer": {
+          "reference": "Organization/eba18c61-ecb3-4674-bced-7a6a2787256f"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "eba18c61-ecb3-4674-bced-7a6a2787256f",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Name</td><td>Health LS - Immuno Inc.</td></tr></tbody></table></div>"
+        },
+        "name": "Health LS - Immuno Inc."
+      }
+    }
+  ]
+}
+# TRANSFORMATION STARTING..
+# END OF TRANSFORMATION.
+{
+  "resourceType": "Bundle",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Medication",
+        "id": "50746023-bd96-4189-95a8-bef6ba6723f4",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-medication"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\"><div>Tetanus and diphtheria toxoids - preservative free</div></div></div>"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.59",
+              "code": "103",
+              "display": "Tetanus and diphtheria toxoids - preservative free"
+            }
+          ]
+        },
+        "manufacturer": {
+          "reference": "Organization/be68c21a-6feb-42e8-bc25-deaf8f3406a6"
+        }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "be68c21a-6feb-42e8-bc25-deaf8f3406a6",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/StructureDefinition/daf-organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Name</td><td>Health LS - Immuno Inc.</td></tr></tbody></table></div>"
+        },
+        "name": "Health LS - Immuno Inc."
+      }
+    }
+  ]
+}
+## END OF TEST
