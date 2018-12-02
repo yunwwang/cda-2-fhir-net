@@ -97,29 +97,6 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
             }
         }
 
-        private void AddObservation(XElement element)
-        {
-            if (AllergyIntolerance == null || element == null)
-                return;
-
-            var templateId = element.CdaElement("templateId").Value;
-
-            switch(templateId)
-            {
-                case "2.16.840.1.113883.10.20.22.4.7":
-                    AddAllergyObservation(element);
-                    break;
-
-                case "2.16.840.1.113883.10.20.22.4.8":
-                    AddSeverityObservation(element);
-                    break;
-
-                case "2.16.840.1.113883.10.20.22.4.9":
-                    AddReactionObservation(element);
-                    break;
-            }
-        }
-
         private void AddAllergyObservation(XElement element)
         {
             if (AllergyIntolerance == null || element == null)
@@ -157,18 +134,63 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                         AllergyIntolerance.Code = FromXml(new CodeableConceptParser(), child.CdaDescendants("code").FirstOrDefault());
                         break;
                     case "entryRelationship":
-                        AddObservation(child.CdaElement("observation"));
+                        var obs = child.CdaElement("observation");
+                        var templateId = element.CdaElement("templateId").Value;
+                        if (templateId == "2.16.840.1.113883.10.20.22.4.9")
+                            AddReactionObservation(obs);
                         break;
                 }
             }
         }
 
-        private void AddSeverityObservation(XElement element)
+        private void AddSeverityObservation(XElement element, AllergyIntolerance.ReactionComponent reaction)
         {
+            if (element == null || reaction == null)
+                return;
 
+            foreach (var child in element.Elements())
+                switch (child.Name.LocalName)
+                {
+                    case "value":
+                        reaction.Severity = new AllergyIntoleranceSeverityParser().FromCda(child.Attribute("code")?.Value);
+                        break;
+                }
         }
 
         private void AddReactionObservation(XElement element)
-        { }
+        {
+            if (AllergyIntolerance == null || element == null)
+                return;
+
+            var reaction = new AllergyIntolerance.ReactionComponent();
+
+            foreach(var child in element.Elements())
+                switch(child.Name.LocalName)
+                {
+                    case "id":
+                        reaction.ElementId = FromXml(new IdentifierParser(), child)?.Value;
+                        break;
+
+                    case "effectiveTime":
+                        reaction.OnsetElement = FromXml(new FhirDateTimeParser(), child.CdaElement("low"));
+                        break;
+
+                    case "value":
+                        var manifestation = FromXml(new CodeableConceptParser(), child);
+                        if (manifestation != null)
+                            reaction.Manifestation.Add(manifestation);
+                        break;
+
+                    case "entryRelationship":
+                        var obs = child.CdaElement("observation");
+                        var templateId = element.CdaElement("templateId").Value;
+                        if (templateId == "2.16.840.1.113883.10.20.22.4.8")
+                            AddSeverityObservation(obs, reaction);
+                        break;
+                }
+
+            if (reaction.Manifestation.Any())
+                AllergyIntolerance.Reaction.Add(reaction);
+        }
     }
 }
