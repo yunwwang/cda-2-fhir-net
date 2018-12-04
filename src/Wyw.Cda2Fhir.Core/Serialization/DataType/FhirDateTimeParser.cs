@@ -16,15 +16,22 @@ namespace Wyw.Cda2Fhir.Core.Serialization.DataType
 
             if (timeString == null)
             {
-                Errors.Add(ParserError.CreateParseError(element, "does NOT have value attribute",
-                    ParseErrorLevel.Error));
+                var nullFlavor = element.Attribute("nullFlavor")?.Value;
+
+                if (nullFlavor != null)
+                    Errors.Add(ParserError.CreateParseError(element, "has nullFlavor " + nullFlavor,
+                        ParseErrorLevel.Warning));
+                else
+                    Errors.Add(ParserError.CreateParseError(element, "does NOT have value attribute",
+                        ParseErrorLevel.Error));
+
                 return null;
             }
 
             if (timeString.Length < 4)
             {
-                Errors.Add(ParserError.CreateParseError(element, "does NOT have valid value attribute",
-                    ParseErrorLevel.Error));
+                Errors.Add(ParserError.CreateParseError(element, "has invalid value " + timeString,
+                    ParseErrorLevel.Warning));
                 return null;
             }
 

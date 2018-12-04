@@ -27,7 +27,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
 
             var patient = Bundle?.FirstOrDefault<Patient>(null);
 
-            var AllergyIntolerance = new AllergyIntolerance
+            AllergyIntolerance = new AllergyIntolerance
             {
                 Id = Guid.NewGuid().ToString(),
                 Meta = new Meta(),
@@ -135,7 +135,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
                         break;
                     case "entryRelationship":
                         var obs = child.CdaElement("observation");
-                        var templateId = element.CdaElement("templateId").Value;
+                        var templateId = obs.CdaElement("templateId")?.Attribute("root")?.Value;
                         if (templateId == "2.16.840.1.113883.10.20.22.4.9")
                             AddReactionObservation(obs);
                         break;
@@ -183,7 +183,7 @@ namespace Wyw.Cda2Fhir.Core.Serialization.Resource
 
                     case "entryRelationship":
                         var obs = child.CdaElement("observation");
-                        var templateId = element.CdaElement("templateId").Value;
+                        var templateId = obs.CdaElement("templateId")?.Attribute("root")?.Value;
                         if (templateId == "2.16.840.1.113883.10.20.22.4.8")
                             AddSeverityObservation(obs, reaction);
                         break;
